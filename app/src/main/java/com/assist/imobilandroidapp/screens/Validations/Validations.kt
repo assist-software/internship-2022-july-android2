@@ -1,6 +1,7 @@
+package com.assist.imobilandroidapp.screens.Validations
+
 import android.util.Patterns
 import com.google.android.material.textfield.TextInputEditText
-import org.w3c.dom.Text
 
 class Validations {
     companion object {

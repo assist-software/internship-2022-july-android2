@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.ActivitySignUpBinding
+import com.assist.imobilandroidapp.screens.Validations.Validations
 import com.assist.imobilandroidapp.screens.login.Login
 import com.google.android.material.textfield.TextInputEditText
 
