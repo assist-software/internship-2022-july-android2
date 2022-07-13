@@ -1,8 +1,12 @@
 package com.assist.imobilandroidapp.screens.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.ActivitySignUpBinding
 import com.google.android.material.textfield.TextInputEditText
@@ -41,5 +45,16 @@ class SignUp : AppCompatActivity() {
         }
     }
 
+
+    fun signUpButton(view: View){
+        // TODO:
+
+        Toast.makeText(getApplicationContext(),"You will be directed to hotels list",Toast.LENGTH_SHORT).show();
+    }
+
+    fun goToLogin(view: View){
+        val intent = Intent(this, Login::class.java)
+        startActivity(intent)
+    }
 
 }
