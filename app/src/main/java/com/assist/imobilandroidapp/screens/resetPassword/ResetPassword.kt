@@ -7,7 +7,7 @@ import android.text.TextWatcher
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.assist.imobilandroidapp.R
-import com.assist.imobilandroidapp.screens.main.Login
+import com.assist.imobilandroidapp.screens.login.Login
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
 import java.util.regex.Pattern
@@ -98,7 +98,7 @@ class ResetPassword : AppCompatActivity() {
                     newPasswordTextInputLayout.error = ""
                     confirmPasswordTextInputLayout.error = ""
                     Toast.makeText(this, "Clicked on button!", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this,Login::class.java))
+                    startActivity(Intent(this, Login::class.java))
                     finish()
                 }
             }

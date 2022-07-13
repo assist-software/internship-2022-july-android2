@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".screens.main.Login"
+            android:name=".screens.login.Login"
             android:exported="false" />
         <activity
             android:name=".screens.resetPassword.ResetPassword"

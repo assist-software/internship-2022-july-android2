@@ -3,12 +3,11 @@ package com.assist.imobilandroidapp.screens.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Patterns
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatButton
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.ActivitySignUpBinding
+import com.assist.imobilandroidapp.screens.login.Login
 import com.google.android.material.textfield.TextInputEditText
 
 class SignUp : AppCompatActivity() {
