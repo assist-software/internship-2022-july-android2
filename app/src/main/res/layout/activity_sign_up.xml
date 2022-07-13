@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.main.SignUp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
+    tools:context=".screens.main.SignUp"
 
     >
 
@@ -14,38 +14,37 @@
         android:id="@+id/logoAssistTagline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="185dp"
+        android:contentDescription="Assist logo"
         android:paddingEnd="281dp"
         android:src="@drawable/ic_logo_assist_tagline"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="185dp"
-        android:contentDescription="Assist logo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/createAccountTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Create account"
-        android:textSize="24sp"
         android:fontFamily="@font/inter_bold"
         android:lineHeight="32sp"
+        android:text="Create account"
         android:textAlignment="textStart"
         android:textColor="@color/black"
         android:textFontWeight="700"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoAssistTagline"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/logoAssistTagline" />
 
     <TextView
         android:id="@+id/signUpTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/inter_semi_bold"
         android:text="Sign up for free and become a member."
-        android:textSize="14sp"
         android:textColor="@color/grayscale_300"
-        android:layout_marginTop="4dp"
+        android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@+id/createAccountTextView"
         tools:layout_editor_absoluteX="16dp" />
 
@@ -53,20 +52,19 @@
         android:id="@+id/googleButtonOutlined"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/outlined_button_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"
+        android:background="@drawable/outlined_button_bg"
         android:drawableStart="@drawable/ic_google"
         android:drawablePadding="8dp"
         android:paddingLeft="109dp"
-        android:textAlignment="textStart"
         android:text="Sign up with Google"
-
-        android:textColor="@color/primary_500"
-        app:layout_constraintTop_toBottomOf="@+id/signUpTextView"
+        android:textAlignment="textStart"
         android:textAllCaps="false"
-        />
+        android:textColor="@color/primary_500"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpTextView" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -108,44 +106,41 @@
     <TextView
         android:id="@+id/emailTextTop"
         android:layout_width="match_parent"
-        android:layout_marginTop="25.5dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        tools:layout_editor_absoluteX="16dp"
-        android:text="Email"
-        android:lineHeight="22sp"
-        android:textColor="@color/grayscale_500"
+        android:layout_marginTop="25.5dp"
         android:fontFamily="@font/inter_medium"
-        />
+        android:lineHeight="22sp"
+        android:text="Email"
+        android:textColor="@color/grayscale_500"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        tools:layout_editor_absoluteX="16dp" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:textColor="@color/grayscale_200"
-        android:fontFamily="@font/inter_medium"
-        android:textSize="16dp"
-        android:background="@drawable/edit_text_border_gray"
-        android:hint="Placeholder"
-        android:inputType=""
         android:layout_marginTop="4dp"
+        android:background="@drawable/edit_text_border_gray"
+        android:fontFamily="@font/inter_medium"
+        android:hint="Placeholder"
+        android:inputType="textEmailAddress"
         android:paddingLeft="11dp"
+        android:textColor="@color/grayscale_200"
+        android:textSize="16dp"
         app:layout_constraintTop_toBottomOf="@+id/emailTextTop"
         tools:layout_editor_absoluteX="16dp" />
-
 
 
     <TextView
         android:id="@+id/passwordTextTop"
         android:layout_width="match_parent"
-        android:layout_marginTop="25.5dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText"
-        android:text="Password"
-        android:lineHeight="22sp"
-        android:textColor="@color/grayscale_500"
+        android:layout_marginTop="25.5dp"
         android:fontFamily="@font/inter_medium"
-        />
+        android:lineHeight="22sp"
+        android:text="Password"
+        android:textColor="@color/grayscale_500"
+        app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/passwordEditText"
@@ -165,40 +160,38 @@
     <TextView
         android:id="@+id/passwordCriteria"
         android:layout_width="match_parent"
-        android:layout_marginTop="4dp"
-        android:textSize="12dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
-        android:text="At least 8 characters and one number."
-        android:visibility="invisible"
-        android:lineHeight="22sp"
-        android:textColor="@color/grayscale_500"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/inter_regular"
-        />
+        android:lineHeight="22sp"
+        android:text="At least 8 characters and one number."
+        android:textColor="@color/grayscale_500"
+        android:textSize="12dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/primaryButton400"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:background="@drawable/primary_button_400"
+        android:fontFamily="@font/inter_semi_bold"
+        android:lineHeight="22dp"
+        android:text="Sign up"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="40dp"
-        android:text="Sign up"
-        android:fontFamily="@font/inter_semi_bold"
-        android:textSize="14dp"
-        android:lineHeight="22dp"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/passwordCriteria"
-        android:textAllCaps="false"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/passwordCriteria" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:orientation="horizontal"
         app:flow_horizontalAlign="center"
-        android:layout_marginTop="24dp"
         app:layout_constraintTop_toBottomOf="@+id/primaryButton400"
         tools:layout_editor_absoluteX="16dp">
 
@@ -207,12 +200,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:textSize="14dp"
-            android:lineHeight="22dp"
-            android:textColor="@color/grayscale_300"
             android:fontFamily="@font/inter_semi_bold"
+            android:lineHeight="22dp"
             android:text="Already have an account? "
             android:textAlignment="textEnd"
+            android:textColor="@color/grayscale_300"
+            android:textSize="14dp"
 
             />
 
@@ -220,10 +213,10 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Log in"
-            android:textSize="14dp"
+            android:layout_weight="0.5"
             android:fontFamily="@font/inter_semi_bold"
+            android:text="Log in"
             android:textColor="@color/primary_400"
-            android:layout_weight="0.5" />
+            android:textSize="14dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
