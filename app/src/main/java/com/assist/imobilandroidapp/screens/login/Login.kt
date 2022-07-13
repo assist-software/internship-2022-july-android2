@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.assist.imobilandroidapp.R
+import com.assist.imobilandroidapp.screens.forgotPassword.ForgotPassword
 
 class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +20,7 @@ class Login : AppCompatActivity() {
         val intent = Intent(this, ForgotPassword::class.java)
         startActivity(intent)
     }
+
 
     fun goToSignUp(view: View ){
         val intent = Intent(this, SignUp::class.java)
