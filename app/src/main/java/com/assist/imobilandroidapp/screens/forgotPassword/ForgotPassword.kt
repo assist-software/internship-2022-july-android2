@@ -9,7 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.assist.imobilandroidapp.R
-import com.assist.imobilandroidapp.screens.main.Login
+import com.assist.imobilandroidapp.screens.login.Login
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
 
@@ -60,7 +60,7 @@ class ForgotPassword : AppCompatActivity() {
         }
 
         backToLoginTextView.setOnClickListener {
-            startActivity(Intent(this,Login::class.java))
+            startActivity(Intent(this, Login::class.java))
             finish()
         }
     }

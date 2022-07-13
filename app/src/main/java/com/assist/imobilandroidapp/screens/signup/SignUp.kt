@@ -3,15 +3,21 @@ package com.assist.imobilandroidapp.screens.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+<<<<<<< HEAD
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
+=======
+>>>>>>> e95ef4ec55e64c82640c90aca2ee13f776e10e20
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatButton
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.ActivitySignUpBinding
+<<<<<<< HEAD
 import com.google.android.material.button.MaterialButton
+=======
+import com.assist.imobilandroidapp.screens.login.Login
+>>>>>>> e95ef4ec55e64c82640c90aca2ee13f776e10e20
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import java.util.regex.Pattern
