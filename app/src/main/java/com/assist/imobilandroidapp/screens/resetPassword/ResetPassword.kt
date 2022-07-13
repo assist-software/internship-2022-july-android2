@@ -89,9 +89,19 @@ class ResetPassword : AppCompatActivity() {
         })
 
         confirmPasswordButton.setOnClickListener {
-            Toast.makeText(this, "Clicked on button!", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this,Login::class.java))
-            finish()
+            if ( newPasswordTextInputLayout.editText?.text.isNullOrEmpty() ) {
+                newPasswordTextInputLayout.error = "Please enter your new password."
+            } else {
+                if ( confirmPasswordTextInputLayout.editText?.text.isNullOrEmpty() ) {
+                    confirmPasswordTextInputLayout.error = "Please enter your new password to confirm!"
+                } else {
+                    newPasswordTextInputLayout.error = ""
+                    confirmPasswordTextInputLayout.error = ""
+                    Toast.makeText(this, "Clicked on button!", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this,Login::class.java))
+                    finish()
+                }
+            }
         }
     }
 }
