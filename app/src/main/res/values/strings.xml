@@ -31,16 +31,14 @@
     <string name="at_least_8_charachters_and_number">At least 8 characters and one number.</string>
 
 
-
-
-
-<!--    Hints-->
+    <!--    Hints-->
     <string name="placeholder_email">Enter email</string>
     <string name="placeholder_password">Enter password</string>
 
 
-
-<!--    Image descriptions-->
+    <!--    Image descriptions-->
     <string name="assist_logo">Assist logo</string>
     <string name="password_hint">At least 8 characters and one number.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
