@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ImobilAndroidApp">
         <activity
-            android:name="com.assist.imobilandroidapp.screens.main.MainActivity"
+            android:name=".screens.main.Login"
+            android:exported="false" />
+        <activity
+            android:name=".screens.main.SignUp"
+            android:exported="false" />
+        <activity
+            android:name=".screens.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
