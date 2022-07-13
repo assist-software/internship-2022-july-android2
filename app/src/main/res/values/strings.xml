@@ -11,6 +11,7 @@
     <string name="reset_passowrd_button_text">Confirm password</string>
     <string name="reset_password_hint">Password</string>
     <string name="reset_password_confirm_hint">Confirm password</string>
+    <string name="error_email_input">Please enter your email.</string>
 
 
     <string name="log_in">Log in</string>
@@ -35,4 +36,5 @@
 
 <!--    Image descriptions-->
     <string name="assist_logo">Assist logo</string>
+    <string name="password_hint">At least 8 characters and one number.</string>
 </resources>

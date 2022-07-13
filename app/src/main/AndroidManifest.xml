@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ImobilAndroidApp">
         <activity
-            android:name=".screens.main.ResetPassword"
+            android:name=".screens.resetPassword.ResetPassword"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,7 @@
             android:name=".screens.main.SignUp"
             android:exported="false" />
         <activity
-            android:name=".screens.main.ForgotPassword"
+            android:name=".screens.forgotPassword.ForgotPassword"
             android:exported="false">
         </activity>
         <activity
