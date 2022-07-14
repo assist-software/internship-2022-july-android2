@@ -9,7 +9,7 @@
     android:layout_gravity="center"
     app:cardBackgroundColor="@color/white"
 
-    app:cardElevation="4dp"
+    app:cardElevation="@dimen/d_4dp"
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
@@ -24,45 +24,45 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/rv_child"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/d_12dp"
+            android:layout_marginTop="@dimen/d_10dp"
             android:fontFamily="@font/inter_bold"
             android:text="@string/latest"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="@dimen/text_size_18sp" />
 
         <RelativeLayout
             android:id="@+id/see_everything_relativeLayout"
-            android:layout_width="141dp"
+            android:layout_width="@dimen/d_141dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="246dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="9dp"
+            android:layout_marginStart="@dimen/d_246dp"
+            android:layout_marginTop="@dimen/d_10dp"
+            android:layout_marginEnd="@dimen/d_9dp"
             tools:viewBindingType="android.widget.RelativeLayout">
 
             <TextView
                 style="@style/Base.TextAppearance.AppCompat.Subhead"
-                android:layout_width="110dp"
+                android:layout_width="@dimen/d_110dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginStart="@dimen/d_5dp"
+                android:layout_marginTop="@dimen/d_3dp"
                 android:fontFamily="@font/inter_bold"
                 android:text="@string/see_everything"
                 android:textColor="@color/primary_500"
-                android:textSize="14sp" />
+                android:textSize="@dimen/text_size_14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="115dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginStart="@dimen/d_115dp"
+                android:layout_marginTop="@dimen/d_6dp"
                 android:src="@drawable/ic_arrow" />
 
         </RelativeLayout>
@@ -74,12 +74,12 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="0dp"
+            android:layout_marginStart="@dimen/d_0dp"
+            android:layout_marginTop="@dimen/d_30dp"
+            android:layout_marginEnd="@dimen/d_0dp"
             android:orientation="horizontal"
-            android:padding="20dp"
-            app:layout_editor_absoluteX="74dp" />
+            android:padding="@dimen/d_20dp"
+            app:layout_editor_absoluteX="@dimen/d_74dp" />
 
     </RelativeLayout>
 

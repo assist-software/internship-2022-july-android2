@@ -24,7 +24,6 @@ class SignUp : AppCompatActivity() {
     private lateinit var passwordContainerLayout: TextInputLayout
     private lateinit var logInTextView : TextView
 
-
     private val passwordPattern: Pattern = Pattern.compile(
         "^" +
                 "(?=.*[!?@#$%^&+=])" +     // at least 1 special character
@@ -32,7 +31,6 @@ class SignUp : AppCompatActivity() {
                 ".{8,}" +                // at least 8 characters
                 "$"
     )
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +43,6 @@ class SignUp : AppCompatActivity() {
         emailContainerLayout = findViewById(R.id.emailContainer)
         passwordContainerLayout = findViewById(R.id.passwordContainer)
         logInTextView = findViewById(R.id.logInTextView)
-
 
         emailContainerLayout.editText?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -69,7 +66,6 @@ class SignUp : AppCompatActivity() {
             }
         })
 
-
         passwordContainerLayout.editText?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
@@ -92,8 +88,8 @@ class SignUp : AppCompatActivity() {
             override fun afterTextChanged(p0: Editable?) {
             }
         })
-        signupButton.setOnClickListener {
 
+        signupButton.setOnClickListener {
             if (emptyInputValidation(emailContainerLayout) && emptyInputValidation(passwordContainerLayout)) {
                 Toast.makeText(this, "Yaaay!", Toast.LENGTH_SHORT).show()
             }
@@ -113,7 +109,6 @@ class SignUp : AppCompatActivity() {
             input.error = "Please fill in the field."
             return false
         }
-
         return true
     }
 

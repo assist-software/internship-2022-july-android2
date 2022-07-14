@@ -11,32 +11,49 @@
     <dimen name="text_size_16sp">16sp</dimen>
     <dimen name="text_size_14sp">14sp</dimen>
     <dimen name="text_size_12sp">12sp</dimen>
+    <dimen name="text_size_11sp">11sp</dimen>
 
 
     <!-- Dimens-->
+    <dimen name="d__30dp">-30dp</dimen>
+    <dimen name="d_0dp">0dp</dimen>
     <dimen name="d_3dp">3dp</dimen>
+    <dimen name="d_4dp">4dp</dimen>
     <dimen name="d_5dp">5dp</dimen>
     <dimen name="d_6dp">6dp</dimen>
     <dimen name="d_8dp">8dp</dimen>
     <dimen name="d_9dp">9dp</dimen>
     <dimen name="d_10dp">10dp</dimen>
-    <dimen name="d_12dp">12p</dimen>
+    <dimen name="d_12dp">12dp</dimen>
     <dimen name="d_14dp">14dp</dimen>
     <dimen name="d_16dp">16dp</dimen>
     <dimen name="d_18dp">18dp</dimen>
     <dimen name="d_20dp">20dp</dimen>
     <dimen name="d_24dp">24dp</dimen>
-    <dimen name="d_74">74dp</dimen>
+    <dimen name="d_30dp">30dp</dimen>
+    <dimen name="d_56dp">56dp</dimen>
+    <dimen name="d_60dp">60dp</dimen>
+    <dimen name="d_74dp">74dp</dimen>
     <dimen name="d_75dp">75dp</dimen>
     <dimen name="d_95dp">95dp</dimen>
     <dimen name="d_110dp">110dp</dimen>
     <dimen name="d_115dp">115dp</dimen>
     <dimen name="d_120dp">120dp</dimen>
+    <dimen name="d_141dp">141dp</dimen>
     <dimen name="d_186dp">186dp</dimen>
-    <dimen name="margin_246dp">246dp</dimen>
-    <dimen name="d_297">297dp</dimen>
+    <dimen name="d_200dp">200dp</dimen>
+    <dimen name="d_240dp">240dp</dimen>
+    <dimen name="d_246dp">246dp</dimen>
+    <dimen name="d_260dp">260dp</dimen>
+    <dimen name="d_297dp">297dp</dimen>
+    <dimen name="d_310dp">310dp</dimen>
+    <dimen name="d_315dp">315dp</dimen>
     <dimen name="d_319dp">319dp</dimen>
+    <dimen name="d_335dp">335dp</dimen>
     <dimen name="d_340dp">340dp</dimen>
+    <dimen name="d_425dp">425dp</dimen>
     <dimen name="d_435dp">435dp</dimen>
+    <dimen name="d_450dp">450dp</dimen>
+    <dimen name="d_535dp">535dp</dimen>
 
 </resources>

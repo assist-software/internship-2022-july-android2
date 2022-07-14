@@ -16,20 +16,23 @@ import java.util.regex.Pattern
 class ResetPassword : AppCompatActivity() {
 
     private lateinit var binding: ActivityResetPasswordBinding
-    private  var newPassowrdValue : String = ""
+    private var newPasswordValue: String = ""
 
-    private val passwordPattern : Pattern = Pattern.compile("^" +
-            "(?=.*[!?@#$%^&+=])" +     // at least 1 special character
-            "(?=\\S+$)" +            // no white spaces
-            ".{8,}" +                // at least 8 characters
-            "$")
+    private val passwordPattern: Pattern = Pattern.compile(
+        "^" +
+                "(?=.*[!?@#$%^&+=])" +     // at least 1 special character
+                "(?=\\S+$)" +            // no white spaces
+                ".{8,}" +                // at least 8 characters
+                "$"
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResetPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.resetPasswordNewPasswordTextInputLayout.editText?.addTextChangedListener(object : TextWatcher {
+        binding.resetPasswordNewPasswordTextInputLayout.editText?.addTextChangedListener(object :
+            TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
 
@@ -39,10 +42,10 @@ class ResetPassword : AppCompatActivity() {
 
             override fun afterTextChanged(p0: Editable?) {
             }
-
         })
 
-        binding.resetPasswordConfirmPasswordTextInputLayout.editText?.addTextChangedListener(object : TextWatcher {
+        binding.resetPasswordConfirmPasswordTextInputLayout.editText?.addTextChangedListener(object :
+            TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
 
@@ -56,33 +59,36 @@ class ResetPassword : AppCompatActivity() {
         })
 
         binding.resetPasswordMaterialButton.setOnClickListener {
-            resetPasswordButtonClick(binding.resetPasswordNewPasswordTextInputLayout,binding.resetPasswordConfirmPasswordTextInputLayout)
+            resetPasswordButtonClick(binding.resetPasswordNewPasswordTextInputLayout, binding.resetPasswordConfirmPasswordTextInputLayout)
         }
     }
 
     private fun newPasswordInputOnTextChanged(input: TextInputLayout) {
         val value = input.editText?.text?.toString()
-        input.error =  if ( value.isNullOrEmpty() ) {
+
+        input.error = if (value.isNullOrEmpty()) {
             EMPTY_STRING
         } else {
-            if ( !passwordPattern.matcher(value).matches() ) {
+            if (!passwordPattern.matcher(value).matches()) {
                 getString(R.string.password_not_match)
             } else {
                 EMPTY_STRING
             }
         }.toString()
-        newPassowrdValue = value.toString()
+
+        newPasswordValue = value.toString()
     }
 
     private fun confirmPasswordInputOnTextChanged(input: TextInputLayout) {
         val value = input.editText?.text?.toString()
-        input.error = if( newPassowrdValue.isEmpty() ) {
+
+        input.error = if (newPasswordValue.isEmpty()) {
             getString(R.string.new_password_not_exist)
         } else {
-            if ( value.isNullOrEmpty() ) {
+            if (value.isNullOrEmpty()) {
                 EMPTY_STRING
             } else {
-                if ( newPassowrdValue != value ) {
+                if (newPasswordValue != value) {
                     getString(R.string.confirm_password_not_match_with_new_password)
                 } else {
                     EMPTY_STRING
@@ -91,20 +97,23 @@ class ResetPassword : AppCompatActivity() {
         }.toString()
     }
 
-    private fun resetPasswordButtonClick(newPasswordInput: TextInputLayout , confirmPasswordInput: TextInputLayout) {
+    private fun resetPasswordButtonClick(newPasswordInput: TextInputLayout, confirmPasswordInput: TextInputLayout) {
         val newPasswordValue = newPasswordInput.editText?.text?.toString()
         val confirmPasswordValue = confirmPasswordInput.editText?.text?.toString()
-        newPasswordInput.error = if ( newPasswordValue.isNullOrEmpty() ) {
+
+        newPasswordInput.error = if (newPasswordValue.isNullOrEmpty()) {
             getString(R.string.password_not_typed)
         } else {
             EMPTY_STRING
         }.toString()
-        confirmPasswordInput.error = if ( confirmPasswordValue.isNullOrEmpty() ) {
+
+        confirmPasswordInput.error = if (confirmPasswordValue.isNullOrEmpty()) {
             getString(R.string.password_not_typed)
         } else {
             EMPTY_STRING
         }.toString()
-        if ( !newPasswordValue.isNullOrEmpty() && !confirmPasswordValue.isNullOrEmpty() ) {
+
+        if (!newPasswordValue.isNullOrEmpty() && !confirmPasswordValue.isNullOrEmpty()) {
             Toast.makeText(this, "Clicked on button!", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, Login::class.java))
             finish()
