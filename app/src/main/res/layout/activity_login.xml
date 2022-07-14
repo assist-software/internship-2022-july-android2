@@ -127,7 +127,6 @@
             android:fontFamily="@font/inter_semi_bold"
             android:text="@string/forgot_your_password"
             android:textAlignment="textEnd"
-            android:onClick="goToForgotPassword"
             android:textColor="@color/primary_400"
             android:textSize="@dimen/text_size_14sp" />
     </LinearLayout>
@@ -195,7 +194,6 @@
             android:layout_weight="0.5"
             android:fontFamily="@font/inter_semi_bold"
             android:text="@string/sign_up"
-            android:onClick="goToSignUp"
             android:textColor="@color/primary_400"
             android:textSize="@dimen/text_size_14sp" />
     </LinearLayout>
