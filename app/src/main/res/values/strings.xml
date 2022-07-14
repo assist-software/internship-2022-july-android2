@@ -39,6 +39,15 @@
     <string name="user_image">Clicked on user.</string>
     <string name="search_image">Clicked on search.</string>
     <string name="favorite_image">Clicked on favorite.</string>
+    <string name="latest">Latest</string>
+    <string name="see_everything">See everything</string>
+    <string name="child_imobilItem_title">Title</string>
+    <string name="child_imobilItem_location">Location</string>
+    <string name="child_imobilItem_price">Price</string>
+    <string name="see_everything_click">You clicked on See Everything</string>
+    <string name="imobil_item_click">You clicked on CardView item.</string>
+    <string name="chat_button">Clicked on chat button.</string>
+    <string name="child_favorit_button">Added to favorite.</string>
 
     <!--    Hints-->
     <string name="placeholder_email">Enter email</string>

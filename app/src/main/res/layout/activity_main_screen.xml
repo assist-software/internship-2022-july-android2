@@ -30,7 +30,6 @@
 
             <ImageView
                 android:id="@+id/user_imageView"
-                tools:viewBindingType="android.widget.ImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_user"
@@ -39,7 +38,8 @@
                 app:layout_constraintHorizontal_bias="0.122"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.518" />
+                app:layout_constraintVertical_bias="0.518"
+                tools:viewBindingType="android.widget.ImageView" />
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -54,7 +54,6 @@
 
             <ImageView
                 android:id="@+id/search_imageView"
-                tools:viewBindingType="android.widget.ImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_search"
@@ -63,11 +62,11 @@
                 app:layout_constraintHorizontal_bias="0.813"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.512" />
+                app:layout_constraintVertical_bias="0.512"
+                tools:viewBindingType="android.widget.ImageView" />
 
             <ImageView
                 android:id="@+id/favorite_imageView"
-                tools:viewBindingType="android.widget.ImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_outline_hearth"
@@ -75,7 +74,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.883"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:viewBindingType="android.widget.ImageView" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -89,9 +89,21 @@
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         app:navGraph="@navigation/main_screen_navigation" />
+
+    <ImageButton
+        android:id="@+id/main_screen_message_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/circle_message_button"
+        android:src="@drawable/ic_chat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.873" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,6 +32,10 @@ class MainScreen : AppCompatActivity() {
             favoriteImageViewClick()
         }
 
+        binding.mainScreenMessageButton.setOnClickListener {
+            chatMessageButtonClick()
+        }
+
     }
 
     private fun userImageViewClick() {
@@ -44,5 +48,9 @@ class MainScreen : AppCompatActivity() {
 
     private fun favoriteImageViewClick() {
         Toast.makeText(this, getString(R.string.favorite_image), Toast.LENGTH_SHORT).show()
+    }
+
+    private fun chatMessageButtonClick() {
+        Toast.makeText(this, getString(R.string.chat_button), Toast.LENGTH_SHORT).show()
     }
 }
