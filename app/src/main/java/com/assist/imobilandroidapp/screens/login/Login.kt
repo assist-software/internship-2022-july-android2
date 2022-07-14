@@ -9,21 +9,12 @@ import com.assist.imobilandroidapp.screens.forgotPassword.ForgotPassword
 import com.assist.imobilandroidapp.screens.main.SignUp
 
 class Login : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
     }
 
 
-
-
-    fun goToForgotPassword(view: View){
-        val intent = Intent(this, ForgotPassword::class.java)
-        startActivity(intent)
-    }
-
-    fun goToSignUp(view: View ){
-        val intent = Intent(this, SignUp::class.java)
-        startActivity(intent)
-    }
 }
