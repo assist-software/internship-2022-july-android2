@@ -30,45 +30,51 @@
 
             <ImageView
                 android:id="@+id/user_imageView"
+                tools:viewBindingType="android.widget.ImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:src="@drawable/ic_user"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                app:layout_constraintHorizontal_bias="0.122"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.518" />
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="108dp"
                 android:src="@drawable/ic_logo_assist"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/user_imageView"
+                app:layout_constraintEnd_toEndOf="@+id/main_screen_toolbar"
+                app:layout_constraintStart_toStartOf="@+id/main_screen_toolbar"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.52" />
 
             <ImageView
                 android:id="@+id/search_imageView"
+                tools:viewBindingType="android.widget.ImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_search"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/favorite_imageView"
-                app:layout_constraintHorizontal_bias="0.788"
+                app:layout_constraintHorizontal_bias="0.813"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.512" />
 
             <ImageView
                 android:id="@+id/favorite_imageView"
+                tools:viewBindingType="android.widget.ImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
                 android:src="@drawable/ic_outline_hearth"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.883"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -79,9 +85,12 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:defaultNavHost="true"
         android:layout_marginTop="56dp"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         app:navGraph="@navigation/main_screen_navigation" />
 

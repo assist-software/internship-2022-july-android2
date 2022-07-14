@@ -1,18 +1,16 @@
 package com.assist.imobilandroidapp.screens.main
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.assist.imobilandroidapp.R
-import com.assist.imobilandroidapp.databinding.ActivitySignUpBinding
-import com.assist.imobilandroidapp.screens.Validations.Validations
-import com.google.android.material.button.MaterialButton
 import com.assist.imobilandroidapp.screens.login.Login
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import java.util.regex.Pattern

@@ -1,23 +1,48 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.mainScreen
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toolbar
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.assist.imobilandroidapp.R
-import kotlinx.android.synthetic.main.activity_main_screen.*
+import com.assist.imobilandroidapp.screens.forgotPassword.EMPTY_STRING
+import com.assist.imobilandroidapp.databinding.ActivityMainScreenBinding
 
 class MainScreen : AppCompatActivity() {
 
-    private lateinit var mainScreenToolBar : androidx.appcompat.widget.Toolbar
+    private lateinit var binding: ActivityMainScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_screen)
+        binding = ActivityMainScreenBinding.inflate(layoutInflater)
 
-        mainScreenToolBar = findViewById(R.id.main_screen_toolbar)
+        setContentView(binding.root)
 
-        mainScreenToolBar.title = ""
-        setSupportActionBar(mainScreenToolBar)
+        binding.mainScreenToolbar.title = EMPTY_STRING
+        setSupportActionBar(binding.mainScreenToolbar)
 
+        binding.userImageView.setOnClickListener {
+            userImageViewClick()
+        }
+
+        binding.searchImageView.setOnClickListener {
+            searchImageViewClick()
+        }
+
+        binding.favoriteImageView.setOnClickListener {
+            favoriteImageViewClick()
+        }
+
+    }
+
+    private fun userImageViewClick() {
+        Toast.makeText(this, getString(R.string.user_image), Toast.LENGTH_SHORT).show()
+    }
+
+    private fun searchImageViewClick() {
+        Toast.makeText(this, getString(R.string.search_image), Toast.LENGTH_SHORT).show()
+    }
+
+    private fun favoriteImageViewClick() {
+        Toast.makeText(this, getString(R.string.favorite_image), Toast.LENGTH_SHORT).show()
     }
 }

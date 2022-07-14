@@ -7,17 +7,16 @@ import android.text.TextWatcher
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.assist.imobilandroidapp.R
+import com.assist.imobilandroidapp.databinding.ActivityResetPasswordBinding
+import com.assist.imobilandroidapp.screens.forgotPassword.EMPTY_STRING
 import com.assist.imobilandroidapp.screens.login.Login
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
 import java.util.regex.Pattern
 
 class ResetPassword : AppCompatActivity() {
 
-    private lateinit var newPasswordTextInputLayout: TextInputLayout
-    private lateinit var confirmPasswordTextInputLayout: TextInputLayout
-    private lateinit var confirmPasswordButton : MaterialButton
-    private  var newPasswordValue : String? = null
+    private lateinit var binding: ActivityResetPasswordBinding
+    private  var newPassowrdValue : String = ""
 
     private val passwordPattern : Pattern = Pattern.compile("^" +
             "(?=.*[!?@#$%^&+=])" +     // at least 1 special character
@@ -27,81 +26,88 @@ class ResetPassword : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_reset_password)
+        binding = ActivityResetPasswordBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        confirmPasswordButton = findViewById(R.id.reset_password_material_button)
-        newPasswordTextInputLayout = findViewById(R.id.reset_password_new_password_textInputLayout)
-        confirmPasswordTextInputLayout = findViewById(R.id.reset_password_confirm_password_textInputLayout)
-
-        newPasswordTextInputLayout.editText?.addTextChangedListener(object : TextWatcher {
+        binding.resetPasswordNewPasswordTextInputLayout.editText?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                val value = newPasswordTextInputLayout.editText!!.text.toString()
-                if (value.isEmpty()) {
-                    newPasswordTextInputLayout.error = ""
-                } else {
-                    if (!passwordPattern.matcher(value).matches()) {
-                        newPasswordTextInputLayout.error = "The password doesn't meet the criteria."
-                    } else {
-                        newPasswordTextInputLayout.error = ""
-                        newPasswordValue = value
-                    }
-                }
+                newPasswordInputOnTextChanged(binding.resetPasswordNewPasswordTextInputLayout)
             }
 
             override fun afterTextChanged(p0: Editable?) {
-
             }
 
         })
 
-        confirmPasswordTextInputLayout.editText?.addTextChangedListener(object : TextWatcher {
+        binding.resetPasswordConfirmPasswordTextInputLayout.editText?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                val value = confirmPasswordTextInputLayout.editText!!.text.toString()
-
-                if (value.isEmpty()) {
-                    confirmPasswordTextInputLayout.error = ""
-                } else {
-                    if (newPasswordValue == null) {
-                        confirmPasswordTextInputLayout.error = "Your new password was not entered!"
-                    } else {
-
-                        if (value != newPasswordValue) {
-                            confirmPasswordTextInputLayout.error = "Password doesn't match with the new password."
-                        } else {
-                            confirmPasswordTextInputLayout.error = ""
-                        }
-                    }
-                }
+                confirmPasswordInputOnTextChanged(binding.resetPasswordConfirmPasswordTextInputLayout)
             }
 
             override fun afterTextChanged(p0: Editable?) {
-
             }
 
         })
 
-        confirmPasswordButton.setOnClickListener {
-            if ( newPasswordTextInputLayout.editText?.text.isNullOrEmpty() ) {
-                newPasswordTextInputLayout.error = "Please enter your new password."
+        binding.resetPasswordMaterialButton.setOnClickListener {
+            resetPasswordButtonClick(binding.resetPasswordNewPasswordTextInputLayout,binding.resetPasswordConfirmPasswordTextInputLayout)
+        }
+    }
+
+    private fun newPasswordInputOnTextChanged(input: TextInputLayout) {
+        val value = input.editText?.text?.toString()
+        input.error =  if ( value.isNullOrEmpty() ) {
+            EMPTY_STRING
+        } else {
+            if ( !passwordPattern.matcher(value).matches() ) {
+                getString(R.string.password_not_match)
             } else {
-                if ( confirmPasswordTextInputLayout.editText?.text.isNullOrEmpty() ) {
-                    confirmPasswordTextInputLayout.error = "Please enter your new password to confirm!"
+                EMPTY_STRING
+            }
+        }.toString()
+        newPassowrdValue = value.toString()
+    }
+
+    private fun confirmPasswordInputOnTextChanged(input: TextInputLayout) {
+        val value = input.editText?.text?.toString()
+        input.error = if( newPassowrdValue.isEmpty() ) {
+            getString(R.string.new_password_not_exist)
+        } else {
+            if ( value.isNullOrEmpty() ) {
+                EMPTY_STRING
+            } else {
+                if ( newPassowrdValue != value ) {
+                    getString(R.string.confirm_password_not_match_with_new_password)
                 } else {
-                    newPasswordTextInputLayout.error = ""
-                    confirmPasswordTextInputLayout.error = ""
-                    Toast.makeText(this, "Clicked on button!", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, Login::class.java))
-                    finish()
+                    EMPTY_STRING
                 }
             }
+        }.toString()
+    }
+
+    private fun resetPasswordButtonClick(newPasswordInput: TextInputLayout , confirmPasswordInput: TextInputLayout) {
+        val newPasswordValue = newPasswordInput.editText?.text?.toString()
+        val confirmPasswordValue = confirmPasswordInput.editText?.text?.toString()
+        newPasswordInput.error = if ( newPasswordValue.isNullOrEmpty() ) {
+            getString(R.string.password_not_typed)
+        } else {
+            EMPTY_STRING
+        }.toString()
+        confirmPasswordInput.error = if ( confirmPasswordValue.isNullOrEmpty() ) {
+            getString(R.string.password_not_typed)
+        } else {
+            EMPTY_STRING
+        }.toString()
+        if ( !newPasswordValue.isNullOrEmpty() && !confirmPasswordValue.isNullOrEmpty() ) {
+            Toast.makeText(this, "Clicked on button!", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, Login::class.java))
+            finish()
         }
     }
 }
