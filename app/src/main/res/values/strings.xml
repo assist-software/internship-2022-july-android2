@@ -44,10 +44,13 @@
     <string name="child_imobilItem_title">Title</string>
     <string name="child_imobilItem_location">Location</string>
     <string name="child_imobilItem_price">Price</string>
+    <string name="child_imobilItem_description">Description</string>
     <string name="see_everything_click">You clicked on See Everything</string>
     <string name="imobil_item_click">You clicked on CardView item.</string>
     <string name="chat_button">Clicked on chat button.</string>
     <string name="child_favorit_button">Added to favorite.</string>
+    <string name="ic_share">Share</string>
+    <string name="purchase">Purchase</string>
 
     <!--    Hints-->
     <string name="placeholder_email">Enter email</string>
@@ -58,4 +61,14 @@
     <string name="assist_logo">Assist logo</string>
     <string name="password_hint">At least 8 characters and one number</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="seller_name">Seller name</string>
+    <string name="response_rate">Respose rate</string>
+    <string name="response_time">Response time</string>
+    <string name="contact_seller">Contact seller</string>
+    <string name="what_are_you_interested_in">What are you interested in?</string>
+    <string name="gallery_button_click">Click on item gallery photo</string>
+    <string name="share_click">Clicked on share</string>
+    <string name="purchase_click">Clicked on purchase button</string>
+    <string name="contact_seller_click">Click on contact seller button</string>
+    <string name="seller_joined">Joined</string>
 </resources>

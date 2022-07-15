@@ -9,5 +9,15 @@
         android:id="@+id/normalScreenFragment"
         android:name="com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.NormalScreenFragment"
         android:label="fragment_normal_screen"
-        tools:layout="@layout/fragment_normal_screen" />
+        tools:layout="@layout/fragment_normal_screen" >
+        <action
+            android:id="@+id/action_normalScreenFragment_to_detailsScreenFragment"
+            app:destination="@id/detailsScreenFragment"
+            app:popUpTo="@id/normalScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsScreenFragment"
+        android:name="com.assist.imobilandroidapp.screens.averageUser.screens.detailsScreen.DetailsScreenFragment"
+        android:label="fragment_details_screen"
+        tools:layout="@layout/fragment_details_screen" />
 </navigation>
