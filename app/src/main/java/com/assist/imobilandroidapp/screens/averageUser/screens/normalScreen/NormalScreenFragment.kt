@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.assist.imobilandroidapp.R
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_normal_screen.*
 class NormalScreenFragment : Fragment() {
 
     private lateinit var binding: FragmentNormalScreenBinding
+    private lateinit var whatAreYouInterested : TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,6 +26,9 @@ class NormalScreenFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentNormalScreenBinding.inflate(inflater, container, false)
+
+        whatAreYouInterested = requireActivity().findViewById(R.id.what_are_you_interested_textView)
+        whatAreYouInterested.visibility = View.VISIBLE
 
         initRecycler()
 
@@ -38,7 +43,10 @@ class NormalScreenFragment : Fragment() {
                 ParentDataFactory
                 .getParents(10))
         }
-
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        whatAreYouInterested.visibility = View.GONE
+    }
 }

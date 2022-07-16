@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.assist.imobilandroidapp.R
-import com.assist.imobilandroidapp.databinding.ActivityMainScreenBinding
 import com.assist.imobilandroidapp.databinding.FragmentDetailsScreenBinding
 
 class DetailsScreenFragment : Fragment() {
@@ -55,7 +55,7 @@ class DetailsScreenFragment : Fragment() {
     }
 
     private fun itemFavouriteButtonClick() {
-        Toast.makeText(context, getString(R.string.child_favorit_button), Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, getString(R.string.child_favorit_button_add), Toast.LENGTH_SHORT).show()
     }
 
     private fun itemPurchaseButtonClick() {
@@ -68,6 +68,7 @@ class DetailsScreenFragment : Fragment() {
 
     private fun itemPhotoGalleryButtonClick() {
         Toast.makeText(context, getString(R.string.gallery_button_click), Toast.LENGTH_SHORT).show()
+        findNavController().navigate(R.id.action_detailsScreenFragment_to_photoGalleryFragment)
     }
 
     private fun initFragment(){
@@ -87,10 +88,10 @@ class DetailsScreenFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
         super.onDestroy()
         editor = sharedPreferences.edit()
-        editor.clear()
-        editor.commit()
+//        editor.clear()
+//        editor.commit()
     }
 }

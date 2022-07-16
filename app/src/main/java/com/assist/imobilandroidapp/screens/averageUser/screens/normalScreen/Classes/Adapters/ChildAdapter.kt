@@ -2,6 +2,10 @@ package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Cla
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.graphics.ColorFilter
+import android.graphics.PorterDuff
+import android.provider.Settings.System.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +17,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
-import kotlinx.android.synthetic.main.activity_main_screen.view.*
 import kotlinx.android.synthetic.main.child_item_recycler.view.*
-import kotlinx.android.synthetic.main.fragment_details_screen.view.*
 
 class ChildAdapter(private val children: List<ChildModel>) :
     RecyclerView.Adapter<ChildAdapter.ViewHolder>() {
@@ -38,22 +40,25 @@ class ChildAdapter(private val children: List<ChildModel>) :
         holder.price.text = child.price
 
         holder.itemView.setOnClickListener {
-            val sharedPref: SharedPreferences = it.context.applicationContext.getSharedPreferences("pref", Context.MODE_PRIVATE)
+            val sharedPref: SharedPreferences =
+                it.context.applicationContext.getSharedPreferences("pref", Context.MODE_PRIVATE)
             val editor: SharedPreferences.Editor = sharedPref.edit()
 //            Toast.makeText(it.context, it.context.getString(R.string.imobil_item_click), Toast.LENGTH_SHORT).show(
 
-            editor.putInt("image",child.image)
-            editor.putString("title",child.title)
-            editor.putString("location",child.location)
-            editor.putString("description",child.description)
-            editor.putString("price",child.price)
+            editor.putInt("image", child.image)
+            editor.putString("title", child.title)
+            editor.putString("location", child.location)
+            editor.putString("description", child.description)
+            editor.putString("price", child.price)
             child.seller?.let { it1 ->
                 editor.putInt("sellerImage", it1.image)
-                editor.putString("sellerName",it1.name)
-                editor.putString("sellerJoined",it1.joined)
-                editor.putString("sellerResponseRate",it1.responseRate)
-                editor.putString("sellerResponseTime",it1.responseTime)
+                editor.putString("sellerName", it1.name)
+                editor.putString("sellerJoined", it1.joined)
+                editor.putString("sellerResponseRate", it1.responseRate)
+                editor.putString("sellerResponseTime", it1.responseTime)
             }
+            editor.putInt("secondImage", child.secondImage)
+            editor.putInt("thirdImage", child.thirdImage)
 
             editor.commit()
 
@@ -70,11 +75,24 @@ class ChildAdapter(private val children: List<ChildModel>) :
 
         init {
             favorite.setOnClickListener {
-                Toast.makeText(
-                    this.itemView.context,
-                    it.context.getString(R.string.child_favorit_button),
-                    Toast.LENGTH_SHORT
-                ).show()
+                when (favorite.drawable.constantState) {
+                    it.resources.getDrawable(R.drawable.ic_outline_hearth).constantState -> {
+                        Toast.makeText(
+                            it.context,
+                            it.context.getString(R.string.child_favorit_button_add),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        favorite.setImageResource(R.drawable.ic_full_hearth)
+                    }
+                    it.resources.getDrawable(R.drawable.ic_full_hearth).constantState -> {
+                        Toast.makeText(
+                            it.context,
+                            it.context.getString(R.string.child_favorit_button_remove),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        favorite.setImageResource(R.drawable.ic_outline_hearth)
+                    }
+                }
             }
         }
     }

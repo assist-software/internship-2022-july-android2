@@ -81,5 +81,12 @@
     <dimen name="d_350dp">350dp</dimen>
     <dimen name="d_150dp">150dp</dimen>
     <dimen name="d_98dp">98dp</dimen>
+    <dimen name="d_148dp">148dp</dimen>
+    <dimen name="d_68dp">68dp</dimen>
+    <dimen name="d_413dp">413dp</dimen>
+    <dimen name="d_198dp">198dp</dimen>
+    <dimen name="d_183dp">183dp</dimen>
+    <dimen name="d_188dp">188dp</dimen>
+    <dimen name="d_238dp">238dp</dimen>
 
 </resources>

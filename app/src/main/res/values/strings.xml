@@ -48,7 +48,8 @@
     <string name="see_everything_click">You clicked on See Everything</string>
     <string name="imobil_item_click">You clicked on CardView item.</string>
     <string name="chat_button">Clicked on chat button.</string>
-    <string name="child_favorit_button">Added to favorite.</string>
+    <string name="child_favorit_button_add">Added to favorite.</string>
+    <string name="child_favorit_button_remove">Removed from favorite.</string>
     <string name="ic_share">Share</string>
     <string name="purchase">Purchase</string>
 

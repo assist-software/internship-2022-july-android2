@@ -6,5 +6,7 @@ data class ChildModel(
     val location : String = "",
     val description : String = "",
     val price : String = "",
-    val seller: Seller? = null
+    val seller: Seller? = null,
+    val secondImage : Int = -1,
+    val thirdImage : Int = -1
 )

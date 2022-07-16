@@ -13,11 +13,29 @@
         <action
             android:id="@+id/action_normalScreenFragment_to_detailsScreenFragment"
             app:destination="@id/detailsScreenFragment"
-            app:popUpTo="@id/normalScreenFragment" />
+            app:popUpTo="@id/normalScreenFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/detailsScreenFragment"
         android:name="com.assist.imobilandroidapp.screens.averageUser.screens.detailsScreen.DetailsScreenFragment"
         android:label="fragment_details_screen"
-        tools:layout="@layout/fragment_details_screen" />
+        tools:layout="@layout/fragment_details_screen" >
+        <action
+            android:id="@+id/action_detailsScreenFragment_to_photoGalleryFragment"
+            app:destination="@id/photoGalleryFragment"
+            app:popUpTo="@id/detailsScreenFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoGalleryFragment"
+        android:name="com.assist.imobilandroidapp.screens.averageUser.screens.detailsScreen.photoGallery.PhotoGalleryFragment"
+        android:label="fragment_photo_gallery"
+        tools:layout="@layout/fragment_photo_gallery" >
+        <action
+            android:id="@+id/action_photoGalleryFragment_to_detailsScreenFragment"
+            app:destination="@id/detailsScreenFragment"
+            app:popUpTo="@id/detailsScreenFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

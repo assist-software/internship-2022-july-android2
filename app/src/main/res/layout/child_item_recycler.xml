@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/child_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/d_148dp"
+        android:layout_height="@dimen/d_68dp"
         android:src="@drawable/test_photo" />
 
     <ImageButton

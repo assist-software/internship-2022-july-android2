@@ -90,24 +90,22 @@
         android:text="@string/what_are_you_interested_in"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_24sp"
-        app:layout_constraintBottom_toTopOf="@+id/mainScreenFragmentContainerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainScreenFragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/d_98dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintTop_toBottomOf="@+id/what_are_you_interested_textView"
+        android:layout_marginTop="@dimen/d_98dp"
         app:navGraph="@navigation/main_screen_navigation" />
 
     <ImageButton
