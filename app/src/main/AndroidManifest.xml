@@ -10,13 +10,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ImobilAndroidApp">
         <activity
-            android:name="com.assist.imobilandroidapp.screens.main.MainActivity"
+            android:name=".screens.averageUser.screens.mainScreen.MainScreen"
+            android:exported="false">
+            <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="${MAPS_API_KEY}" />
+        </activity>
+        <activity
+            android:name=".screens.signup.SignUp"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".screens.login.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".screens.resetPassword.ResetPassword"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".screens.forgotPassword.ForgotPassword"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".screens.main.MainActivity"
+            android:exported="false">
         </activity>
     </application>
 

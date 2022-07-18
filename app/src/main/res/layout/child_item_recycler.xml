@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_cardView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/d_6dp"
+    app:cardCornerRadius="@dimen/d_6dp">
+
+    <ImageView
+        android:id="@+id/child_image"
+        android:layout_width="@dimen/d_148dp"
+        android:layout_height="@dimen/d_68dp"
+        android:src="@drawable/test_photo" />
+
+    <ImageButton
+        android:id="@+id/child_favorit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/favorit_circle_button"
+        android:src="@drawable/ic_outline_hearth"
+        android:layout_marginTop="@dimen/d_10dp"
+        android:layout_marginStart="@dimen/d_110dp"/>
+
+    <TextView
+        android:id="@+id/child_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_semi_bold"
+        android:text="@string/child_imobilItem_title"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_14sp"
+        android:layout_marginTop="@dimen/d_75dp"
+        android:layout_marginStart="@dimen/d_12dp" />
+
+    <TextView
+        android:id="@+id/child_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_regular"
+        android:text="@string/child_imobilItem_location"
+        android:textColor="@color/grayscale_400"
+        android:textSize="@dimen/text_size_12sp"
+        android:layout_marginTop="@dimen/d_95dp"
+        android:layout_marginStart="@dimen/d_12dp" />
+
+    <TextView
+        android:id="@+id/child_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_semi_bold"
+        android:text="@string/child_imobilItem_price"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_14sp"
+        android:layout_marginStart="@dimen/d_12dp"
+        android:layout_marginTop="@dimen/d_120dp"
+        android:paddingBottom="@dimen/d_5dp"/>
+
+
+</androidx.cardview.widget.CardView>

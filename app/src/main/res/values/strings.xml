@@ -1,3 +1,79 @@
 <resources>
     <string name="app_name">Imobil Android App</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="forgot_password_subtext">Password reset link sent to you email address</string>
+    <string name="forgot_passowrd_button_text">Send reset link</string>
+    <string name="forgot_password_back_to_login">Back to Log in</string>
+    <string name="forgot_password_before_edit_text">Email</string>
+    <string name="edit_text_hint">Placeholder</string>
+    <string name="reset_password">Reset password</string>
+    <string name="reset_password_subtext">Create a new password for your account</string>
+    <string name="reset_passowrd_button_text">Confirm password</string>
+    <string name="reset_password_hint">Password</string>
+    <string name="reset_password_confirm_hint">Confirm password</string>
+    <string name="error_email_input">Please enter your email</string>
+    <string name="button_clicked">Clicked on button!</string>
+    <string name="wrong_email">Wrong email</string>
+    <string name="please_enter_your_email">Please enter your email</string>
+
+
+    <string name="log_in">Log in</string>
+    <string name="enter_your_account_details_below">Enter your account details below</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+
+    <string name="sign_up">Sign up</string>
+    <string name="create_account">Create account</string>
+    <string name="sign_up_for_free_account">Sign up for free and become a member</string>
+    <string name="sign_up_with_google">Sign up with Google</string>
+    <string name="or">OR</string>
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="at_least_8_charachters_and_number">At least 8 characters and one number</string>
+    <string name="password_not_match">Password doesn\'t meet the criteria</string>
+    <string name="new_password_not_exist">Your new password was not entered!</string>
+    <string name="confirm_password_not_match_with_new_password">Password doesn\'t match with the new password.</string>
+    <string name="password_not_typed">Please enter your password</string>
+    <string name="user_image">Clicked on user.</string>
+    <string name="search_image">Clicked on search.</string>
+    <string name="favorite_image">Clicked on favorite.</string>
+    <string name="latest">Latest</string>
+    <string name="see_everything">See everything</string>
+    <string name="child_imobilItem_title">Title</string>
+    <string name="child_imobilItem_location">Location</string>
+    <string name="child_imobilItem_price">Price</string>
+    <string name="child_imobilItem_description">Description</string>
+    <string name="see_everything_click">You clicked on See Everything</string>
+    <string name="imobil_item_click">You clicked on CardView item.</string>
+    <string name="chat_button">Clicked on chat button.</string>
+    <string name="child_favorit_button_add">Added to favorite.</string>
+    <string name="child_favorit_button_remove">Removed from favorite.</string>
+    <string name="ic_share">Share</string>
+    <string name="purchase">Purchase</string>
+
+    <!--    Hints-->
+    <string name="placeholder_email">Enter email</string>
+    <string name="placeholder_password">Enter password</string>
+
+
+    <!--    Image descriptions-->
+    <string name="assist_logo">Assist logo</string>
+    <string name="password_hint">At least 8 characters and one number</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="seller_name">Seller name</string>
+    <string name="response_rate">Respose rate</string>
+    <string name="response_time">Response time</string>
+    <string name="contact_seller">Contact seller</string>
+    <string name="what_are_you_interested_in">What are you interested in?</string>
+    <string name="gallery_button_click">Click on item gallery photo</string>
+    <string name="share_click">Clicked on share</string>
+    <string name="purchase_click">Clicked on purchase button</string>
+    <string name="contact_seller_click">Click on contact seller button</string>
+    <string name="seller_joined">Joined</string>
+    <string name="map">MAP</string>
+    <string name="log_in_with_google">Log in with Google</string>
+    <string name="login_google_button">Clicked on login with google button!</string>
+    <string name="placeholder">Placeholder</string>
 </resources>
