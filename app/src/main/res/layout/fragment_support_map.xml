@@ -5,12 +5,12 @@
     android:id="@+id/fragment_support_map"
     android:layout_width="@dimen/d_382dp"
     android:layout_height="@dimen/d_382dp"
-    tools:context=".screens.averageUser.screens.detailsScreen.supportMapFragment.SupportMapFragment">
+    tools:context=".screens.averageUser.screens.detailsScreen.supportMap.SupportMapFragment">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MAP"
+        android:text="@string/map"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_24sp"
         app:layout_constraintBottom_toBottomOf="parent"

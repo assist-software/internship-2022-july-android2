@@ -1,11 +1,6 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Adapters
 
 import android.content.Context
-import android.content.SharedPreferences
-import android.graphics.Color
-import android.graphics.ColorFilter
-import android.graphics.PorterDuff
-import android.provider.Settings.System.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +11,8 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.assist.imobilandroidapp.R
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.*
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ChildDataFactory
 import kotlinx.android.synthetic.main.child_item_recycler.view.*
 
 class ChildAdapter(private val children: List<ChildModel>) :
@@ -40,29 +36,7 @@ class ChildAdapter(private val children: List<ChildModel>) :
         holder.price.text = child.price
 
         holder.itemView.setOnClickListener {
-            val sharedPref: SharedPreferences =
-                it.context.applicationContext.getSharedPreferences("pref", Context.MODE_PRIVATE)
-            val editor: SharedPreferences.Editor = sharedPref.edit()
-//            Toast.makeText(it.context, it.context.getString(R.string.imobil_item_click), Toast.LENGTH_SHORT).show(
-
-            editor.putInt("image", child.image)
-            editor.putString("title", child.title)
-            editor.putString("location", child.location)
-            editor.putString("description", child.description)
-            editor.putString("price", child.price)
-            child.seller?.let { it1 ->
-                editor.putInt("sellerImage", it1.image)
-                editor.putString("sellerName", it1.name)
-                editor.putString("sellerJoined", it1.joined)
-                editor.putString("sellerResponseRate", it1.responseRate)
-                editor.putString("sellerResponseTime", it1.responseTime)
-            }
-            editor.putInt("secondImage", child.secondImage)
-            editor.putInt("thirdImage", child.thirdImage)
-
-            editor.commit()
-
-            it.findNavController().navigate(R.id.action_normalScreenFragment_to_detailsScreenFragment)
+            childItemClick(it,child)
         }
     }
 
@@ -75,24 +49,48 @@ class ChildAdapter(private val children: List<ChildModel>) :
 
         init {
             favorite.setOnClickListener {
-                when (favorite.drawable.constantState) {
-                    it.resources.getDrawable(R.drawable.ic_outline_hearth).constantState -> {
-                        Toast.makeText(
-                            it.context,
-                            it.context.getString(R.string.child_favorit_button_add),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        favorite.setImageResource(R.drawable.ic_full_hearth)
-                    }
-                    it.resources.getDrawable(R.drawable.ic_full_hearth).constantState -> {
-                        Toast.makeText(
-                            it.context,
-                            it.context.getString(R.string.child_favorit_button_remove),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        favorite.setImageResource(R.drawable.ic_outline_hearth)
-                    }
-                }
+                itemFavouriteIconClick(favorite,it,adapterPosition)
+            }
+        }
+    }
+
+    private fun childItemClick(view: View, childModel: ChildModel) {
+//            Toast.makeText(it.context, it.context.getString(R.string.imobil_item_click), Toast.LENGTH_SHORT).show(
+
+        DataSharing.init(view.context.getSharedPreferences(SHARED_KEY,Context.MODE_PRIVATE))
+
+        DataSharing.addItemImage(ITEM_IMAGE,childModel.image)
+        DataSharing.addItemText(ITEM_TITLE,childModel.title)
+        DataSharing.addItemText(ITEM_LOCATION,childModel.location)
+        DataSharing.addItemText(ITEM_DESCRIPTION,childModel.description)
+        DataSharing.addItemText(ITEM_PRICE,childModel.price)
+        childModel.seller?.let { it1 ->
+            DataSharing.addSellerImage(ITEM_SELLER_IMAGE,it1.image)
+            DataSharing.addSellerInfo(ITEM_SELLER_NAME,it1.name)
+            DataSharing.addSellerInfo(ITEM_SELLER_JOINED,it1.joined)
+            DataSharing.addSellerInfo(ITEM_SELLER_RESPONSE_RATE,it1.responseRate)
+            DataSharing.addSellerInfo(ITEM_SELLER_RESPONSE_TIME,it1.responseTime)
+        }
+        DataSharing.addItemImage(ITEM_SECOND_IMAGE,childModel.secondImage)
+        DataSharing.addItemImage(ITEM_THIRD_IMAGE,childModel.thirdImage)
+
+        DataSharing.commit()
+
+        ChildDataFactory.childModel = childModel
+        view.findNavController().navigate(R.id.action_normalScreenFragment_to_detailsScreenFragment)
+    }
+
+    private fun itemFavouriteIconClick(button: ImageButton,view: View,position: Int) {
+        when (button.drawable.constantState) {
+            view.resources.getDrawable(R.drawable.ic_outline_hearth).constantState -> {
+                Toast.makeText(view.context, view.context.getString(R.string.child_favorit_button_add), Toast.LENGTH_SHORT).show()
+                button.setImageResource(R.drawable.ic_full_hearth)
+                ChildDataFactory.addFavouriteChildren(children[position])
+//                Log.d("CHILD",children[position].toString())
+            }
+            view.resources.getDrawable(R.drawable.ic_full_hearth).constantState -> {
+                Toast.makeText(view.context, view.context.getString(R.string.child_favorit_button_remove), Toast.LENGTH_SHORT).show()
+                button.setImageResource(R.drawable.ic_outline_hearth)
             }
         }
     }

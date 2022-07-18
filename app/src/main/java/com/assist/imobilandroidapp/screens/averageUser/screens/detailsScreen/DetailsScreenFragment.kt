@@ -11,12 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.FragmentDetailsScreenBinding
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
 
 class DetailsScreenFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailsScreenBinding
-    private lateinit var sharedPreferences : SharedPreferences
-    private lateinit var editor : SharedPreferences.Editor
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,7 +54,8 @@ class DetailsScreenFragment : Fragment() {
     }
 
     private fun itemFavouriteButtonClick() {
-        Toast.makeText(context, getString(R.string.child_favorit_button_add), Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, getString(R.string.child_favorit_button_add), Toast.LENGTH_SHORT)
+            .show()
     }
 
     private fun itemPurchaseButtonClick() {
@@ -71,27 +71,20 @@ class DetailsScreenFragment : Fragment() {
         findNavController().navigate(R.id.action_detailsScreenFragment_to_photoGalleryFragment)
     }
 
-    private fun initFragment(){
-        sharedPreferences = requireContext().getSharedPreferences("pref",Context.MODE_PRIVATE)
-
-        sharedPreferences.let {
-            binding.selectedItemImageImageView.setImageResource(it.getInt("image",-1))
-            binding.selectedItemTitleTextView.text = it.getString("title",null)
-            binding.selectedItemPriceTextView.text = it.getString("price",null)
-            binding.selectedItemLocationTextView.text = it.getString("location", null)
-            binding.selectedItemDescriptionTextView.text = it.getString("description",null)
-            binding.sellerProfileImageImageView.setImageResource(it.getInt("sellerImage",-1))
-            binding.sellerNameTextView.text = it.getString("sellerName",null)
-            binding.sellerJoinedTextView.text = it.getString("sellerJoined",null)
-            binding.sellerResponseRateTextView.text = it.getString("sellerResponseRate",null)
-            binding.sellerResponseTimeTextView.text = it.getString("sellerResponseTime",null)
-        }
+    private fun initFragment() {
+        binding.selectedItemImageImageView.setImageResource(DataSharing.getItemImage())
+        binding.selectedItemTitleTextView.text = DataSharing.getItemTitle()
+        binding.selectedItemPriceTextView.text = DataSharing.getItemPrice()
+        binding.selectedItemLocationTextView.text = DataSharing.getItemLocation()
+        binding.selectedItemDescriptionTextView.text = DataSharing.getItemDescription()
+        binding.sellerProfileImageImageView.setImageResource(DataSharing.getItemSellerImage())
+        binding.sellerNameTextView.text = DataSharing.getItemSellerName()
+        binding.sellerJoinedTextView.text = DataSharing.getItemSellerJoined()
+        binding.sellerResponseRateTextView.text = DataSharing.getItemSellerResponseRate()
+        binding.sellerResponseTimeTextView.text = DataSharing.getItemSellerResponseTime()
     }
 
     override fun onDestroyView() {
         super.onDestroy()
-        editor = sharedPreferences.edit()
-//        editor.clear()
-//        editor.commit()
     }
 }

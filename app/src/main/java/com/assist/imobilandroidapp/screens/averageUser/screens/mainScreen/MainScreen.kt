@@ -55,7 +55,10 @@ class MainScreen : AppCompatActivity() {
 
     private fun favoriteImageViewClick() {
         when(binding.favoriteImageView.drawable.constantState){
-            resources.getDrawable(R.drawable.ic_outline_hearth).constantState -> Toast.makeText(this, getString(R.string.favorite_image), Toast.LENGTH_SHORT).show()
+            resources.getDrawable(R.drawable.ic_outline_hearth).constantState -> {
+                Toast.makeText(this, getString(R.string.favorite_image), Toast.LENGTH_SHORT).show()
+                findNavController(R.id.mainScreenFragmentContainerView).navigate(R.id.action_normalScreenFragment_to_favouriteScreenFragment)
+            }
             resources.getDrawable(R.drawable.ic_share).constantState -> Toast.makeText(this, getString(R.string.share_click), Toast.LENGTH_SHORT).show()
         }
     }

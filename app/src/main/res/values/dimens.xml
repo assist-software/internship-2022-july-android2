@@ -88,5 +88,26 @@
     <dimen name="d_183dp">183dp</dimen>
     <dimen name="d_188dp">188dp</dimen>
     <dimen name="d_238dp">238dp</dimen>
+    <dimen name="d_170dp">170dp</dimen>
+    <dimen name="d_154dp">154dp</dimen>
+    <dimen name="d_143dp">143dp</dimen>
+    <dimen name="d_182dp">182dp</dimen>
+    <dimen name="d_17dp">17dp</dimen>
+    <dimen name="d_15dp">15dp</dimen>
+    <dimen name="d_348dp">348dp</dimen>
+    <dimen name="d_137dp">137dp</dimen>
+    <dimen name="d_48dp">48dp</dimen>
+    <dimen name="d_114dp">114dp</dimen>
+    <dimen name="d_46dp">46dp</dimen>
+    <dimen name="d_132dp">132dp</dimen>
+    <dimen name="d_322dp">322dp</dimen>
+    <dimen name="d_35dp">35dp</dimen>
+    <dimen name="d_28dp">28dp</dimen>
+    <dimen name="d_330dp">330dp</dimen>
+    <dimen name="d_185dp">185dp</dimen>
+    <dimen name="d_281dp">281dp</dimen>
+    <dimen name="d_11dp">11dp</dimen>
+    <dimen name="d_26dp">26dp</dimen>
+    <dimen name="d_109dp">109dp</dimen>
 
 </resources>

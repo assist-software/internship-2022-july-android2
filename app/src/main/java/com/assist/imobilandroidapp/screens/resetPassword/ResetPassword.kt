@@ -31,8 +31,7 @@ class ResetPassword : AppCompatActivity() {
         binding = ActivityResetPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.resetPasswordNewPasswordTextInputLayout.editText?.addTextChangedListener(object :
-            TextWatcher {
+        binding.resetPasswordNewPasswordTextInputLayout.editText?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
 
@@ -44,8 +43,7 @@ class ResetPassword : AppCompatActivity() {
             }
         })
 
-        binding.resetPasswordConfirmPasswordTextInputLayout.editText?.addTextChangedListener(object :
-            TextWatcher {
+        binding.resetPasswordConfirmPasswordTextInputLayout.editText?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
 
@@ -55,7 +53,6 @@ class ResetPassword : AppCompatActivity() {
 
             override fun afterTextChanged(p0: Editable?) {
             }
-
         })
 
         binding.resetPasswordMaterialButton.setOnClickListener {

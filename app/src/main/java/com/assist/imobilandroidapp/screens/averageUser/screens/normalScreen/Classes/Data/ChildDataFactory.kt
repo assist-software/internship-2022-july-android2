@@ -1,11 +1,14 @@
-package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes
+package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data
 
 import com.assist.imobilandroidapp.R
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Seller
 import kotlin.random.Random
 
 object ChildDataFactory {
     private val random = Random
-
+    var childModel = ChildModel()
+    private val favouriteChildrens = mutableListOf<ChildModel>()
     private val titles =  arrayListOf( "Dreaming", "Aurora", "Lucy House", "KingPenthouse")
     private val locations = arrayListOf("Suceava, Romania")
     private val prices = arrayListOf("764,34 RON", "10000 RON", "989,99 RON" , "540 RON")
@@ -49,5 +52,17 @@ object ChildDataFactory {
             children.add(child)
         }
         return children
+    }
+
+    fun getFavouriteChildrens() : List<ChildModel>{
+        return favouriteChildrens
+    }
+
+    fun addFavouriteChildren(child : ChildModel) {
+        favouriteChildrens.add(child)
+    }
+
+    fun removeChildrenFromFavourite(position: Int){
+        favouriteChildrens.removeAt(position)
     }
 }

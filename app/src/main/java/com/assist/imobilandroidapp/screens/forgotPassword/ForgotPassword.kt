@@ -40,9 +40,13 @@ class ForgotPassword : AppCompatActivity() {
         }
 
         binding.backToLoginTextView.setOnClickListener {
-            startActivity(Intent(this, Login::class.java))
-            finish()
+            backToLoginTextViewCLick()
         }
+    }
+
+    private fun backToLoginTextViewCLick(){
+        startActivity(Intent(this, Login::class.java))
+        finish()
     }
 
     private fun sendEmailLinkButtonClick(input: TextInputLayout) {

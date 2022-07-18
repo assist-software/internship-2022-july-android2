@@ -1,4 +1,4 @@
-package com.assist.imobilandroidapp.screens.averageUser.screens.detailsScreen.supportMapFragment
+package com.assist.imobilandroidapp.screens.averageUser.screens.detailsScreen.supportMap
 
 import android.os.Bundle
 import android.view.LayoutInflater

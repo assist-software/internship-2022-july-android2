@@ -1,5 +1,7 @@
-package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes
+package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data
 
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ParentModel
 import kotlin.random.Random
 
 object ParentDataFactory {

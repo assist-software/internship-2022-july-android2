@@ -8,12 +8,10 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.FragmentNormalScreenBinding
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Adapters.ParentAdapter
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ParentDataFactory
-import kotlinx.android.synthetic.main.fragment_normal_screen.*
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ParentDataFactory
 
 class NormalScreenFragment : Fragment() {
 

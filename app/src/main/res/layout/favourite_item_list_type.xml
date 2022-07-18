@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/d_8dp"
+    android:layout_marginStart="@dimen/d_16dp"
+    android:layout_marginBottom="@dimen/d_8dp"
+    android:layout_marginEnd="@dimen/d_16dp"
+    app:cardCornerRadius="@dimen/d_12dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/d_154dp"
+        android:layout_height="@dimen/d_143dp"
+        app:cardCornerRadius="@dimen/d_6dp"
+        android:layout_marginTop="@dimen/d_12dp"
+        android:layout_marginStart="@dimen/d_12dp">
+
+        <ImageView
+            android:id="@+id/favourite_item_image_imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_launcher_background"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/favourite_item_title_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/child_imobilItem_title"
+        android:textSize="@dimen/text_size_14sp"
+        android:fontFamily="@font/inter_semi_bold"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/d_182dp"
+        android:layout_marginTop="@dimen/d_12dp"
+        android:layout_marginEnd="@dimen/d_48dp"
+        android:layout_marginBottom="@dimen/d_114dp"/>
+
+    <TextView
+        android:id="@+id/favourite_item_description_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_regular"
+        android:text="@string/child_imobilItem_description"
+        android:textSize="@dimen/text_size_12sp"
+        android:textColor="@color/grayscale_400"
+        android:layout_marginStart="@dimen/d_182dp"
+        android:layout_marginTop="@dimen/d_64dp"
+        android:layout_marginEnd="@dimen/d_48dp"
+        android:layout_marginBottom="@dimen/d_46dp"/>
+
+    <TextView
+        android:id="@+id/favourite_item_price_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_semi_bold"
+        android:text="@string/child_imobilItem_price"
+        android:textSize="@dimen/text_size_14sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/d_182dp"
+        android:layout_marginTop="@dimen/d_132dp"
+        android:layout_marginEnd="@dimen/d_12dp"
+        android:layout_marginBottom="@dimen/d_12dp"/>
+
+    <ImageView
+        android:id="@+id/favourite_item_fav_icon"
+        android:layout_width="@dimen/d_17dp"
+        android:layout_height="@dimen/d_15dp"
+        android:src="@drawable/ic_full_hearth"
+        android:layout_marginStart="@dimen/d_330dp"
+        android:layout_marginTop="@dimen/d_12dp"
+        android:layout_marginEnd="@dimen/d_18dp"
+        android:layout_marginBottom="@dimen/d_137dp"/>
+
+
+</androidx.cardview.widget.CardView>

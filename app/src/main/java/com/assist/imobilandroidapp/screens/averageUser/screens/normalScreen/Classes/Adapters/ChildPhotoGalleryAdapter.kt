@@ -1,13 +1,12 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Adapters
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.assist.imobilandroidapp.R
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
 import kotlinx.android.synthetic.main.item_photo_galery.view.*
 
 class ChildPhotoGalleryAdapter :
@@ -19,11 +18,10 @@ class ChildPhotoGalleryAdapter :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val sharedPref: SharedPreferences = holder.itemView.context.getSharedPreferences("pref", Context.MODE_PRIVATE)
 
-        holder.firstImage.setImageResource(sharedPref.getInt("image",-1))
-        holder.secondImage.setImageResource(sharedPref.getInt("secondImage",-1))
-        holder.thirdImage.setImageResource(sharedPref.getInt("thirdImage",-1))
+        holder.firstImage.setImageResource(DataSharing.getItemImage())
+        holder.secondImage.setImageResource(DataSharing.getItemSecondImage())
+        holder.thirdImage.setImageResource(DataSharing.getItemThirdImage())
     }
 
     override fun getItemCount(): Int {
