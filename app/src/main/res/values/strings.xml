@@ -76,4 +76,5 @@
     <string name="log_in_with_google">Log in with Google</string>
     <string name="login_google_button">Clicked on login with google button!</string>
     <string name="placeholder">Placeholder</string>
+    <string name="favourite_items_empty_list">You don\'t have items saved.</string>
 </resources>

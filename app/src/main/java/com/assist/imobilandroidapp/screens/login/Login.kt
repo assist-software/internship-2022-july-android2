@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.ActivityLoginBinding
 import com.assist.imobilandroidapp.screens.averageUser.screens.mainScreen.MainScreen
+import com.assist.imobilandroidapp.screens.forgotPassword.ForgotPassword
 import com.assist.imobilandroidapp.screens.signup.SignUp
 
 class Login : AppCompatActivity() {
@@ -29,6 +30,15 @@ class Login : AppCompatActivity() {
         binding.signUPTextView.setOnClickListener {
             singUpTextViewClick()
         }
+
+        binding.forgotPasswordTextView.setOnClickListener {
+            forgotPasswordTextViewClick()
+        }
+    }
+
+    private fun forgotPasswordTextViewClick() {
+        startActivity(Intent(this,ForgotPassword::class.java))
+        finish()
     }
 
     private fun singUpTextViewClick() {

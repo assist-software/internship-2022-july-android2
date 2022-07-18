@@ -22,9 +22,18 @@ class FavouriteScreenFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentFavouriteScreenBinding.inflate(inflater, container, false)
 
-        initRecycler()
+        initFragment()
 
         return binding.root
+    }
+
+    private fun initFragment(){
+        binding.messageFavouriteEmptyListTextView.visibility = if(ChildDataFactory.getFavouriteChildrens().isEmpty()){
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+        initRecycler()
     }
 
     private fun initRecycler(){
