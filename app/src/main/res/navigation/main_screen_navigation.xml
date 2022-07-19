@@ -15,10 +15,6 @@
             app:destination="@id/detailsScreenFragment"
             app:popUpTo="@id/normalScreenFragment"
             app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/action_normalScreenFragment_to_favouriteScreenFragment"
-            app:destination="@id/favouriteScreenFragment"
-            app:popUpTo="@id/normalScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsScreenFragment"
@@ -47,4 +43,14 @@
         android:name="com.assist.imobilandroidapp.screens.averageUser.screens.favouriteScreen.FavouriteScreenFragment"
         android:label="fragment_favourite_screen"
         tools:layout="@layout/fragment_favourite_screen" />
+    <fragment
+        android:id="@+id/categoryListScreenFragment"
+        android:name="com.assist.imobilandroidapp.screens.averageUser.screens.categoryListScreen.CategoryListScreenFragment"
+        android:label="fragment_category_list_screen"
+        tools:layout="@layout/fragment_category_list_screen" />
+    <fragment
+        android:id="@+id/favouriteNotConnectScreenFragment"
+        android:name="com.assist.imobilandroidapp.screens.averageUser.screens.favouriteNotConnectScreen.FavouriteNotConnectScreenFragment"
+        android:label="fragment_favourite_not_connect_screen"
+        tools:layout="@layout/fragment_favourite_not_connect_screen" />
 </navigation>

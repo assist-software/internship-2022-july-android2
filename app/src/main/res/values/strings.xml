@@ -77,4 +77,10 @@
     <string name="login_google_button">Clicked on login with google button!</string>
     <string name="placeholder">Placeholder</string>
     <string name="favourite_items_empty_list">You don\'t have items saved.</string>
+    <string name="favourites">Favourites</string>
+    <string name="filter_by">Filter by:</string>
+    <string name="order_by">Order by:</string>
+    <string name="not_connect_title">Log in to view your favourites</string>
+    <string name="not_connect_description">You can add, view, or edit your favourites once you’ve logged in.</string>
+    <string name="home">home</string>
 </resources>

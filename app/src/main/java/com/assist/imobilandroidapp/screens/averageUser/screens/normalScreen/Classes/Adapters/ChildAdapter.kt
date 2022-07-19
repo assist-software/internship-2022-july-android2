@@ -55,7 +55,6 @@ class ChildAdapter(private val children: List<ChildModel>) :
     }
 
     private fun childItemClick(view: View, childModel: ChildModel) {
-//            Toast.makeText(it.context, it.context.getString(R.string.imobil_item_click), Toast.LENGTH_SHORT).show(
 
         DataSharing.init(view.context.getSharedPreferences(SHARED_KEY,Context.MODE_PRIVATE))
 
@@ -86,7 +85,6 @@ class ChildAdapter(private val children: List<ChildModel>) :
                 Toast.makeText(view.context, view.context.getString(R.string.child_favorit_button_add), Toast.LENGTH_SHORT).show()
                 button.setImageResource(R.drawable.ic_full_hearth)
                 ChildDataFactory.addFavouriteChildren(children[position])
-//                Log.d("CHILD",children[position].toString())
             }
             view.resources.getDrawable(R.drawable.ic_full_hearth).constantState -> {
                 Toast.makeText(view.context, view.context.getString(R.string.child_favorit_button_remove), Toast.LENGTH_SHORT).show()

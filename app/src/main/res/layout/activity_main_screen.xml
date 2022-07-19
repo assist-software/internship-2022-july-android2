@@ -81,19 +81,124 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
-        android:id="@+id/what_are_you_interested_textView"
+        android:id="@+id/input_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/d_16dp"
-        android:layout_marginTop="@dimen/d_8dp"
+        android:layout_marginTop="@dimen/d_16dp"
         android:fontFamily="@font/inter_bold"
         android:text="@string/what_are_you_interested_in"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_size_24sp"
+        android:textSize="@dimen/text_size_20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+    <LinearLayout
+        android:id="@+id/icons_view_linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d_23dp"
+        android:layout_marginEnd="@dimen/d_16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+        <ImageView
+            android:id="@+id/ic_grid_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_grid_view"
+            app:layout_constraintEnd_toStartOf="@+id/ic_list_view"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            app:tint="@color/grayscale_300"
+            android:layout_marginEnd="@dimen/d_16dp"/>
+
+        <ImageView
+            android:id="@+id/ic_list_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_list_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            app:tint="@color/grayscale_300" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/filters_linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/d_16dp"
+        android:layout_marginTop="@dimen/d_8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_textView"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/filter_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_semi_bold"
+            android:text="@string/filter_by"
+            android:textColor="@color/grayscale_400"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_textView" />
+
+        <Spinner
+            android:id="@+id/first_filter_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d_50dp"/>
+
+        <Spinner
+            android:id="@+id/second_filter_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d_60dp"/>
+
+        <Spinner
+            android:id="@+id/third_filter_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d_70dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/order_filters_linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_16dp"
+        android:layout_marginTop="@dimen/d_16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filters_linearLayout">
+
+        <TextView
+            android:id="@+id/order_filter_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_semi_bold"
+            android:text="@string/order_by"
+            android:textColor="@color/grayscale_400"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_textView" />
+
+        <Spinner
+            android:id="@+id/order_filter_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d_50dp" />
+
+
+    </LinearLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainScreenFragmentContainerView"
@@ -101,11 +206,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
+        android:layout_marginTop="@dimen/d_180dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/what_are_you_interested_textView"
-        android:layout_marginTop="@dimen/d_98dp"
+        app:layout_constraintTop_toBottomOf="@+id/order_filters_linearLayout"
         app:navGraph="@navigation/main_screen_navigation" />
 
     <ImageButton
@@ -120,5 +225,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.873" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

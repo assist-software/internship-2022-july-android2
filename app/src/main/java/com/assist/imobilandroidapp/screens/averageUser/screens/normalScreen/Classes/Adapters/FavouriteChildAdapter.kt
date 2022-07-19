@@ -5,14 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.assist.imobilandroidapp.R
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ChildDataFactory
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Interfaces.FavouriteInterface
 import kotlinx.android.synthetic.main.favourite_item_list_type.view.*
 
-class FavouriteChildAdapter(private val favouriteChildren: List<ChildModel>):
+class FavouriteChildAdapter(private val favouriteChildren: List<ChildModel>, private val listingInterface: FavouriteInterface):
     RecyclerView.Adapter<FavouriteChildAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -41,13 +40,16 @@ class FavouriteChildAdapter(private val favouriteChildren: List<ChildModel>):
 
         init {
             favorite.setOnClickListener {
-                removedFromFavourites(it,adapterPosition)
+                favouriteIconRemoveClick(adapterPosition)
             }
         }
     }
 
-    private fun removedFromFavourites(view: View,position: Int) {
-        ChildDataFactory.removeChildrenFromFavourite(position)
-        Toast.makeText(view.context, view.context.getString(R.string.child_favorit_button_remove), Toast.LENGTH_SHORT).show()
+    private fun favouriteIconRemoveClick(position: Int) {
+        listingInterface.removeItemFromFavourite(favouriteChildren[position])
+        notifyItemRemoved(position)
+        if (favouriteChildren.isEmpty()) {
+            listingInterface.isListEmpty()
+        }
     }
 }

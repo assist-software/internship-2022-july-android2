@@ -7,16 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.FragmentNormalScreenBinding
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Adapters.ParentAdapter
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ChildDataFactory
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ParentDataFactory
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Interfaces.ListingInterface
 
-class NormalScreenFragment : Fragment() {
+class NormalScreenFragment : Fragment() , ListingInterface {
 
     private lateinit var binding: FragmentNormalScreenBinding
-    private lateinit var whatAreYouInterested : TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,9 +27,6 @@ class NormalScreenFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentNormalScreenBinding.inflate(inflater, container, false)
-
-        whatAreYouInterested = requireActivity().findViewById(R.id.what_are_you_interested_textView)
-        whatAreYouInterested.visibility = View.VISIBLE
 
         initRecycler()
 
@@ -39,12 +39,23 @@ class NormalScreenFragment : Fragment() {
                 LinearLayout.VERTICAL, false)
             adapter = ParentAdapter(
                 ParentDataFactory
-                .getParents(10))
+                .getParents(10),this@NormalScreenFragment)
         }
+
+        setVisibility()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        whatAreYouInterested.visibility = View.GONE
+    private fun setVisibility() {
+        requireActivity().findViewById<TextView>(R.id.input_textView).visibility = View.VISIBLE
+        requireActivity().findViewById<TextView>(R.id.input_textView).text = getString(R.string.what_are_you_interested_in)
+        requireActivity().findViewById<LinearLayout>(R.id.icons_view_linearLayout).visibility = View.GONE
+        requireActivity().findViewById<LinearLayout>(R.id.filters_linearLayout).visibility = View.GONE
+        requireActivity().findViewById<LinearLayout>(R.id.order_filters_linearLayout).visibility = View.GONE
+    }
+
+    override fun onCategoryClicked(category: String, categoryList: List<ChildModel>) {
+        ChildDataFactory.category = category
+        ChildDataFactory.addCategoryChildrens(categoryList)
+        findNavController().navigate(R.id.categoryListScreenFragment)
     }
 }

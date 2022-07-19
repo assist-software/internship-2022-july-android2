@@ -109,5 +109,11 @@
     <dimen name="d_11dp">11dp</dimen>
     <dimen name="d_26dp">26dp</dimen>
     <dimen name="d_109dp">109dp</dimen>
+    <dimen name="d_23dp">23dp</dimen>
+    <dimen name="d_140dp">140dp</dimen>
+    <dimen name="d_45dp">45dp</dimen>
+    <dimen name="d_180dp">180dp</dimen>
+    <dimen name="d_52dp">52dp</dimen>
+    <dimen name="d_51dp">51dp</dimen>
 
 </resources>

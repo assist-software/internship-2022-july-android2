@@ -1,21 +1,22 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.detailsScreen
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.FragmentDetailsScreenBinding
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Interfaces.DetailsInterface
 
-class DetailsScreenFragment : Fragment() {
+class DetailsScreenFragment : Fragment() , DetailsInterface {
 
     private lateinit var binding: FragmentDetailsScreenBinding
+    private lateinit var textView : TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,51 +25,32 @@ class DetailsScreenFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentDetailsScreenBinding.inflate(inflater, container, false)
 
+        textView = requireActivity().findViewById(R.id.input_textView)
+        textView.visibility = View.GONE
+
         initFragment()
 
         binding.selectedItemPhotoGaleryImageButton.setOnClickListener {
-            itemPhotoGalleryButtonClick()
+            itemPhotoGalleryButtonClick(it,getString(R.string.gallery_button_click))
         }
 
         binding.selectedItemShareRelativeLayout.setOnClickListener {
-            itemShareClick()
+            itemShareClick(it,getString(R.string.share_click))
         }
 
         binding.selectedItemDetailsPurchaseMaterialButton.setOnClickListener {
-            itemPurchaseButtonClick()
+            itemPurchaseButtonClick(it,getString(R.string.purchase_click))
         }
 
         binding.itemDetailsFavouriteImageButton.setOnClickListener {
-            itemFavouriteButtonClick()
+            itemFavouriteButtonClick(it,getString(R.string.favorite_image))
         }
 
         binding.selectedItemDetailsContactSellerMaterialButton.setOnClickListener {
-            itemContactSellerButtonClick()
+            itemContactSellerButtonClick(it,getString(R.string.contact_seller_click))
         }
 
         return binding.root
-    }
-
-    private fun itemContactSellerButtonClick() {
-        Toast.makeText(context, getString(R.string.contact_seller_click), Toast.LENGTH_SHORT).show()
-    }
-
-    private fun itemFavouriteButtonClick() {
-        Toast.makeText(context, getString(R.string.child_favorit_button_add), Toast.LENGTH_SHORT)
-            .show()
-    }
-
-    private fun itemPurchaseButtonClick() {
-        Toast.makeText(context, getString(R.string.purchase_click), Toast.LENGTH_SHORT).show()
-    }
-
-    private fun itemShareClick() {
-        Toast.makeText(context, getString(R.string.share_click), Toast.LENGTH_SHORT).show()
-    }
-
-    private fun itemPhotoGalleryButtonClick() {
-        Toast.makeText(context, getString(R.string.gallery_button_click), Toast.LENGTH_SHORT).show()
-        findNavController().navigate(R.id.action_detailsScreenFragment_to_photoGalleryFragment)
     }
 
     private fun initFragment() {
@@ -86,5 +68,26 @@ class DetailsScreenFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroy()
+    }
+
+    override fun itemContactSellerButtonClick(view: View, string: String) {
+        Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun itemFavouriteButtonClick(view: View, string: String) {
+        Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun itemPurchaseButtonClick(view: View, string: String) {
+        Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun itemShareClick(view: View, string: String) {
+        Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun itemPhotoGalleryButtonClick(view: View, string: String) {
+        Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
+        findNavController().navigate(R.id.action_detailsScreenFragment_to_photoGalleryFragment)
     }
 }

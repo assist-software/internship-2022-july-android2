@@ -6,15 +6,14 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.Toast
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.assist.imobilandroidapp.R
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Interfaces.ListingInterface
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ParentModel
 import kotlinx.android.synthetic.main.imobil_item.view.*
 
-class ParentAdapter(private val parents: List<ParentModel>) :
+class ParentAdapter(private val parents: List<ParentModel>,private val listingInterface: ListingInterface) :
     RecyclerView.Adapter<ParentAdapter.ViewHolder>() {
     private val viewPool = RecyclerView.RecycledViewPool()
     override fun onCreateViewHolder(
@@ -36,26 +35,24 @@ class ParentAdapter(private val parents: List<ParentModel>) :
     ) {
         val parent = parents[position]
         holder.textView.text = parent.title
-        val childLayoutManager =
-            LinearLayoutManager(holder.recyclerView.context, LinearLayout.HORIZONTAL, false)
+        val childLayoutManager = LinearLayoutManager(holder.recyclerView.context, LinearLayout.HORIZONTAL, false)
         childLayoutManager.initialPrefetchItemCount = 4
         holder.recyclerView.apply {
             layoutManager = childLayoutManager
             adapter = ChildAdapter(parent.children)
             setRecycledViewPool(viewPool)
         }
-
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val recyclerView: RecyclerView = itemView.rv_child
         val textView: TextView = itemView.parent_category
         private val seeEverything : RelativeLayout = itemView.see_everything_relativeLayout
-        
+
         init {
            seeEverything.setOnClickListener {
-               Toast.makeText(this.itemView.context, this.itemView.context.getString(R.string.see_everything_click), Toast.LENGTH_SHORT).show()
-           } 
+               listingInterface.onCategoryClicked(textView.text.toString(),parents[adapterPosition].children)
+           }
         }
     }
 }

@@ -9,6 +9,7 @@ object ChildDataFactory {
     private val random = Random
     var childModel = ChildModel()
     private val favouriteChildrens = mutableListOf<ChildModel>()
+    private var categoryChildrens = mutableListOf<ChildModel>()
     private val titles =  arrayListOf( "Dreaming", "Aurora", "Lucy House", "KingPenthouse")
     private val locations = arrayListOf("Suceava, Romania")
     private val prices = arrayListOf("764,34 RON", "10000 RON", "989,99 RON" , "540 RON")
@@ -16,6 +17,7 @@ object ChildDataFactory {
     private val seller = Seller(R.drawable.ic_launcher_foreground,"Zarinschi Armand","Joined now","Response rate: 97%","Response time: with an hour")
     private val images = arrayListOf(R.drawable.first_image,R.drawable.third_image,R.drawable.second_image,R.drawable.test_photo)
     private val galleryImages = arrayListOf(R.drawable.second_image, R.drawable.third_image)
+    var category : String = ""
 
     private fun randomTitle() : String{
         val index = random.nextInt(titles.size)
@@ -62,7 +64,15 @@ object ChildDataFactory {
         favouriteChildrens.add(child)
     }
 
-    fun removeChildrenFromFavourite(position: Int){
-        favouriteChildrens.removeAt(position)
+    fun removeChildrenFromFavourite(child: ChildModel){
+        favouriteChildrens.remove(child)
+    }
+
+    fun addCategoryChildrens(childrens: List<ChildModel>){
+        categoryChildrens = childrens as MutableList<ChildModel>
+    }
+
+    fun getCategoryChildrens(): List<ChildModel> {
+        return categoryChildrens
     }
 }

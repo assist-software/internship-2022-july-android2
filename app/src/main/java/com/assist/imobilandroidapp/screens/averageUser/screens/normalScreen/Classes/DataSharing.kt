@@ -1,8 +1,6 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes
 
-import android.content.Context
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 
 const val SHARED_KEY = "pref"
 const val ITEM_IMAGE = "image"

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.averageUser.screens.favouriteNotConnectScreen.FavouriteNotConnectScreenFragment">
+
+    <ImageView
+        android:id="@+id/image_not_connect"
+        android:layout_width="235dp"
+        android:layout_height="193dp"
+        android:src="@drawable/ic_img_not_connect"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/not_connect_title_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d_52dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/not_connect_title"
+        android:textColor="@color/grayscale_700"
+        android:textSize="@dimen/text_size_20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_not_connect" />
+
+    <TextView
+        android:id="@+id/not_connect_description_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d_8dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:paddingStart="@dimen/d_16dp"
+        android:paddingEnd="@dimen/d_16dp"
+        android:text="@string/not_connect_description"
+        android:textColor="@color/grayscale_300"
+        android:textSize="@dimen/text_size_14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/not_connect_title_textView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/not_connect_login_materialButton"
+        android:layout_width="@dimen/d_382dp"
+        android:layout_height="@dimen/d_44dp"
+        android:layout_marginTop="@dimen/d_51dp"
+        android:backgroundTint="@color/primary_400"
+        android:fontFamily="@font/inter_semi_bold"
+        android:text="@string/log_in"
+        android:textSize="@dimen/text_size_12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/not_connect_description_textView"
+        app:cornerRadius="@dimen/d_8dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:id="@+id/not_connect_home_materialButton"
+        android:layout_width="@dimen/d_382dp"
+        android:layout_height="@dimen/d_44dp"
+        android:layout_marginTop="@dimen/d_12dp"
+        android:fontFamily="@font/inter_semi_bold"
+        android:text="@string/home"
+        android:textSize="@dimen/text_size_12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/not_connect_login_materialButton"
+        app:cornerRadius="@dimen/d_8dp"
+        app:strokeColor="@color/primary_400"
+        android:textColor="@color/primary_400"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
