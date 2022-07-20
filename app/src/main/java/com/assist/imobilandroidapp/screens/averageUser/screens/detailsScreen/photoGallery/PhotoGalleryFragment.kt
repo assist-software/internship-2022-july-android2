@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,10 +28,7 @@ class PhotoGalleryFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentPhotoGalleryBinding.inflate(inflater, container , false)
 
-        textView = requireActivity().findViewById(R.id.input_textView)
-        textView.visibility = View.GONE
-
-        initRecycler()
+        initFragment()
 
         return binding.root
     }
@@ -46,6 +44,16 @@ class PhotoGalleryFragment : Fragment() {
             layoutManager = LinearLayoutManager(context,LinearLayout.VERTICAL,false)
             adapter = ChildPhotoGalleryAdapter()
         }
+    }
+
+    private fun initFragment(){
+        textView = requireActivity().findViewById(R.id.input_textView)
+        textView.visibility = View.GONE
+
+        requireActivity().findViewById<ImageView>(R.id.search_imageView).visibility = View.VISIBLE
+        requireActivity().findViewById<SearchView>(R.id.search_searchView).visibility = View.GONE
+
+        initRecycler()
     }
 
     override fun onDestroyView() {

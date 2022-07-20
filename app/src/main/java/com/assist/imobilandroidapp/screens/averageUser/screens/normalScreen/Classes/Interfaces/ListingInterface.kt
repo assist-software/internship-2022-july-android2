@@ -5,4 +5,6 @@ import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Clas
 interface ListingInterface {
 
     fun onCategoryClicked(category : String,categoryList:List<ChildModel>){}
+
+    fun onItemClicked(childModel: ChildModel)
 }

@@ -2,6 +2,7 @@ package com.assist.imobilandroidapp.screens.signup
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
@@ -9,22 +10,24 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.ActivitySignUpBinding
+import com.assist.imobilandroidapp.screens.api.`interface`.ApiInterface
+import com.assist.imobilandroidapp.screens.api.calsses.BASE_URL
+import com.assist.imobilandroidapp.screens.api.calsses.LogInBody
+import com.assist.imobilandroidapp.screens.api.calsses.RetrofitInstance
+import com.assist.imobilandroidapp.screens.api.calsses.SingUpBody
+import com.assist.imobilandroidapp.screens.averageUser.screens.mainScreen.MainScreen
 import com.assist.imobilandroidapp.screens.forgotPassword.EMPTY_STRING
 import com.assist.imobilandroidapp.screens.login.Login
 import com.google.android.material.textfield.TextInputLayout
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.regex.Pattern
 
 class SignUp : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
-
-    private val passwordPattern: Pattern = Pattern.compile(
-        "^" +
-                "(?=.*[!?@#$%^&+=])" +     // at least 1 special character
-                "(?=\\S+$)" +            // no white spaces
-                ".{8,}" +                // at least 8 characters
-                "$"
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,21 +47,9 @@ class SignUp : AppCompatActivity() {
             }
         })
 
-        binding.singupPasswordTextInputLayout.editText?.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                passwordOnTextChanged(binding.singupPasswordTextInputLayout)
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-            }
-        })
-
         binding.singupSignUpButton.setOnClickListener {
             if (emptyInputValidation(binding.singupEmailTextInputLayout) && emptyInputValidation(binding.singupPasswordTextInputLayout)) {
-                Toast.makeText(this, "Yaaay!", Toast.LENGTH_SHORT).show()
+                singUpButtonClick(binding.singupEmailTextInputLayout.editText?.text.toString(),binding.singupPasswordTextInputLayout.editText?.text.toString())
             }
         }
 
@@ -71,6 +62,28 @@ class SignUp : AppCompatActivity() {
             finish()
         }
 
+    }
+
+    private fun singUpButtonClick(email: String, password: String) {
+        val retrofitInstance = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
+        val singUpBody = SingUpBody(email,password)
+
+        retrofitInstance.registerUser("{$BASE_URL}api/User/Register?email=$email&password=$password",singUpBody).enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                if ( response.code() == 200) {
+                    Toast.makeText(this@SignUp, getString(R.string.singUp_success), Toast.LENGTH_SHORT).show()
+                    Handler().postDelayed({
+                        startActivity(Intent(this@SignUp, Login::class.java))
+                        finish()
+                    },1000)
+                } else {
+                    Toast.makeText(this@SignUp, getString(R.string.singUp_failed), Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            }
+        })
     }
 
     private fun loginTextViewClick() {
@@ -86,20 +99,6 @@ class SignUp : AppCompatActivity() {
         } else {
             if (!Patterns.EMAIL_ADDRESS.matcher(emailTextValue).matches()) {
                 getString(R.string.wrong_email)
-            } else {
-                EMPTY_STRING
-            }
-        }
-    }
-
-    private fun passwordOnTextChanged(input: TextInputLayout){
-        val passwordValue = input.editText?.text?: ""
-
-        input.error =  if (passwordValue.isEmpty()) {
-            EMPTY_STRING
-        } else {
-            if (!passwordPattern.matcher(passwordValue).matches()) {
-                getString(R.string.password_not_match)
             } else {
                 EMPTY_STRING
             }

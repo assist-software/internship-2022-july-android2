@@ -83,4 +83,10 @@
     <string name="not_connect_title">Log in to view your favourites</string>
     <string name="not_connect_description">You can add, view, or edit your favourites once you’ve logged in.</string>
     <string name="home">home</string>
+    <string name="search_item">search</string>
+    <string name="user">user</string>
+    <string name="login_success">Login success!</string>
+    <string name="login_failed">Login failed!</string>
+    <string name="singUp_success">Account created</string>
+    <string name="singUp_failed">Something wrong</string>
 </resources>

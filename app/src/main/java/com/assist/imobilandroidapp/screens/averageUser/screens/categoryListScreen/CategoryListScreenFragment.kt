@@ -13,11 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.FragmentCategoryListScreenBinding
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Adapters.CategoryParentAdapter
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ChildDataFactory
 
 class CategoryListScreenFragment : Fragment(){
 
     private lateinit var binding: FragmentCategoryListScreenBinding
+    private lateinit var searchView: androidx.appcompat.widget.SearchView
+    private var categoryChildrens = ChildDataFactory.getCategoryChildrens() as MutableList<ChildModel>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +30,7 @@ class CategoryListScreenFragment : Fragment(){
         binding = FragmentCategoryListScreenBinding.inflate(inflater, container, false)
 
         initRecycler()
+        search()
 
         return binding.root
     }
@@ -46,5 +50,26 @@ class CategoryListScreenFragment : Fragment(){
             adapter = CategoryParentAdapter(ChildDataFactory.getCategoryChildrens())
         }
         setVisibility()
+    }
+
+    private fun search(){
+        searchView = requireActivity().findViewById(R.id.search_searchView)
+        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                categoryChildrens.clear()
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                categoryChildrens = ChildDataFactory.getCategoryChildrens() as MutableList<ChildModel>
+                for ( item in categoryChildrens ) {
+                    if (item.title.contains(p0.toString())){
+                        ChildDataFactory.addSearchChild(item)
+                    }
+                }
+                binding.parentCategorySelectedRecyclerView.adapter = CategoryParentAdapter(ChildDataFactory.getSearchChildrens())
+                return true
+            }
+        })
     }
 }

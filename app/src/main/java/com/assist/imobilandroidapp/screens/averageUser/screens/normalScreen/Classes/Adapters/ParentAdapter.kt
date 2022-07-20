@@ -39,7 +39,7 @@ class ParentAdapter(private val parents: List<ParentModel>,private val listingIn
         childLayoutManager.initialPrefetchItemCount = 4
         holder.recyclerView.apply {
             layoutManager = childLayoutManager
-            adapter = ChildAdapter(parent.children)
+            adapter = ChildAdapter(parent.children,listingInterface)
             setRecycledViewPool(viewPool)
         }
     }

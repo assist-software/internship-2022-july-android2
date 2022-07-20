@@ -8,8 +8,10 @@ import kotlin.random.Random
 object ChildDataFactory {
     private val random = Random
     var childModel = ChildModel()
+    var searchText : String = ""
     private val favouriteChildrens = mutableListOf<ChildModel>()
     private var categoryChildrens = mutableListOf<ChildModel>()
+    private var searchChildrens = mutableListOf<ChildModel>()
     private val titles =  arrayListOf( "Dreaming", "Aurora", "Lucy House", "KingPenthouse")
     private val locations = arrayListOf("Suceava, Romania")
     private val prices = arrayListOf("764,34 RON", "10000 RON", "989,99 RON" , "540 RON")
@@ -74,5 +76,13 @@ object ChildDataFactory {
 
     fun getCategoryChildrens(): List<ChildModel> {
         return categoryChildrens
+    }
+
+    fun addSearchChild(children : ChildModel){
+        searchChildrens.add(children)
+    }
+
+    fun getSearchChildrens() : List<ChildModel>{
+        return searchChildrens
     }
 }

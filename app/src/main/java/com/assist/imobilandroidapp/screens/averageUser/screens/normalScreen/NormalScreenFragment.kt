@@ -58,4 +58,8 @@ class NormalScreenFragment : Fragment() , ListingInterface {
         ChildDataFactory.addCategoryChildrens(categoryList)
         findNavController().navigate(R.id.categoryListScreenFragment)
     }
+
+    override fun onItemClicked(childModel: ChildModel) {
+        ChildDataFactory.addFavouriteChildren(childModel)
+    }
 }

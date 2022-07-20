@@ -1,16 +1,12 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.mainScreen
 
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.contains
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.assist.imobilandroidapp.R
-import com.assist.imobilandroidapp.screens.forgotPassword.EMPTY_STRING
 import com.assist.imobilandroidapp.databinding.ActivityMainScreenBinding
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.NormalScreenFragment
+import com.assist.imobilandroidapp.screens.forgotPassword.EMPTY_STRING
 
 class MainScreen : AppCompatActivity() {
 
@@ -57,16 +53,20 @@ class MainScreen : AppCompatActivity() {
 
     private fun searchImageViewClick() {
         when (binding.searchImageView.drawable.constantState) {
-            resources.getDrawable(R.drawable.ic_search).constantState -> Toast.makeText(
-                this,
-                getString(R.string.search_image),
-                Toast.LENGTH_SHORT
-            ).show()
-            resources.getDrawable(R.drawable.ic_share).constantState -> Toast.makeText(
-                this,
-                getString(R.string.share_click),
-                Toast.LENGTH_SHORT
-            ).show()
+            resources.getDrawable(R.drawable.ic_search).constantState -> {
+                Toast.makeText(
+                    this,
+                    getString(R.string.search_image),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            resources.getDrawable(R.drawable.ic_share).constantState -> {
+                Toast.makeText(
+                    this,
+                    getString(R.string.share_click),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 

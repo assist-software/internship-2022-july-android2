@@ -63,6 +63,7 @@
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.512"
+                android:visibility="gone"
                 tools:viewBindingType="android.widget.ImageView" />
 
             <ImageView
@@ -76,6 +77,16 @@
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:viewBindingType="android.widget.ImageView" />
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_searchView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="@dimen/d_65dp"
+                app:layout_constraintEnd_toStartOf="@+id/favorite_imageView"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>

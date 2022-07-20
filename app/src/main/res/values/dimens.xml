@@ -115,5 +115,6 @@
     <dimen name="d_180dp">180dp</dimen>
     <dimen name="d_52dp">52dp</dimen>
     <dimen name="d_51dp">51dp</dimen>
+    <dimen name="d_65dp">65dp</dimen>
 
 </resources>

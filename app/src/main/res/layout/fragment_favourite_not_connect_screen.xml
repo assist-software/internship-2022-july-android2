@@ -15,7 +15,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginStart="@dimen/d_16dp"
+        android:layout_marginEnd="@dimen/d_16dp"/>
 
     <TextView
         android:id="@+id/not_connect_title_textView"
@@ -26,6 +28,8 @@
         android:text="@string/not_connect_title"
         android:textColor="@color/grayscale_700"
         android:textSize="@dimen/text_size_20sp"
+        android:layout_marginStart="@dimen/d_16dp"
+        android:layout_marginEnd="@dimen/d_16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,10 +58,11 @@
         android:layout_marginTop="@dimen/d_51dp"
         android:backgroundTint="@color/primary_400"
         android:fontFamily="@font/inter_semi_bold"
+        android:layout_marginStart="@dimen/d_16dp"
+        android:layout_marginEnd="@dimen/d_16dp"
         android:text="@string/log_in"
         android:textSize="@dimen/text_size_12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/not_connect_description_textView"
         app:cornerRadius="@dimen/d_8dp"/>
@@ -72,10 +77,11 @@
         android:text="@string/home"
         android:textSize="@dimen/text_size_12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/not_connect_login_materialButton"
         app:cornerRadius="@dimen/d_8dp"
+        android:layout_marginStart="@dimen/d_16dp"
+        android:layout_marginEnd="@dimen/d_16dp"
         app:strokeColor="@color/primary_400"
         android:textColor="@color/primary_400"/>
 

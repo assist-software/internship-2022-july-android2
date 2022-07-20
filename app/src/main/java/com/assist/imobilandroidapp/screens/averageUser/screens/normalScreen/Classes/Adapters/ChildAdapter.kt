@@ -13,9 +13,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.*
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ChildDataFactory
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Interfaces.ListingInterface
 import kotlinx.android.synthetic.main.child_item_recycler.view.*
 
-class ChildAdapter(private val children: List<ChildModel>) :
+class ChildAdapter(private val children: List<ChildModel>,private val listingInterface: ListingInterface) :
     RecyclerView.Adapter<ChildAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -84,7 +85,8 @@ class ChildAdapter(private val children: List<ChildModel>) :
             view.resources.getDrawable(R.drawable.ic_outline_hearth).constantState -> {
                 Toast.makeText(view.context, view.context.getString(R.string.child_favorit_button_add), Toast.LENGTH_SHORT).show()
                 button.setImageResource(R.drawable.ic_full_hearth)
-                ChildDataFactory.addFavouriteChildren(children[position])
+//                ChildDataFactory.addFavouriteChildren(children[position])
+                listingInterface.onItemClicked(children[position])
             }
             view.resources.getDrawable(R.drawable.ic_full_hearth).constantState -> {
                 Toast.makeText(view.context, view.context.getString(R.string.child_favorit_button_remove), Toast.LENGTH_SHORT).show()
