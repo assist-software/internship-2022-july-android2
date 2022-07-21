@@ -11,19 +11,16 @@ import androidx.appcompat.app.AppCompatActivity
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.ActivitySignUpBinding
 import com.assist.imobilandroidapp.screens.api.`interface`.ApiInterface
-import com.assist.imobilandroidapp.screens.api.calsses.BASE_URL
-import com.assist.imobilandroidapp.screens.api.calsses.LogInBody
-import com.assist.imobilandroidapp.screens.api.calsses.RetrofitInstance
-import com.assist.imobilandroidapp.screens.api.calsses.SingUpBody
-import com.assist.imobilandroidapp.screens.averageUser.screens.mainScreen.MainScreen
+import com.assist.imobilandroidapp.screens.api.calsses.*
+import com.assist.imobilandroidapp.screens.api.response.UserResponse
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.SHARED_KEY
 import com.assist.imobilandroidapp.screens.forgotPassword.EMPTY_STRING
 import com.assist.imobilandroidapp.screens.login.Login
 import com.google.android.material.textfield.TextInputLayout
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.regex.Pattern
 
 class SignUp : AppCompatActivity() {
 
@@ -48,8 +45,14 @@ class SignUp : AppCompatActivity() {
         })
 
         binding.singupSignUpButton.setOnClickListener {
-            if (emptyInputValidation(binding.singupEmailTextInputLayout) && emptyInputValidation(binding.singupPasswordTextInputLayout)) {
-                singUpButtonClick(binding.singupEmailTextInputLayout.editText?.text.toString(),binding.singupPasswordTextInputLayout.editText?.text.toString())
+            if (emptyInputValidation(binding.singupEmailTextInputLayout) && emptyInputValidation(
+                    binding.singupPasswordTextInputLayout
+                )
+            ) {
+                singUpButtonClick(
+                    binding.singupEmailTextInputLayout.editText?.text.toString(),
+                    binding.singupPasswordTextInputLayout.editText?.text.toString()
+                )
             }
         }
 
@@ -58,30 +61,59 @@ class SignUp : AppCompatActivity() {
         }
 
         binding.singupLogInTextView.setOnClickListener {
-            startActivity(Intent(this,Login::class.java))
+            startActivity(Intent(this, Login::class.java))
             finish()
         }
-
     }
 
     private fun singUpButtonClick(email: String, password: String) {
         val retrofitInstance = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
-        val singUpBody = SingUpBody(email,password)
 
-        retrofitInstance.registerUser("{$BASE_URL}api/User/Register?email=$email&password=$password",singUpBody).enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                if ( response.code() == 200) {
-                    Toast.makeText(this@SignUp, getString(R.string.singUp_success), Toast.LENGTH_SHORT).show()
+        DataSharing.init(getSharedPreferences(SHARED_KEY, MODE_PRIVATE))
+
+        retrofitInstance.registerUser(email, password).enqueue(object : Callback<UserResponse> {
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                if (response.code() == 200) {
+                    Toast.makeText(
+                        this@SignUp,
+                        getString(R.string.singUp_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    DataSharing.apply {
+                        response.body()?.let {
+                            saveUserId(it.id.toString())
+                            saveUserFullName(it.fullName.toString())
+                            saveUserEmail(it.email.toString())
+                            saveUserPassword(it.password.toString())
+                            saveUserGender(it.gender)
+                            saveUserPhone(it.phone.toString())
+                            saveUserRole(it.role)
+                            saveUserDateOfBirth(it.dateOfBirth.toString())
+                            saveUserAddress(it.address.toString())
+                            saveUserPhoto(it.photo.toString())
+                            it.userActivities?.let { it1 -> saveUserActivities(it1) }
+                            saveUserCreatedAt(it.createdAt.toString())
+                            saveUserUpdatedAt(it.updatedAt.toString())
+                            saveUserIsActive(it.isActive)
+                            it.listings?.let { it1 -> saveUserListings(it1) }
+                        }
+                        commit()
+                    }
                     Handler().postDelayed({
                         startActivity(Intent(this@SignUp, Login::class.java))
                         finish()
-                    },1000)
+                    }, 1000)
                 } else {
-                    Toast.makeText(this@SignUp, getString(R.string.singUp_failed), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@SignUp,
+                        getString(R.string.singUp_failed),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
             }
         })
     }
@@ -91,7 +123,7 @@ class SignUp : AppCompatActivity() {
         finish()
     }
 
-    private fun emailOnTextChanged(input: TextInputLayout){
+    private fun emailOnTextChanged(input: TextInputLayout) {
         val emailTextValue = input.editText?.text ?: ""
 
         input.error = if (emailTextValue.isEmpty()) {

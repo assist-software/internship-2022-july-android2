@@ -89,4 +89,6 @@
     <string name="login_failed">Login failed!</string>
     <string name="singUp_success">Account created</string>
     <string name="singUp_failed">Something wrong</string>
+    <string name="success">Success</string>
+    <string name="login_message">Welcome back,</string>
 </resources>

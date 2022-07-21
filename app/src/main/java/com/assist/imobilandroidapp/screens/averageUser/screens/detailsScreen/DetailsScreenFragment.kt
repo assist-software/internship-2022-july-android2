@@ -5,14 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.SearchView
 import android.widget.TextView
+import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentContainerView
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager.widget.ViewPager
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.FragmentDetailsScreenBinding
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
+import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.activity_main_screen.*
 
 class DetailsScreenFragment : Fragment() {
 
@@ -52,22 +56,26 @@ class DetailsScreenFragment : Fragment() {
     }
 
     private fun initFragment() {
-        binding.selectedItemImageImageView.setImageResource(DataSharing.getItemImage())
-        binding.selectedItemTitleTextView.text = DataSharing.getItemTitle()
-        binding.selectedItemPriceTextView.text = DataSharing.getItemPrice()
-        binding.selectedItemLocationTextView.text = DataSharing.getItemLocation()
-        binding.selectedItemDescriptionTextView.text = DataSharing.getItemDescription()
-        binding.sellerProfileImageImageView.setImageResource(DataSharing.getItemSellerImage())
-        binding.sellerNameTextView.text = DataSharing.getItemSellerName()
-        binding.sellerJoinedTextView.text = DataSharing.getItemSellerJoined()
-        binding.sellerResponseRateTextView.text = DataSharing.getItemSellerResponseRate()
-        binding.sellerResponseTimeTextView.text = DataSharing.getItemSellerResponseTime()
+        binding.apply {
+            selectedItemImageImageView.setImageResource(DataSharing.getItemImage())
+            selectedItemTitleTextView.text = DataSharing.getItemTitle()
+            selectedItemPriceTextView.text = DataSharing.getItemPrice()
+            selectedItemLocationTextView.text = DataSharing.getItemLocation()
+            selectedItemDescriptionTextView.text = DataSharing.getItemDescription()
+            sellerProfileImageImageView.setImageResource(DataSharing.getItemSellerImage())
+            sellerNameTextView.text = DataSharing.getItemSellerName()
+            sellerJoinedTextView.text = DataSharing.getItemSellerJoined()
+            sellerResponseRateTextView.text = DataSharing.getItemSellerResponseRate()
+            sellerResponseTimeTextView.text = DataSharing.getItemSellerResponseTime()
+        }
 
-        textView = requireActivity().findViewById(R.id.input_textView)
-        textView.visibility = View.GONE
+        requireActivity().apply {
+            findViewById<TextView>(R.id.input_textView).visibility = View.GONE
+            findViewById<TabLayout>(R.id.client_tabLatyout).visibility = View.GONE
+            findViewById<ViewPager>(R.id.client_viewPager).visibility = View.GONE
+            findViewById<FragmentContainerView>(R.id.mainScreenFragmentContainerView).visibility = View.VISIBLE
+        }
 
-        requireActivity().findViewById<SearchView>(R.id.search_searchView).visibility = View.VISIBLE
-        requireActivity().findViewById<ImageView>(R.id.search_imageView).visibility = View.GONE
     }
 
     override fun onDestroyView() {

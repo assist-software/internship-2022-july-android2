@@ -1,12 +1,20 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.mainScreen
 
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.navigation.findNavController
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.ActivityMainScreenBinding
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.NormalScreenFragment
+import com.assist.imobilandroidapp.screens.client.screens.Adapters.ClientFragmentAdapter
 import com.assist.imobilandroidapp.screens.forgotPassword.EMPTY_STRING
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MainScreen : AppCompatActivity() {
 
@@ -17,6 +25,8 @@ class MainScreen : AppCompatActivity() {
         binding = ActivityMainScreenBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+        initClientScreen()
 
         binding.mainScreenToolbar.title = EMPTY_STRING
         setSupportActionBar(binding.mainScreenToolbar)
@@ -59,6 +69,7 @@ class MainScreen : AppCompatActivity() {
                     getString(R.string.search_image),
                     Toast.LENGTH_SHORT
                 ).show()
+                requireViewById<SearchView>(R.id.search_searchView).visibility = View.VISIBLE
             }
             resources.getDrawable(R.drawable.ic_share).constantState -> {
                 Toast.makeText(
@@ -72,11 +83,45 @@ class MainScreen : AppCompatActivity() {
 
     private fun favoriteImageViewClick() {
         Toast.makeText(this, getString(R.string.favorite_image), Toast.LENGTH_SHORT).show()
-//        findNavController(R.id.mainScreenFragmentContainerView).navigate(R.id.favouriteScreenFragment)
-        findNavController(R.id.mainScreenFragmentContainerView).navigate(R.id.favouriteNotConnectScreenFragment)
+        binding.apply {
+            clientViewPager.visibility = View.GONE
+            clientTabLatyout.visibility = View.GONE
+            mainScreenFragmentContainerView.visibility = View.VISIBLE
+        }
+        if (DataSharing.getUserIsActive()) {
+            findNavController(R.id.mainScreenFragmentContainerView).navigate(R.id.favouriteScreenFragment)
+        } else {
+            findNavController(R.id.mainScreenFragmentContainerView).navigate(R.id.favouriteNotConnectScreenFragment)
+        }
     }
 
     private fun chatMessageButtonClick() {
         Toast.makeText(this, getString(R.string.chat_button), Toast.LENGTH_SHORT).show()
+    }
+
+    private fun initClientScreen() {
+
+        binding.apply {
+            mainScreenFragmentContainerView.visibility = View.GONE
+            clientTabLatyout.addTab(binding.clientTabLatyout.newTab().setText("All listings"))
+            clientTabLatyout.addTab(binding.clientTabLatyout.newTab().setText("My listings"))
+            inputTextView.text = getString(R.string.login_message) + DataSharing.getUserFullName()
+            clientViewPager.adapter = ClientFragmentAdapter(supportFragmentManager)
+            clientViewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(this.clientTabLatyout))
+            clientTabLatyout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    clientViewPager.currentItem = tab!!.position
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+                }
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+                }
+            })
+
+            iconsViewLinearLayout.visibility = View.VISIBLE
+            filtersLinearLayout.visibility = View.VISIBLE
+            orderFiltersLinearLayout.visibility = View.VISIBLE
+        }
     }
 }

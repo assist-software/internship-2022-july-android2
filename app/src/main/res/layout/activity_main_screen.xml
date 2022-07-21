@@ -63,7 +63,6 @@
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.512"
-                android:visibility="gone"
                 tools:viewBindingType="android.widget.ImageView" />
 
             <ImageView
@@ -78,15 +77,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:viewBindingType="android.widget.ImageView" />
 
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/search_searchView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="@dimen/d_65dp"
-                app:layout_constraintEnd_toStartOf="@+id/favorite_imageView"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -96,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/d_16dp"
-        android:layout_marginTop="@dimen/d_16dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/inter_bold"
         android:text="@string/what_are_you_interested_in"
         android:textColor="@color/black"
@@ -104,28 +94,55 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/search_searchView" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/client_tabLatyout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_48dp"
+        android:layout_marginTop="@dimen/d_8dp"
+        android:layout_marginStart="@dimen/d_16dp"
+        android:layout_marginEnd="@dimen/d_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_textView"
+        app:tabMode="scrollable"
+        app:tabTextColor="@color/grayscale_300"
+        app:tabSelectedTextColor="@color/primary_500" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/client_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/d_230dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_filters_linearLayout">
+
+
+    </androidx.viewpager.widget.ViewPager>
 
     <LinearLayout
         android:id="@+id/icons_view_linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/d_23dp"
+        android:layout_marginTop="@dimen/d_22dp"
         android:layout_marginEnd="@dimen/d_16dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+        app:layout_constraintTop_toBottomOf="@+id/search_searchView">
 
         <ImageView
             android:id="@+id/ic_grid_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/d_16dp"
             android:src="@drawable/ic_grid_view"
             app:layout_constraintEnd_toStartOf="@+id/ic_list_view"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-            app:tint="@color/grayscale_300"
-            android:layout_marginEnd="@dimen/d_16dp"/>
+            app:tint="@color/grayscale_300" />
 
         <ImageView
             android:id="@+id/ic_list_view"
@@ -142,12 +159,12 @@
         android:id="@+id/filters_linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginStart="@dimen/d_16dp"
         android:layout_marginTop="@dimen/d_8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_textView"
-        android:gravity="center">
+        app:layout_constraintTop_toBottomOf="@+id/client_tabLatyout">
 
         <TextView
             android:id="@+id/filter_textView"
@@ -164,19 +181,19 @@
             android:id="@+id/first_filter_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/d_50dp"/>
+            android:layout_marginStart="@dimen/d_50dp" />
 
         <Spinner
             android:id="@+id/second_filter_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/d_60dp"/>
+            android:layout_marginStart="@dimen/d_60dp" />
 
         <Spinner
             android:id="@+id/third_filter_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/d_70dp"/>
+            android:layout_marginStart="@dimen/d_70dp" />
 
     </LinearLayout>
 
@@ -185,7 +202,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/d_16dp"
-        android:layout_marginTop="@dimen/d_16dp"
+        android:layout_marginTop="@dimen/d_8dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
@@ -216,8 +233,8 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/d_230dp"
         app:defaultNavHost="true"
-        android:layout_marginTop="@dimen/d_180dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -232,10 +249,25 @@
         android:src="@drawable/ic_chat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.908"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.873" />
+        app:layout_constraintVertical_bias="0.921" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_16dp"
+        android:layout_marginTop="@dimen/d_8dp"
+        android:layout_marginEnd="@dimen/d_16dp"
+        android:background="@drawable/search_view_custom"
+        android:visibility="gone"
+        app:iconifiedByDefault="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:queryHint="Enter title" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

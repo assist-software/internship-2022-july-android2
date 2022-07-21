@@ -56,6 +56,7 @@ class CategoryListScreenFragment : Fragment(){
         searchView = requireActivity().findViewById(R.id.search_searchView)
         searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {
+                searchView.visibility = View.GONE
                 categoryChildrens.clear()
                 return false
             }

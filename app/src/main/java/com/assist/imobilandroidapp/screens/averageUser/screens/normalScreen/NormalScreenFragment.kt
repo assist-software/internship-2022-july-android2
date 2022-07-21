@@ -15,6 +15,7 @@ import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Clas
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ChildDataFactory
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ParentDataFactory
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Interfaces.ListingInterface
 
 class NormalScreenFragment : Fragment() , ListingInterface {
@@ -41,16 +42,6 @@ class NormalScreenFragment : Fragment() , ListingInterface {
                 ParentDataFactory
                 .getParents(10),this@NormalScreenFragment)
         }
-
-        setVisibility()
-    }
-
-    private fun setVisibility() {
-        requireActivity().findViewById<TextView>(R.id.input_textView).visibility = View.VISIBLE
-        requireActivity().findViewById<TextView>(R.id.input_textView).text = getString(R.string.what_are_you_interested_in)
-        requireActivity().findViewById<LinearLayout>(R.id.icons_view_linearLayout).visibility = View.GONE
-        requireActivity().findViewById<LinearLayout>(R.id.filters_linearLayout).visibility = View.GONE
-        requireActivity().findViewById<LinearLayout>(R.id.order_filters_linearLayout).visibility = View.GONE
     }
 
     override fun onCategoryClicked(category: String, categoryList: List<ChildModel>) {

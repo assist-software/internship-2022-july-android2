@@ -77,7 +77,8 @@ class ChildAdapter(private val children: List<ChildModel>,private val listingInt
         DataSharing.commit()
 
         ChildDataFactory.childModel = childModel
-        view.findNavController().navigate(R.id.action_normalScreenFragment_to_detailsScreenFragment)
+
+        view.findNavController().navigate(R.id.detailsScreenFragment)
     }
 
     private fun itemFavouriteIconClick(button: ImageButton,view: View,position: Int) {
