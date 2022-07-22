@@ -81,178 +81,210 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/input_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/d_16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/inter_bold"
-        android:text="@string/what_are_you_interested_in"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size_20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_searchView" />
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/client_tabLatyout"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clMainScreenFiltersTextIcons"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/d_48dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/d_8dp"
-        android:layout_marginStart="@dimen/d_16dp"
-        android:layout_marginEnd="@dimen/d_16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_textView"
-        app:tabMode="scrollable"
-        app:tabTextColor="@color/grayscale_300"
-        app:tabSelectedTextColor="@color/primary_500" />
+        app:layout_constraintTop_toBottomOf="@+id/search_searchView">
+
+        <TextView
+            android:id="@+id/input_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d_16dp"
+            android:layout_marginEnd="@dimen/d_16dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/what_are_you_interested_in"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_20sp"
+            app:layout_constraintEnd_toStartOf="@+id/icons_view_linearLayout"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/client_tabLatyout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d_48dp"
+            android:layout_marginStart="@dimen/d_16dp"
+            android:layout_marginTop="@dimen/d_8dp"
+            android:layout_marginEnd="@dimen/d_16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_textView"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/primary_500"
+            app:tabTextColor="@color/grayscale_300" />
+
+        <LinearLayout
+            android:id="@+id/icons_view_linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d_6dp"
+            android:layout_marginEnd="@dimen/d_16dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ic_grid_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/d_16dp"
+                android:src="@drawable/ic_grid_view"
+                app:layout_constraintEnd_toStartOf="@+id/ic_list_view"
+                app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+                app:tint="@color/grayscale_300" />
+
+            <ImageView
+                android:id="@+id/ic_list_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_list_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+                app:tint="@color/grayscale_300" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filters_linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d_16dp"
+            android:layout_marginTop="@dimen/d_8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/client_tabLatyout">
+
+            <TextView
+                android:id="@+id/filter_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_semi_bold"
+                android:text="@string/filter_by"
+                android:textColor="@color/grayscale_400"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_textView" />
+
+            <Spinner
+                android:id="@+id/first_filter_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/d_50dp" />
+
+            <Spinner
+                android:id="@+id/second_filter_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/d_60dp" />
+
+            <Spinner
+                android:id="@+id/third_filter_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/d_70dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/order_filters_linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d_16dp"
+            android:layout_marginTop="@dimen/d_8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filters_linearLayout">
+
+            <TextView
+                android:id="@+id/order_filter_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_semi_bold"
+                android:text="@string/order_by"
+                android:textColor="@color/grayscale_400"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_textView" />
+
+            <Spinner
+                android:id="@+id/order_filter_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/d_50dp" />
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/client_viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/d_230dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/order_filters_linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/clMainScreenFiltersTextIcons">
 
 
     </androidx.viewpager.widget.ViewPager>
-
-    <LinearLayout
-        android:id="@+id/icons_view_linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/d_22dp"
-        android:layout_marginEnd="@dimen/d_16dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_searchView">
-
-        <ImageView
-            android:id="@+id/ic_grid_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/d_16dp"
-            android:src="@drawable/ic_grid_view"
-            app:layout_constraintEnd_toStartOf="@+id/ic_list_view"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-            app:tint="@color/grayscale_300" />
-
-        <ImageView
-            android:id="@+id/ic_list_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_list_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-            app:tint="@color/grayscale_300" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/filters_linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/d_16dp"
-        android:layout_marginTop="@dimen/d_8dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/client_tabLatyout">
-
-        <TextView
-            android:id="@+id/filter_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/inter_semi_bold"
-            android:text="@string/filter_by"
-            android:textColor="@color/grayscale_400"
-            android:textSize="@dimen/text_size_14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_textView" />
-
-        <Spinner
-            android:id="@+id/first_filter_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/d_50dp" />
-
-        <Spinner
-            android:id="@+id/second_filter_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/d_60dp" />
-
-        <Spinner
-            android:id="@+id/third_filter_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/d_70dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/order_filters_linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/d_16dp"
-        android:layout_marginTop="@dimen/d_8dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filters_linearLayout">
-
-        <TextView
-            android:id="@+id/order_filter_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/inter_semi_bold"
-            android:text="@string/order_by"
-            android:textColor="@color/grayscale_400"
-            android:textSize="@dimen/text_size_14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_textView" />
-
-        <Spinner
-            android:id="@+id/order_filter_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/d_50dp" />
-
-
-    </LinearLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainScreenFragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/d_230dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/d_8dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/order_filters_linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/clMainScreenFiltersTextIcons"
         app:navGraph="@navigation/main_screen_navigation" />
 
-    <ImageButton
-        android:id="@+id/main_screen_message_button"
-        android:layout_width="@dimen/d_60dp"
-        android:layout_height="@dimen/d_60dp"
-        android:background="@drawable/circle_message_button"
-        android:src="@drawable/ic_chat"
+    <LinearLayout
+        android:id="@+id/lLUsersButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.908"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.921" />
+        android:layout_marginEnd="@dimen/d_16dp"
+        android:layout_marginBottom="@dimen/d_50dp">
+
+        <ImageButton
+            android:id="@+id/main_screen_message_button"
+            android:layout_width="@dimen/d_60dp"
+            android:layout_height="@dimen/d_60dp"
+            android:background="@drawable/circle_message_button"
+            android:src="@drawable/ic_chat"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/main_screen_add_button"
+            android:layout_width="@dimen/d_60dp"
+            android:layout_height="@dimen/d_60dp"
+            android:layout_marginTop="@dimen/d_16dp"
+            android:background="@drawable/add_button"
+            android:src="@drawable/ic_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_searchView"

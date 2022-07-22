@@ -10,11 +10,14 @@ import androidx.navigation.findNavController
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.ActivityMainScreenBinding
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.SHARED_KEY
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.NormalScreenFragment
 import com.assist.imobilandroidapp.screens.client.screens.Adapters.ClientFragmentAdapter
 import com.assist.imobilandroidapp.screens.forgotPassword.EMPTY_STRING
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+
+val userResponse = DataSharing.getUser()
 
 class MainScreen : AppCompatActivity() {
 
@@ -26,7 +29,7 @@ class MainScreen : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        initClientScreen()
+        init()
 
         binding.mainScreenToolbar.title = EMPTY_STRING
         setSupportActionBar(binding.mainScreenToolbar)
@@ -88,7 +91,7 @@ class MainScreen : AppCompatActivity() {
             clientTabLatyout.visibility = View.GONE
             mainScreenFragmentContainerView.visibility = View.VISIBLE
         }
-        if (DataSharing.getUserIsActive()) {
+        if (userResponse?.isActive == true) {
             findNavController(R.id.mainScreenFragmentContainerView).navigate(R.id.favouriteScreenFragment)
         } else {
             findNavController(R.id.mainScreenFragmentContainerView).navigate(R.id.favouriteNotConnectScreenFragment)
@@ -99,13 +102,15 @@ class MainScreen : AppCompatActivity() {
         Toast.makeText(this, getString(R.string.chat_button), Toast.LENGTH_SHORT).show()
     }
 
-    private fun initClientScreen() {
+    private fun init() {
 
         binding.apply {
             mainScreenFragmentContainerView.visibility = View.GONE
+            inputTextView.text = getString(R.string.login_message) + userResponse?.fullName
+            clientViewPager.visibility = View.VISIBLE
+            clientTabLatyout.visibility = View.VISIBLE
             clientTabLatyout.addTab(binding.clientTabLatyout.newTab().setText("All listings"))
             clientTabLatyout.addTab(binding.clientTabLatyout.newTab().setText("My listings"))
-            inputTextView.text = getString(R.string.login_message) + DataSharing.getUserFullName()
             clientViewPager.adapter = ClientFragmentAdapter(supportFragmentManager)
             clientViewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(this.clientTabLatyout))
             clientTabLatyout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
@@ -118,10 +123,6 @@ class MainScreen : AppCompatActivity() {
                 override fun onTabReselected(tab: TabLayout.Tab?) {
                 }
             })
-
-            iconsViewLinearLayout.visibility = View.VISIBLE
-            filtersLinearLayout.visibility = View.VISIBLE
-            orderFiltersLinearLayout.visibility = View.VISIBLE
         }
     }
 }

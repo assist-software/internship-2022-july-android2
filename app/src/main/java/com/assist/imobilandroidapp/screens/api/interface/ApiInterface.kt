@@ -22,5 +22,5 @@ interface ApiInterface {
     fun getUserByEmail(@Query("Email") email: String): Call<UserResponse>
 
     @POST("api/User/Reset/Password")
-    fun forgotPassword(@Query("Email") email: String) : Call<NewPasswordResponse>
+    fun forgotPassword(@Query("Email") email: String) : Call<UserResponse>
 }

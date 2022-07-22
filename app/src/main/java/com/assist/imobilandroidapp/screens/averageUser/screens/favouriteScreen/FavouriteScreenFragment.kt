@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.FragmentFavouriteScreenBinding
@@ -65,6 +66,6 @@ class FavouriteScreenFragment : Fragment(), FavouriteInterface {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        favourites.text = getString(R.string.what_are_you_interested_in)
+        findNavController().popBackStack()
     }
 }

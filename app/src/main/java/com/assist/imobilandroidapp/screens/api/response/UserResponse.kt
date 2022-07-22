@@ -36,5 +36,5 @@ data class UserResponse(
     @SerializedName("isActive")
     val isActive : Boolean,
     @SerializedName("listings")
-    val listings : List<ChildModel>?,
+    val listings : List<ChildModel>?
 )

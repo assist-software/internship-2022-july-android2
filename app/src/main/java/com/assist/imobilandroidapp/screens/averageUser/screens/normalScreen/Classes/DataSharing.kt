@@ -2,6 +2,7 @@ package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Cla
 
 import android.content.SharedPreferences
 import com.assist.imobilandroidapp.screens.api.calsses.UserActivities
+import com.assist.imobilandroidapp.screens.api.response.UserResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -35,6 +36,7 @@ const val USER_ISACTIVE = "userIsActive"
 const val USER_LISTINGS = "userListings"
 const val USER_LOGIN_TOKEN = "userToken"
 const val REMEMBER_LOGIN_TOKEN = "rememberLoginToken"
+const val USER = "justUser"
 
 object DataSharing {
 
@@ -180,10 +182,16 @@ object DataSharing {
         editor.putBoolean(USER_ISACTIVE, value)
     }
 
-    fun saveUserListings(value: List<ChildModel>) {
+    fun saveUserListings(value: List<Listing>) {
         val gson = Gson()
         val listObj = gson.toJson(value)
         editor.putString(USER_LISTINGS, listObj)
+    }
+
+    fun saveUser(userResponse: UserResponse){
+        val gson = Gson()
+        val userResponseObj = gson.toJson(userResponse)
+        editor.putString(USER,userResponseObj)
     }
 
     fun rememberUserLogin(value : String){
@@ -255,13 +263,21 @@ object DataSharing {
 
     inline fun <reified T> Gson.fromJson(json: String) = fromJson<T>(json, object: TypeToken<T>() {}.type)
 
-    fun getUserListings(): List<ChildModel> {
+    fun getUserListings(): List<Listing> {
         val stringListObj = sharedPreferences.getString(USER_LISTINGS,null)
-        var childrens : List<ChildModel> = listOf()
+        var listings : List<Listing> = listOf()
         if ( stringListObj != null ) {
-            childrens = Gson().fromJson(stringListObj)
+            listings = Gson().fromJson(stringListObj)
         }
+        return listings
+    }
 
-        return childrens
+    fun getUser() : UserResponse? {
+        val userResponseObj = sharedPreferences.getString(USER,null)
+        var userResponse: UserResponse? = null
+        if ( userResponseObj != null ) {
+            userResponse = Gson().fromJson(userResponseObj)
+        }
+        return userResponse
     }
 }

@@ -1,88 +1,44 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data
 
-import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Seller
-import kotlin.random.Random
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
 
 object ChildDataFactory {
-    private val random = Random
-    var childModel = ChildModel()
-    var searchText : String = ""
-    private val favouriteChildrens = mutableListOf<ChildModel>()
-    private var categoryChildrens = mutableListOf<ChildModel>()
-    private var searchChildrens = mutableListOf<ChildModel>()
-    private val titles =  arrayListOf( "Dreaming", "Aurora", "Lucy House", "KingPenthouse")
-    private val locations = arrayListOf("Suceava, Romania")
-    private val prices = arrayListOf("764,34 RON", "10000 RON", "989,99 RON" , "540 RON")
-    private val descriptions = arrayListOf("Description 1")
-    private val seller = Seller(R.drawable.ic_launcher_foreground,"Zarinschi Armand","Joined now","Response rate: 97%","Response time: with an hour")
-    private val images = arrayListOf(R.drawable.first_image,R.drawable.third_image,R.drawable.second_image,R.drawable.test_photo)
-    private val galleryImages = arrayListOf(R.drawable.second_image, R.drawable.third_image)
+    private val favouriteChildrens = mutableListOf<Listing>()
+    private var categoryChildrens = mutableListOf<Listing>()
+    private var searchChildrens = mutableListOf<Listing>()
     var category : String = ""
 
-    private fun randomTitle() : String{
-        val index = random.nextInt(titles.size)
-        return titles[index]
+    fun getChildren(): List<Listing> {
+        return DataSharing.getUserListings()
     }
 
-    private fun randomPrice() : String{
-        val index = random.nextInt(prices.size)
-        return prices[index]
-    }
-
-    private fun randomLocation() : String{
-        return locations[0]
-    }
-
-    private fun randomImage() : Int{
-        val index = random.nextInt(images.size)
-        return images[index]
-    }
-
-    private fun randomDescription() : String{
-        return descriptions[0]
-    }
-
-    private fun randomImageFromGallery() : Int{
-        val index = random.nextInt(galleryImages.size)
-        return galleryImages[index]
-    }
-
-    fun getChildren(count : Int) : List<ChildModel>{
-        val children = mutableListOf<ChildModel>()
-        repeat(count){
-            val child = ChildModel(randomImage(), randomTitle() , randomLocation() , randomDescription(), randomPrice() , seller , randomImageFromGallery() , randomImageFromGallery())
-            children.add(child)
-        }
-        return children
-    }
-
-    fun getFavouriteChildrens() : List<ChildModel>{
+    fun getFavouriteChildrens() : List<Listing>{
         return favouriteChildrens
     }
 
-    fun addFavouriteChildren(child : ChildModel) {
+    fun addFavouriteChildren(child : Listing) {
         favouriteChildrens.add(child)
     }
 
-    fun removeChildrenFromFavourite(child: ChildModel){
+    fun removeChildrenFromFavourite(child: Listing){
         favouriteChildrens.remove(child)
     }
 
-    fun addCategoryChildrens(childrens: List<ChildModel>){
-        categoryChildrens = childrens as MutableList<ChildModel>
+    fun addCategoryChildrens(childrens: List<Listing>){
+        categoryChildrens = childrens as MutableList<Listing>
     }
 
-    fun getCategoryChildrens(): List<ChildModel> {
+    fun getCategoryChildrens(): List<Listing> {
         return categoryChildrens
     }
 
-    fun addSearchChild(children : ChildModel){
+    fun addSearchChild(children : Listing){
         searchChildrens.add(children)
     }
 
-    fun getSearchChildrens() : List<ChildModel>{
+    fun getSearchChildrens() : List<Listing>{
         return searchChildrens
     }
 }

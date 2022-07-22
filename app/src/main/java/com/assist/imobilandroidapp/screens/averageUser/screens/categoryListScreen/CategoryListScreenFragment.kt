@@ -9,12 +9,16 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentContainerView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager.widget.ViewPager
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.FragmentCategoryListScreenBinding
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Adapters.CategoryParentAdapter
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ChildDataFactory
+import com.google.android.material.tabs.TabLayout
 
 class CategoryListScreenFragment : Fragment(){
 
@@ -36,12 +40,17 @@ class CategoryListScreenFragment : Fragment(){
     }
 
     private fun setVisibility() {
-        requireActivity().findViewById<TextView>(R.id.input_textView).visibility = View.VISIBLE
-        requireActivity().findViewById<TextView>(R.id.input_textView).text = ChildDataFactory.category
-        requireActivity().findViewById<LinearLayout>(R.id.icons_view_linearLayout).visibility = View.VISIBLE
-        ImageViewCompat.setImageTintList(requireActivity().findViewById(R.id.ic_list_view),ColorStateList.valueOf(requireContext().getColor(R.color.grayscale_700)))
-        requireActivity().findViewById<LinearLayout>(R.id.filters_linearLayout).visibility = View.VISIBLE
-        requireActivity().findViewById<LinearLayout>(R.id.order_filters_linearLayout).visibility = View.VISIBLE
+        requireActivity().apply {
+            findViewById<TextView>(R.id.input_textView).visibility = View.VISIBLE
+            findViewById<TextView>(R.id.input_textView).text = ChildDataFactory.category
+            findViewById<LinearLayout>(R.id.icons_view_linearLayout).visibility = View.VISIBLE
+            ImageViewCompat.setImageTintList(this.findViewById(R.id.ic_list_view),ColorStateList.valueOf(requireContext().getColor(R.color.grayscale_700)))
+            findViewById<LinearLayout>(R.id.filters_linearLayout).visibility = View.VISIBLE
+            findViewById<LinearLayout>(R.id.order_filters_linearLayout).visibility = View.VISIBLE
+            findViewById<ViewPager>(R.id.client_viewPager).visibility = View.GONE
+            findViewById<FragmentContainerView>(R.id.mainScreenFragmentContainerView).visibility = View.VISIBLE
+            findViewById<TabLayout>(R.id.client_tabLatyout).visibility = View.GONE
+        }
     }
 
     private fun initRecycler(){
@@ -72,5 +81,10 @@ class CategoryListScreenFragment : Fragment(){
                 return true
             }
         })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        findNavController().navigate(R.id.action_categoryListScreenFragment_to_normalScreenFragment)
     }
 }

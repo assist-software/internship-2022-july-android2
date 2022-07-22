@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.assist.imobilandroidapp.R
@@ -23,7 +25,7 @@ class FavouriteNotConnectScreenFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentFavouriteNotConnectScreenBinding.inflate(inflater, container, false)
 
-        setText()
+        initFragment()
 
         binding.notConnectLoginMaterialButton.setOnClickListener {
             notConnectLoginButtonClick()
@@ -44,7 +46,20 @@ class FavouriteNotConnectScreenFragment : Fragment() {
         startActivity(Intent(context,Login::class.java))
     }
 
-    private fun setText(){
-        requireActivity().findViewById<TextView>(R.id.input_textView).text = getString(R.string.favourites)
+    private fun initFragment(){
+        requireActivity().apply {
+            findViewById<ConstraintLayout>(R.id.clMainScreenFiltersTextIcons).visibility = View.VISIBLE
+            findViewById<LinearLayout>(R.id.icons_view_linearLayout).visibility = View.GONE
+            findViewById<LinearLayout>(R.id.filters_linearLayout).visibility = View.GONE
+            findViewById<LinearLayout>(R.id.order_filters_linearLayout).visibility = View.GONE
+            findViewById<TextView>(R.id.input_textView).text = getString(R.string.favourites)
+            findViewById<TextView>(R.id.input_textView).visibility = View.VISIBLE
+        }
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        findNavController().popBackStack()
     }
 }

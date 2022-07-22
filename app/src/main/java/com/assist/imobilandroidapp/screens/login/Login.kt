@@ -23,7 +23,7 @@ import retrofit2.Response
 class Login : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var userResponse : UserResponse
+    private lateinit var a: UserResponse
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +31,10 @@ class Login : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loginButton.setOnClickListener {
-            loginButtonClick(binding.loginEmailTextInputLayout.editText?.text.toString(),binding.loginPasswordTextInputLayout.editText?.text.toString())
+            loginButtonClick(
+                binding.loginEmailTextInputLayout.editText?.text.toString(),
+                binding.loginPasswordTextInputLayout.editText?.text.toString()
+            )
         }
 
         binding.loginWithGoogleButton.setOnClickListener {
@@ -50,53 +53,38 @@ class Login : AppCompatActivity() {
     }
 
     private fun forgotPasswordTextViewClick() {
-        startActivity(Intent(this,ForgotPassword::class.java))
+        startActivity(Intent(this, ForgotPassword::class.java))
         finish()
     }
 
     private fun singUpTextViewClick() {
-        startActivity(Intent(this,SignUp::class.java))
+        startActivity(Intent(this, SignUp::class.java))
         finish()
     }
 
     private fun loginWithGoogleButtonClick() {
-        Toast.makeText(this, getString(R.string.login_google_button) , Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.login_google_button), Toast.LENGTH_SHORT).show()
     }
 
-    private fun loginButtonClick(email:String,password:String) {
-        val retrofitInstance = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
+    private fun loginButtonClick(email: String, password: String) {
+        val retrofitInstance =
+            RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
 
         DataSharing.init(getSharedPreferences(SHARED_KEY, MODE_PRIVATE))
 
-        retrofitInstance.logIn(LogInBody(email,password)).enqueue(object : Callback<UserResponse> {
+        retrofitInstance.logIn(LogInBody(email, password)).enqueue(object : Callback<UserResponse> {
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
-                if ( response.code() == 200 ){
-                    if(response.body()?.id.equals(DataSharing.getUserId()) && binding.loginRememberMeCheckBox.isChecked){
-                        DataSharing.saveUserLoginToken(response.body()?.token.toString())
-                        userResponse = UserResponse(
-                            DataSharing.getUserId(),
-                            DataSharing.getUserFullName(),
-                            DataSharing.getUserEmail(),
-                            DataSharing.getUserPassword(),
-                            DataSharing.getUserGender(),
-                            DataSharing.getUserPhone(),
-                            DataSharing.getUserRole(),
-                            DataSharing.getUserDateOfBirth(),
-                            DataSharing.getUserAddress(),
-                            DataSharing.getUserPhoto(),
-                            DataSharing.getUserActivities(),
-                            DataSharing.getUserLoginToken(),
-                            DataSharing.getUserCreatedAt(),
-                            DataSharing.getUserUpdatedAt(),
-                            DataSharing.getUserIsActive(),
-                            DataSharing.getUserListings()
-                        )
-                        DataSharing.commit()
-                        Log.d("USERAFTERLOGIN",userResponse.toString())
-                    }
+                if (response.code() == 200) {
+                    Toast.makeText(this@Login, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
+                    DataSharing.saveUserLoginToken(response.body()?.token.toString())
+                    userResponse = response.body()!!
+                    DataSharing.saveUser(userResponse)
+                    DataSharing.commit()
                     toMainScreen()
+                    Log.d("USER",userResponse.toString())
                 } else {
-                    Toast.makeText(this@Login, getString(R.string.login_failed), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Login, getString(R.string.login_failed), Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
 
@@ -105,9 +93,8 @@ class Login : AppCompatActivity() {
         })
     }
 
-    private fun toMainScreen(){
-        Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
-        startActivity(Intent(this,MainScreen::class.java))
+    private fun toMainScreen() {
+        startActivity(Intent(this, MainScreen::class.java))
         finish()
     }
 

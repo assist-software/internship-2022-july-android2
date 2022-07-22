@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ import com.assist.imobilandroidapp.databinding.ActivityForgotPasswordBinding
 import com.assist.imobilandroidapp.screens.api.`interface`.ApiInterface
 import com.assist.imobilandroidapp.screens.api.calsses.RetrofitInstance
 import com.assist.imobilandroidapp.screens.api.response.NewPasswordResponse
+import com.assist.imobilandroidapp.screens.api.response.UserResponse
 import com.assist.imobilandroidapp.screens.login.Login
 import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
@@ -29,7 +31,8 @@ class ForgotPassword : AppCompatActivity() {
         binding = ActivityForgotPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.forgotPasswordEmailTextInputLayout.editText?.addTextChangedListener(object : TextWatcher {
+        binding.forgotPasswordEmailTextInputLayout.editText?.addTextChangedListener(object :
+            TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
 
@@ -42,6 +45,8 @@ class ForgotPassword : AppCompatActivity() {
         })
 
         binding.forgotPasswordMaterialButton.setOnClickListener {
+            val x= 5
+            val c= x
             sendEmailLinkButtonClick(binding.forgotPasswordEmailTextInputLayout)
         }
 
@@ -50,44 +55,51 @@ class ForgotPassword : AppCompatActivity() {
         }
     }
 
-    private fun backToLoginTextViewCLick(){
+    private fun backToLoginTextViewCLick() {
         startActivity(Intent(this, Login::class.java))
         finish()
     }
 
     private fun sendEmailLinkButtonClick(input: TextInputLayout) {
-        val retrofitInstance = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
+        val retrofitInstance =
+            RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
 
         val value = input.editText?.text ?: ""
-        if ( value.isEmpty() ) {
+        if (value.isEmpty()) {
             input.error = getString(R.string.please_enter_your_email)
         } else {
-            retrofitInstance.forgotPassword(input.editText?.text.toString()).enqueue(object : Callback<NewPasswordResponse>{
-                override fun onResponse(
-                    call: Call<NewPasswordResponse>,
-                    response: Response<NewPasswordResponse>
-                ) {
-                    if(response.code() == 200 ) {
-                        Toast.makeText(this@ForgotPassword, getString(R.string.success), Toast.LENGTH_SHORT).show()
+            retrofitInstance.forgotPassword(input.editText?.text.toString())
+                .enqueue(object : Callback<UserResponse> {
+                    override fun onResponse(
+                        call: Call<UserResponse>,
+                        response: Response<UserResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            Toast.makeText(
+                                this@ForgotPassword,
+                                getString(R.string.success),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
-                }
 
-                override fun onFailure(call: Call<NewPasswordResponse>, t: Throwable) {
-                }
-            })
+                    override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                        Log.e("ResetPassword", "Status: $t")
+                    }
+                })
         }
     }
 
     private fun onTextChanged(input: TextInputLayout) {
-//        val value = input.editText?.text ?: ""
-//        input.error = if (value.isEmpty()) {
-//            EMPTY_STRING
-//        } else {
-//            if (!Patterns.EMAIL_ADDRESS.matcher(value).matches()) {
-//                getString(R.string.wrong_email)
-//            } else {
-//                EMPTY_STRING
-//            }.toString()
-//        }.toString()
+        val value = input.editText?.text ?: ""
+        input.error = if (value.isEmpty()) {
+            EMPTY_STRING
+        } else {
+            if (!Patterns.EMAIL_ADDRESS.matcher(value).matches()) {
+                getString(R.string.wrong_email)
+            } else {
+                EMPTY_STRING
+            }.toString()
+        }.toString()
     }
 }
