@@ -53,11 +53,14 @@ class MainScreen : AppCompatActivity() {
 
     private fun userImageViewClick() {
         when (binding.userImageView.drawable.constantState) {
-            resources.getDrawable(R.drawable.ic_user).constantState -> Toast.makeText(
-                this,
-                getString(R.string.user_image),
-                Toast.LENGTH_SHORT
-            ).show()
+            resources.getDrawable(R.drawable.ic_user).constantState -> {
+                findNavController(R.id.mainScreenFragmentContainerView).navigate(R.id.clientProfileFragment)
+                binding.apply {
+                    clMainScreenFiltersTextIcons.visibility = View.GONE
+                    clientViewPager.visibility = View.GONE
+                    mainScreenFragmentContainerView.visibility = View.VISIBLE
+                }
+            }
             resources.getDrawable(R.drawable.ic_exit).constantState -> findNavController(R.id.mainScreenFragmentContainerView).navigate(
                 R.id.action_photoGalleryFragment_to_detailsScreenFragment
             )

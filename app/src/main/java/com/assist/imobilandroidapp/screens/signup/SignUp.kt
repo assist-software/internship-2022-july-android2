@@ -12,8 +12,9 @@ import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.ActivitySignUpBinding
 import com.assist.imobilandroidapp.screens.api.`interface`.ApiInterface
 import com.assist.imobilandroidapp.screens.api.calsses.*
-import com.assist.imobilandroidapp.screens.api.response.UserResponse
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Author
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.SHARED_KEY
 import com.assist.imobilandroidapp.screens.forgotPassword.EMPTY_STRING
 import com.assist.imobilandroidapp.screens.login.Login
@@ -71,8 +72,8 @@ class SignUp : AppCompatActivity() {
 
         DataSharing.init(getSharedPreferences(SHARED_KEY, MODE_PRIVATE))
 
-        retrofitInstance.registerUser(email, password).enqueue(object : Callback<UserResponse> {
-            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+        retrofitInstance.registerUser(email, password).enqueue(object : Callback<Author> {
+            override fun onResponse(call: Call<Author>, response: Response<Author>) {
                 if (response.code() == 200) {
                     Toast.makeText(
                         this@SignUp,
@@ -86,17 +87,17 @@ class SignUp : AppCompatActivity() {
                             saveUserFullName(it.fullName.toString())
                             saveUserEmail(it.email.toString())
                             saveUserPassword(it.password.toString())
-                            saveUserGender(it.gender)
+                            saveUserGender(it.gender!!)
                             saveUserPhone(it.phone.toString())
-                            saveUserRole(it.role)
+                            saveUserRole(it.role!!)
                             saveUserDateOfBirth(it.dateOfBirth.toString())
                             saveUserAddress(it.address.toString())
                             saveUserPhoto(it.photo.toString())
                             it.userActivities?.let { it1 -> saveUserActivities(it1) }
                             saveUserCreatedAt(it.createdAt.toString())
                             saveUserUpdatedAt(it.updatedAt.toString())
-                            saveUserIsActive(it.isActive)
-                            it.listings?.let { it1 -> saveUserListings(it1) }
+                            saveUserIsActive(it.isActive!!)
+                            saveUserListings(it.listings!!)
                         }
                         commit()
                     }
@@ -113,7 +114,7 @@ class SignUp : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+            override fun onFailure(call: Call<Author>, t: Throwable) {
             }
         })
     }

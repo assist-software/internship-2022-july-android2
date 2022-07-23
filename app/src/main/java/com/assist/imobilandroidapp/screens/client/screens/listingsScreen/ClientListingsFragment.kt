@@ -1,4 +1,4 @@
-package com.assist.imobilandroidapp.screens.client.screens.clientListingsScreen
+package com.assist.imobilandroidapp.screens.client.screens.listingsScreen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
 import kotlinx.android.synthetic.main.favourite_item_list_type.view.*
 
-class CategoryParentAdapter(private val categoryChildrens: List<ChildModel>) :
+class CategoryParentAdapter(private val categoryChildrens: List<Listing>) :
     RecyclerView.Adapter<CategoryParentAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,10 +22,10 @@ class CategoryParentAdapter(private val categoryChildrens: List<ChildModel>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val categoryChild = categoryChildrens[position]
-        holder.image.setImageResource(categoryChild.image)
+        holder.image.setImageResource(categoryChild.images?.toInt()!!)
         holder.title.text = categoryChild.title
         holder.description.text = categoryChild.description
-        holder.price.text = categoryChild.price
+        holder.price.text = categoryChild.price.toString()
     }
 
     override fun getItemCount(): Int = categoryChildrens.size

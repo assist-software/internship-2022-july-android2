@@ -12,6 +12,7 @@ import com.assist.imobilandroidapp.screens.api.calsses.LogInBody
 import com.assist.imobilandroidapp.screens.api.calsses.RetrofitInstance
 import com.assist.imobilandroidapp.screens.api.response.UserResponse
 import com.assist.imobilandroidapp.screens.averageUser.screens.mainScreen.MainScreen
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Author
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.SHARED_KEY
 import com.assist.imobilandroidapp.screens.forgotPassword.ForgotPassword
@@ -23,7 +24,7 @@ import retrofit2.Response
 class Login : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var a: UserResponse
+    private lateinit var author: Author
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,23 +73,22 @@ class Login : AppCompatActivity() {
 
         DataSharing.init(getSharedPreferences(SHARED_KEY, MODE_PRIVATE))
 
-        retrofitInstance.logIn(LogInBody(email, password)).enqueue(object : Callback<UserResponse> {
-            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+        retrofitInstance.logIn(LogInBody(email, password)).enqueue(object : Callback<Author> {
+            override fun onResponse(call: Call<Author>, response: Response<Author>) {
                 if (response.code() == 200) {
                     Toast.makeText(this@Login, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
                     DataSharing.saveUserLoginToken(response.body()?.token.toString())
-                    userResponse = response.body()!!
-                    DataSharing.saveUser(userResponse)
+                    author = response.body()!!
+                    DataSharing.saveUser(author)
                     DataSharing.commit()
                     toMainScreen()
-                    Log.d("USER",userResponse.toString())
                 } else {
                     Toast.makeText(this@Login, getString(R.string.login_failed), Toast.LENGTH_SHORT)
                         .show()
                 }
             }
 
-            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+            override fun onFailure(call: Call<Author>, t: Throwable) {
             }
         })
     }

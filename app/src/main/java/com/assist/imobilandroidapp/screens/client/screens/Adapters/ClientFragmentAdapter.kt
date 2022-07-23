@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.NormalScreenFragment
-import com.assist.imobilandroidapp.screens.client.screens.clientListingsScreen.ClientListingsFragment
+import com.assist.imobilandroidapp.screens.client.screens.listingsScreen.ClientListingsFragment
 
 class ClientFragmentAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
     override fun getCount(): Int {

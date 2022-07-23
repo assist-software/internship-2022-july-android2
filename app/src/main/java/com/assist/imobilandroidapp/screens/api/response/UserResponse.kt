@@ -1,7 +1,7 @@
 package com.assist.imobilandroidapp.screens.api.response
 
-import com.assist.imobilandroidapp.screens.api.calsses.UserActivities
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.UserActivities
 import com.google.gson.annotations.SerializedName
 
 data class UserResponse(

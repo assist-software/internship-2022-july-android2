@@ -14,6 +14,7 @@ import com.assist.imobilandroidapp.screens.api.`interface`.ApiInterface
 import com.assist.imobilandroidapp.screens.api.calsses.RetrofitInstance
 import com.assist.imobilandroidapp.screens.api.response.NewPasswordResponse
 import com.assist.imobilandroidapp.screens.api.response.UserResponse
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Author
 import com.assist.imobilandroidapp.screens.login.Login
 import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
@@ -69,10 +70,10 @@ class ForgotPassword : AppCompatActivity() {
             input.error = getString(R.string.please_enter_your_email)
         } else {
             retrofitInstance.forgotPassword(input.editText?.text.toString())
-                .enqueue(object : Callback<UserResponse> {
+                .enqueue(object : Callback<Author> {
                     override fun onResponse(
-                        call: Call<UserResponse>,
-                        response: Response<UserResponse>
+                        call: Call<Author>,
+                        response: Response<Author>
                     ) {
                         if (response.isSuccessful) {
                             Toast.makeText(
@@ -83,7 +84,7 @@ class ForgotPassword : AppCompatActivity() {
                         }
                     }
 
-                    override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                    override fun onFailure(call: Call<Author>, t: Throwable) {
                         Log.e("ResetPassword", "Status: $t")
                     }
                 })

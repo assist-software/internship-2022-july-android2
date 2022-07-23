@@ -20,8 +20,8 @@ class ParentAdapter(private val parents: List<ParentModel>,private val listingIn
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.imobil_item, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.imobil_item, parent, false)
+        notifyDataSetChanged()
         return ViewHolder(v)
     }
 

@@ -1,7 +1,6 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes
 
 import android.content.SharedPreferences
-import com.assist.imobilandroidapp.screens.api.calsses.UserActivities
 import com.assist.imobilandroidapp.screens.api.response.UserResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -182,23 +181,23 @@ object DataSharing {
         editor.putBoolean(USER_ISACTIVE, value)
     }
 
-    fun saveUserListings(value: List<Listing>) {
+    fun saveUserListings(value: List<Listing?>) {
         val gson = Gson()
         val listObj = gson.toJson(value)
         editor.putString(USER_LISTINGS, listObj)
     }
 
-    fun saveUser(userResponse: UserResponse){
+    fun saveUser(author: Author){
         val gson = Gson()
-        val userResponseObj = gson.toJson(userResponse)
-        editor.putString(USER,userResponseObj)
+        val authorResponseObj = gson.toJson(author)
+        editor.putString(USER,authorResponseObj)
     }
 
     fun rememberUserLogin(value : String){
         editor.putString(REMEMBER_LOGIN_TOKEN,value)
     }
 
-    fun getUserId(): String {
+    fun getUserId(): String  {
         return sharedPreferences.getString(USER_ID, null).toString()
     }
 
@@ -272,12 +271,12 @@ object DataSharing {
         return listings
     }
 
-    fun getUser() : UserResponse? {
-        val userResponseObj = sharedPreferences.getString(USER,null)
-        var userResponse: UserResponse? = null
-        if ( userResponseObj != null ) {
-            userResponse = Gson().fromJson(userResponseObj)
+    fun getUser() : Author? {
+        val authorObj = sharedPreferences.getString(USER,null)
+        var author: Author? = null
+        if ( authorObj != null ) {
+            author = Gson().fromJson(authorObj)
         }
-        return userResponse
+        return author
     }
 }

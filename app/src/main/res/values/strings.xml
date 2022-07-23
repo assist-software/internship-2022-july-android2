@@ -91,4 +91,15 @@
     <string name="singUp_failed">Something wrong</string>
     <string name="success">Success</string>
     <string name="login_message">Welcome back,</string>
+    <string name="profile">Profile</string>
+    <string name="login_security"><![CDATA[Login & security]]></string>
+    <string name="notifications">Notifications</string>
+    <string name="log_out">Log out</string>
+    <string name="edit">Edit</string>
+    <string name="fullname">FullName</string>
+    <string name="gender">Gender</string>
+    <string name="dateofbirth">DateOfBirth</string>
+    <string name="email_address">Email address</string>
+    <string name="phone_number">Phone number</string>
+    <string name="address">Address</string>
 </resources>

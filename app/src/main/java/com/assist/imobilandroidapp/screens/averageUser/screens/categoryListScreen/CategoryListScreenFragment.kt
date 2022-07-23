@@ -18,13 +18,14 @@ import com.assist.imobilandroidapp.databinding.FragmentCategoryListScreenBinding
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Adapters.CategoryParentAdapter
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ChildDataFactory
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
 import com.google.android.material.tabs.TabLayout
 
 class CategoryListScreenFragment : Fragment(){
 
     private lateinit var binding: FragmentCategoryListScreenBinding
     private lateinit var searchView: androidx.appcompat.widget.SearchView
-    private var categoryChildrens = ChildDataFactory.getCategoryChildrens() as MutableList<ChildModel>
+    private var categoryChildrens = ChildDataFactory.getCategoryChildrens() as MutableList<Listing>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,9 +72,9 @@ class CategoryListScreenFragment : Fragment(){
             }
 
             override fun onQueryTextChange(p0: String?): Boolean {
-                categoryChildrens = ChildDataFactory.getCategoryChildrens() as MutableList<ChildModel>
+                categoryChildrens = ChildDataFactory.getCategoryChildrens() as MutableList<Listing>
                 for ( item in categoryChildrens ) {
-                    if (item.title.contains(p0.toString())){
+                    if (item.title!!.contains(p0.toString())){
                         ChildDataFactory.addSearchChild(item)
                     }
                 }

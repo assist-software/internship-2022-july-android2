@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Interfaces.FavouriteInterface
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
 import kotlinx.android.synthetic.main.favourite_item_list_type.view.*
 
-class FavouriteChildAdapter(private val favouriteChildren: List<ChildModel>, private val listingInterface: FavouriteInterface):
+class FavouriteChildAdapter(private val favouriteChildren: List<Listing>, private val listingInterface: FavouriteInterface):
     RecyclerView.Adapter<FavouriteChildAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,10 +22,10 @@ class FavouriteChildAdapter(private val favouriteChildren: List<ChildModel>, pri
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val favouriteChild = favouriteChildren[position]
-        holder.image.setImageResource(favouriteChild.image)
+        holder.image.setImageResource(favouriteChild.images?.toInt()!!)
         holder.title.text = favouriteChild.title
         holder.description.text = favouriteChild.description
-        holder.price.text = favouriteChild.price
+        holder.price.text = favouriteChild.price.toString()
     }
 
     override fun getItemCount(): Int {

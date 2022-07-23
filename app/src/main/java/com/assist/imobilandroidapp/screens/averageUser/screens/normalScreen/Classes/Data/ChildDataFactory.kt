@@ -1,6 +1,5 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data
 
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
 

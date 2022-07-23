@@ -17,8 +17,8 @@ class ChildAdapter(private val children: List<Listing>,private val listingInterf
     RecyclerView.Adapter<ChildAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v =
-            LayoutInflater.from(parent.context).inflate(R.layout.child_item_recycler, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.child_item_recycler, parent, false)
+        notifyDataSetChanged()
         return ViewHolder(v)
     }
 

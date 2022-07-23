@@ -15,6 +15,7 @@ import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Clas
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ChildDataFactory
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Interfaces.FavouriteInterface
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
 
 class FavouriteScreenFragment : Fragment(), FavouriteInterface {
 
@@ -60,8 +61,8 @@ class FavouriteScreenFragment : Fragment(), FavouriteInterface {
         initFragment()
     }
 
-    override fun removeItemFromFavourite(childModel: ChildModel) {
-        ChildDataFactory.removeChildrenFromFavourite(childModel)
+    override fun removeItemFromFavourite(listing: Listing) {
+        ChildDataFactory.removeChildrenFromFavourite(listing)
     }
 
     override fun onDestroyView() {

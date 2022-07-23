@@ -1,8 +1,8 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes
 
 data class ParentModel(
-    val title : String = "",
-    val children : List<Listing>
+    var title : String = "",
+    val children : MutableList<Listing>
 )
 
 

@@ -5,16 +5,9 @@ import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Clas
 
 object ParentDataFactory {
 
-    private
-
-    fun getParents(count : Int) : List<ParentModel>{
+    fun getParents() : List<ParentModel>{
         val parents = mutableListOf<ParentModel>()
-        repeat(count){
-            val parent = ParentModel("", DataSharing.getUserListings())
-            parents.add(parent)
-        }
+
         return parents
     }
-
-    fun get
 }

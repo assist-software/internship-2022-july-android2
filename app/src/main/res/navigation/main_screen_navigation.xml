@@ -59,4 +59,14 @@
         android:name="com.assist.imobilandroidapp.screens.averageUser.screens.favouriteNotConnectScreen.FavouriteNotConnectScreenFragment"
         android:label="fragment_favourite_not_connect_screen"
         tools:layout="@layout/fragment_favourite_not_connect_screen" />
+    <fragment
+        android:id="@+id/clientProfileFragment"
+        android:name="com.assist.imobilandroidapp.screens.client.screens.profileScreens.profile.ClientProfileFragment"
+        android:label="fragment_client_profile"
+        tools:layout="@layout/fragment_client_profile" />
+    <fragment
+        android:id="@+id/profileEditFragment"
+        android:name="com.assist.imobilandroidapp.screens.client.screens.profileScreens.profileEdit.ProfileEditFragment"
+        android:label="fragment_profile_edit"
+        tools:layout="@layout/fragment_profile_edit" />
 </navigation>
