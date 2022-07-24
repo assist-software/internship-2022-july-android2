@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.navigation.fragment.findNavController
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.FragmentClientProfileBinding
@@ -20,11 +21,16 @@ class ClientProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentClientProfileBinding.inflate(inflater, container, false)
 
-        binding.lLProfileOption.setOnClickListener {
-            findNavController().navigate(R.id.profileEditFragment)
-        }
+        binding.apply {
+            lLProfileOption.setOnClickListener {
+                findNavController().navigate(R.id.action_clientProfileFragment_to_profileEditFragment)
+            }
 
+            lLLoginSecurityOption.setOnClickListener {
+                findNavController().navigate(R.id.action_clientProfileFragment_to_loginAndSecurityFragment)
+            }
+
+        }
         return binding.root
     }
-
 }

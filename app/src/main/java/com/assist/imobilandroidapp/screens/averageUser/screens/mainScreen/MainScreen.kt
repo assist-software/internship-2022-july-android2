@@ -2,7 +2,6 @@ package com.assist.imobilandroidapp.screens.averageUser.screens.mainScreen
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -10,12 +9,9 @@ import androidx.navigation.findNavController
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.ActivityMainScreenBinding
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.SHARED_KEY
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.NormalScreenFragment
 import com.assist.imobilandroidapp.screens.client.screens.Adapters.ClientFragmentAdapter
 import com.assist.imobilandroidapp.screens.forgotPassword.EMPTY_STRING
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 
 val userResponse = DataSharing.getUser()
 
@@ -59,6 +55,7 @@ class MainScreen : AppCompatActivity() {
                     clMainScreenFiltersTextIcons.visibility = View.GONE
                     clientViewPager.visibility = View.GONE
                     mainScreenFragmentContainerView.visibility = View.VISIBLE
+                    lLUsersButtons.visibility = View.GONE
                 }
             }
             resources.getDrawable(R.drawable.ic_exit).constantState -> findNavController(R.id.mainScreenFragmentContainerView).navigate(
@@ -112,6 +109,7 @@ class MainScreen : AppCompatActivity() {
             inputTextView.text = getString(R.string.login_message) + userResponse?.fullName
             clientViewPager.visibility = View.VISIBLE
             clientTabLatyout.visibility = View.VISIBLE
+            lLUsersButtons.visibility = View.VISIBLE
             clientTabLatyout.addTab(binding.clientTabLatyout.newTab().setText("All listings"))
             clientTabLatyout.addTab(binding.clientTabLatyout.newTab().setText("My listings"))
             clientViewPager.adapter = ClientFragmentAdapter(supportFragmentManager)

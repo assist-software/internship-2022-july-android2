@@ -136,7 +136,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/placeholder"
+            android:hint="@string/email"
+            android:textColor="@color/black"
             android:inputType="textEmailAddress"
             android:lines="1" />
 
@@ -162,8 +163,9 @@
             android:layout_height="match_parent"
             android:hint="@string/password"
             android:inputType="textPassword"
+            android:textColor="@color/black"
             android:lines="1"
-            android:maxLength="16" />
+            android:maxLength="16"/>
 
 
     </com.google.android.material.textfield.TextInputLayout>

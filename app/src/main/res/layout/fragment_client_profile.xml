@@ -8,13 +8,13 @@
 
     <LinearLayout
         android:id="@+id/lLClientProfile"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:gravity="center_horizontal"
+        android:layout_marginStart="@dimen/d_16dp"
+        android:layout_marginEnd="@dimen/d_16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -24,7 +24,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_gravity="center">
 
             <ImageView
                 android:id="@+id/iVClientProfileImage"
@@ -53,214 +54,219 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:id="@+id/lLProfileOption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/d_60dp"
+            android:layout_width="@dimen/d_382dp"
+            android:layout_height="@dimen/d_240dp"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rLClientProfile">
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/d_70dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/lLProfileOption"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/d_5dp"
-                android:gravity="center"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rLClientProfile">
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_user_profile" />
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rLClientProfile">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/d_8dp"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="@string/profile"
-                    android:textColor="@color/grayscale_500"
-                    android:textSize="@dimen/text_size_14sp" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_user_profile" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/d_300dp"
-                    android:src="@drawable/ic_next" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/d_8dp"
+                        android:fontFamily="@font/inter_medium"
+                        android:text="@string/profile"
+                        android:textColor="@color/grayscale_500"
+                        android:textSize="@dimen/text_size_14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/d_285dp"
+                        android:src="@drawable/ic_next" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d_1dp"
+                    android:layout_marginTop="@dimen/d_16dp"
+                    android:background="@color/grayscale_200"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lLProfileOption" />
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/d_1dp"
-                android:layout_marginTop="@dimen/d_16dp"
-                android:background="@color/grayscale_200"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lLProfileOption" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lLLoginSecurityOption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/d_16dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rLClientProfile">
-
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/lLLoginSecurityOption"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/d_5dp"
-                android:gravity="center"
-                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/d_16dp"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rLClientProfile">
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_login_security" />
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rLClientProfile">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/d_8dp"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="@string/login_security"
-                    android:textColor="@color/grayscale_500"
-                    android:textSize="@dimen/text_size_14sp" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_login_security" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="235dp"
-                    android:src="@drawable/ic_next" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/d_8dp"
+                        android:fontFamily="@font/inter_medium"
+                        android:text="@string/login_security"
+                        android:textColor="@color/grayscale_500"
+                        android:textSize="@dimen/text_size_14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="220dp"
+                        android:src="@drawable/ic_next" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d_1dp"
+                    android:layout_marginTop="@dimen/d_16dp"
+                    android:background="@color/grayscale_200"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lLProfileOption" />
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/d_1dp"
-                android:layout_marginTop="@dimen/d_16dp"
-                android:background="@color/grayscale_200"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lLProfileOption" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lLNotificationsOption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/d_16dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rLClientProfile">
-
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/lLNotificationsOption"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/d_5dp"
-                android:gravity="center"
-                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/d_16dp"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rLClientProfile">
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_notification" />
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rLClientProfile">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/d_8dp"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="@string/notifications"
-                    android:textColor="@color/grayscale_500"
-                    android:textSize="@dimen/text_size_14sp" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_notification" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="258dp"
-                    android:src="@drawable/ic_next" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/d_8dp"
+                        android:fontFamily="@font/inter_medium"
+                        android:text="@string/notifications"
+                        android:textColor="@color/grayscale_500"
+                        android:textSize="@dimen/text_size_14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="240dp"
+                        android:src="@drawable/ic_next" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d_1dp"
+                    android:layout_marginTop="@dimen/d_16dp"
+                    android:background="@color/grayscale_200"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lLProfileOption" />
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/d_1dp"
-                android:layout_marginTop="@dimen/d_16dp"
-                android:background="@color/grayscale_200"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lLProfileOption" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lLMessagesOption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/d_20dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rLClientProfile">
-
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/lLMessagesOption"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/d_5dp"
-                android:gravity="center"
-                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/d_20dp"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rLClientProfile">
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_messages" />
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rLClientProfile">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/d_8dp"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="Messages"
-                    android:textColor="@color/grayscale_500"
-                    android:textSize="@dimen/text_size_14sp" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_messages" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/d_270dp"
-                    android:src="@drawable/ic_next" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/d_8dp"
+                        android:fontFamily="@font/inter_medium"
+                        android:text="Messages"
+                        android:textColor="@color/grayscale_500"
+                        android:textSize="@dimen/text_size_14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/d_255dp"
+                        android:src="@drawable/ic_next" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d_1dp"
+                    android:layout_marginTop="@dimen/d_16dp"
+                    android:background="@color/grayscale_200"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lLProfileOption" />
 
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/d_1dp"
-                android:layout_marginTop="@dimen/d_16dp"
-                android:background="@color/grayscale_200"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lLProfileOption" />
 
         </LinearLayout>
 
@@ -274,7 +280,7 @@
             android:text="@string/log_out"
             android:textColor="@color/grayscale_500"
             android:textSize="@dimen/text_size_12sp"
-            app:strokeColor="@color/grayscale_500" />
+            app:strokeColor="@color/grayscale_500"/>
 
     </LinearLayout>
 

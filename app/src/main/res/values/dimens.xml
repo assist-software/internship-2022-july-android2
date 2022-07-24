@@ -130,5 +130,14 @@
     <dimen name="d_242dp">242dp</dimen>
     <dimen name="d_263dp">263dp</dimen>
     <dimen name="d_282dp">282dp</dimen>
+    <dimen name="d_255dp">255dp</dimen>
+    <dimen name="d_285dp">285dp</dimen>
+    <dimen name="d_540dp">540dp</dimen>
+    <dimen name="d_37dp">37dp</dimen>
+    <dimen name="d_377dp">377dp</dimen>
+    <dimen name="d_90dp">90dp</dimen>
+    <dimen name="d_210dp">210dp</dimen>
+    <dimen name="d_195dp">195dp</dimen>
+    <dimen name="d_135dp">135dp</dimen>
 
 </resources>

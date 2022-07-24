@@ -102,4 +102,21 @@
     <string name="email_address">Email address</string>
     <string name="phone_number">Phone number</string>
     <string name="address">Address</string>
+    <string name="firstinput">FirstInput</string>
+    <string name="secondinput">SecondInput</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="last_updated_3_weeks_ago">Last updated 3 weeks ago</string>
+    <string name="update">Update</string>
+    <string name="social_accounts">Social accounts</string>
+    <string name="facebook">Facebook</string>
+    <string name="not_connected">Not connected</string>
+    <string name="connect">Connect</string>
+    <string name="google">Google</string>
+    <string name="conected">Conected</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="recent_login_activity">Recent login activity</string>
+    <string name="account">Account</string>
+    <string name="dezactivate">Dezactivate</string>
+    <string name="log_out_device">Log out device</string>
 </resources>

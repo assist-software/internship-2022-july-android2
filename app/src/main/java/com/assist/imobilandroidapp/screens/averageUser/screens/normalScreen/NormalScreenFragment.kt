@@ -43,26 +43,31 @@ class NormalScreenFragment : Fragment() , ListingInterface {
         val retrofitInstance = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
 
         val parents = mutableListOf<ParentModel>()
-        var title = ""
-        var parentListing : MutableList<Listing> = mutableListOf()
-        var listings = listOf<Listing>()
+        var listings: MutableList<Listing>
+        val category = mutableListOf<Listing>()
 
         retrofitInstance.getListing().enqueue(object : Callback<List<Listing>>{
             override fun onResponse(call: Call<List<Listing>>, response: Response<List<Listing>>) {
-                if(response.isSuccessful){
-                    listings = response.body()!!
-                    listings.forEach{ listing ->
-                        parents.firstOrNull {
-                            it.title == listing.category
-                        }?.let {
-                            it.children.add(listing)
-                            title = it.title
-                            parentListing = it.children
-                        }?: run {
-                            parents.add(ParentModel(title,parentListing))
-                            Log.d("++++++++++++++++++++++++++++PARENT+++++++++++++++++++++",parents.toString())
+                if(response.isSuccessful) {
+                    listings = response.body()!! as MutableList
+//                    listings.forEach{ listing ->
+//                        parents.firstOrNull {
+//                            it.title == listing.category
+//                        }?.let {
+//                            it.children.add(listing)
+//                        }?: run {
+//                            parents.add(ParentModel(listing.category!!,listings))
+//                            Log.d("++++++++++++++++++++++++++++PARENT+++++++++++++++++++++",parents.toString())
+//                        }
+//                    }
+                    repeat(listings.size){
+                        val listing = listings[it]
+                        if(parents.isEmpty()){
+                            category.add(listing)
+                            parents.add(ParentModel(listing.category!!,category))
                         }
                     }
+                    Log.e("+++++++++++++++++++++++++++++++PARENTS+++++++++++++++++++++++",parents.toString())
                 }
             }
 

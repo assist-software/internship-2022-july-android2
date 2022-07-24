@@ -6,65 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".screens.client.screens.profileScreens.profileEdit.ProfileEditFragment">
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                android:id="@+id/llIconOptionTitle"
+            <include
+                android:id="@+id/profile_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/d_16dp"
-                android:layout_marginTop="16dp"
-                android:orientation="vertical"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/iVBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_back" />
-
-                <TextView
-                    android:id="@+id/tVOptionTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/d_40dp"
-                    android:fontFamily="@font/inter_bold"
-                    android:text="@string/profile"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_24sp" />
-
-            </LinearLayout>
+                layout="@layout/profile_header"
+                android:layout_marginTop="@dimen/d_8dp"/>
 
             <LinearLayout
                 android:id="@+id/lLClientProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/d_20dp"
-                android:gravity="center_horizontal"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/llIconOptionTitle"
-                app:layout_constraintVertical_bias="1.0">
+                app:layout_constraintTop_toBottomOf="@+id/llIconOptionTitle">
 
                 <LinearLayout
                     android:id="@+id/lLFullName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/d_20dp"
+                    android:layout_gravity="center"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +72,8 @@
                             android:textSize="@dimen/text_size_16sp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tVClientFullNameEdit"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/d_282dp"
                             android:fontFamily="@font/inter_semi_bold"
@@ -99,6 +84,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tVClientFullName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/d_8dp"
@@ -106,6 +92,14 @@
                         android:text="@string/fullname"
                         android:textColor="@color/grayscale_400"
                         android:textSize="@dimen/text_size_14sp" />
+
+                    <include
+                        android:id="@+id/lClientEditInputs"
+                        layout="@layout/client_profile_edit_model"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/d_16dp"
+                        android:visibility="gone"/>
 
                     <View
                         android:layout_width="match_parent"
@@ -122,6 +116,7 @@
                     android:id="@+id/lLGender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="@dimen/d_20dp"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +141,8 @@
                             android:textSize="@dimen/text_size_16sp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tVClientGenderEdit"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/d_297dp"
                             android:fontFamily="@font/inter_semi_bold"
@@ -157,6 +153,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tVClientGender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/d_8dp"
@@ -180,6 +177,7 @@
                     android:id="@+id/lLDateOfBirth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="@dimen/d_20dp"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -204,7 +202,8 @@
                             android:textSize="@dimen/text_size_16sp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tVClientDateOfBirthEdit"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/d_263dp"
                             android:fontFamily="@font/inter_semi_bold"
@@ -215,6 +214,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tVClientDateOfBirth"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/d_8dp"
@@ -238,6 +238,7 @@
                     android:id="@+id/lLEmailAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="@dimen/d_20dp"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -262,7 +263,8 @@
                             android:textSize="@dimen/text_size_16sp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tVClientEmailAddressEdit"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/d_246dp"
                             android:fontFamily="@font/inter_semi_bold"
@@ -273,6 +275,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tVClientEmailAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/d_8dp"
@@ -296,6 +299,7 @@
                     android:id="@+id/lLPhoneNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="@dimen/d_20dp"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -320,7 +324,8 @@
                             android:textSize="@dimen/text_size_16sp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tVClientPhoneNumberEdit"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/d_242dp"
                             android:fontFamily="@font/inter_semi_bold"
@@ -331,6 +336,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tVClientPhoneNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/d_8dp"
@@ -354,6 +360,7 @@
                     android:id="@+id/lLAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="@dimen/d_20dp"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -378,7 +385,8 @@
                             android:textSize="@dimen/text_size_16sp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tVClientAddressEdit"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/d_290dp"
                             android:fontFamily="@font/inter_semi_bold"
@@ -389,6 +397,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tVClientAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/d_8dp"
@@ -410,9 +419,8 @@
 
             </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
