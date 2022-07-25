@@ -1,12 +1,9 @@
 package com.assist.imobilandroidapp.screens.api.`interface`
 
 import com.assist.imobilandroidapp.screens.api.calsses.LogInBody
-import com.assist.imobilandroidapp.screens.api.response.NewPasswordResponse
-import com.assist.imobilandroidapp.screens.api.response.UserResponse
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Author
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST

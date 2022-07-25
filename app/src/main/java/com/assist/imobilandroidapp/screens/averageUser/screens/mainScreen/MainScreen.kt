@@ -91,7 +91,7 @@ class MainScreen : AppCompatActivity() {
             clientTabLatyout.visibility = View.GONE
             mainScreenFragmentContainerView.visibility = View.VISIBLE
         }
-        if (userResponse?.isActive == true) {
+        if (DataSharing.getUser()?.isActive == true) {
             findNavController(R.id.mainScreenFragmentContainerView).navigate(R.id.favouriteScreenFragment)
         } else {
             findNavController(R.id.mainScreenFragmentContainerView).navigate(R.id.favouriteNotConnectScreenFragment)

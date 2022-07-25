@@ -21,7 +21,6 @@ class ParentAdapter(private val parents: List<ParentModel>,private val listingIn
         viewType: Int
     ): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.imobil_item, parent, false)
-        notifyDataSetChanged()
         return ViewHolder(v)
     }
 
@@ -34,7 +33,7 @@ class ParentAdapter(private val parents: List<ParentModel>,private val listingIn
         position: Int
     ) {
         val parent = parents[position]
-        holder.textView.text = parent.title
+        holder.textView.text = parent.category
         val childLayoutManager = LinearLayoutManager(holder.recyclerView.context, LinearLayout.HORIZONTAL, false)
         childLayoutManager.initialPrefetchItemCount = 4
         holder.recyclerView.apply {

@@ -83,9 +83,4 @@ class CategoryListScreenFragment : Fragment(){
             }
         })
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        findNavController().navigate(R.id.action_categoryListScreenFragment_to_normalScreenFragment)
-    }
 }

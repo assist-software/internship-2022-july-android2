@@ -119,4 +119,17 @@
     <string name="account">Account</string>
     <string name="dezactivate">Dezactivate</string>
     <string name="log_out_device">Log out device</string>
+    <string name="dezactivate_your_account">Dezactivate your account</string>
+    <string name="device">Device</string>
+    <string name="location">Location</string>
+    <string name="status">Status</string>
+    <string name="news">News</string>
+    <string name="discounts_promotions"><![CDATA[Discounts & promotions]]></string>
+    <string name="messages">Messages</string>
+    <string name="new_listings">New listings</string>
+    <string name="price_change">Price change</string>
+    <string name="tips_on_how_to_sell_quicker_interesting_news_and_offers_from_us_and_our_partners">Tips on how to sell quicker, interesting news and offers from us and our partners.</string>
+    <string name="e_mail">E-mail</string>
+    <string name="sms">SMS</string>
+    <string name="discount_description">Notifications about promotions and discounts offered by us for our services.</string>
 </resources>

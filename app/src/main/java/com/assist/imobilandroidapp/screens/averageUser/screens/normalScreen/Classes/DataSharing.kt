@@ -1,7 +1,6 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes
 
 import android.content.SharedPreferences
-import com.assist.imobilandroidapp.screens.api.response.UserResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -36,6 +35,7 @@ const val USER_LISTINGS = "userListings"
 const val USER_LOGIN_TOKEN = "userToken"
 const val REMEMBER_LOGIN_TOKEN = "rememberLoginToken"
 const val USER = "justUser"
+val TOKENS = mutableListOf<String>()
 
 object DataSharing {
 
@@ -119,6 +119,11 @@ object DataSharing {
         editor.clear()
     }
 
+    fun logoutUser(author: Author){
+        editor.remove(author.token)
+        TOKENS.remove(author.token)
+    }
+
     fun saveUserId(value: String) {
         editor.putString(USER_ID, value)
     }
@@ -165,8 +170,8 @@ object DataSharing {
         editor.putString(USER_USERACTIVITIES, stringObj)
     }
 
-    fun saveUserLoginToken(value: String) {
-        editor.putString(USER_LOGIN_TOKEN, value)
+    fun saveUserLoginToken(value: String?) {
+        TOKENS.add(value!!)
     }
 
     fun saveUserCreatedAt(value: String) {

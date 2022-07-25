@@ -8,8 +8,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.widget.SearchView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentContainerView
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager.widget.ViewPager
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.FragmentPhotoGalleryBinding
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Adapters.ChildPhotoGalleryAdapter
@@ -47,11 +50,11 @@ class PhotoGalleryFragment : Fragment() {
     }
 
     private fun initFragment(){
-        textView = requireActivity().findViewById(R.id.input_textView)
-        textView.visibility = View.GONE
-
-        requireActivity().findViewById<ImageView>(R.id.search_imageView).visibility = View.VISIBLE
-        requireActivity().findViewById<SearchView>(R.id.search_searchView).visibility = View.GONE
+        requireActivity().apply {
+            findViewById<ConstraintLayout>(R.id.clMainScreenFiltersTextIcons).visibility = View.GONE
+            findViewById<FragmentContainerView>(R.id.mainScreenFragmentContainerView).visibility = View.VISIBLE
+            findViewById<ViewPager>(R.id.client_viewPager).visibility = View.GONE
+        }
 
         initRecycler()
     }

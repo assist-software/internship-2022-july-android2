@@ -12,8 +12,6 @@ import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.ActivityForgotPasswordBinding
 import com.assist.imobilandroidapp.screens.api.`interface`.ApiInterface
 import com.assist.imobilandroidapp.screens.api.calsses.RetrofitInstance
-import com.assist.imobilandroidapp.screens.api.response.NewPasswordResponse
-import com.assist.imobilandroidapp.screens.api.response.UserResponse
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Author
 import com.assist.imobilandroidapp.screens.login.Login
 import com.google.android.material.textfield.TextInputLayout

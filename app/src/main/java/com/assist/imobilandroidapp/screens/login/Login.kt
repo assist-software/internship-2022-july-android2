@@ -2,7 +2,6 @@ package com.assist.imobilandroidapp.screens.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.assist.imobilandroidapp.R
@@ -10,7 +9,6 @@ import com.assist.imobilandroidapp.databinding.ActivityLoginBinding
 import com.assist.imobilandroidapp.screens.api.`interface`.ApiInterface
 import com.assist.imobilandroidapp.screens.api.calsses.LogInBody
 import com.assist.imobilandroidapp.screens.api.calsses.RetrofitInstance
-import com.assist.imobilandroidapp.screens.api.response.UserResponse
 import com.assist.imobilandroidapp.screens.averageUser.screens.mainScreen.MainScreen
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Author
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
@@ -20,11 +18,11 @@ import com.assist.imobilandroidapp.screens.signup.SignUp
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 
 class Login : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var author: Author
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,9 +47,8 @@ class Login : AppCompatActivity() {
         binding.forgotPasswordTextView.setOnClickListener {
             forgotPasswordTextViewClick()
         }
-
-//        verifyUserTokenLogin()
     }
+
 
     private fun forgotPasswordTextViewClick() {
         startActivity(Intent(this, ForgotPassword::class.java))
@@ -76,10 +73,19 @@ class Login : AppCompatActivity() {
         retrofitInstance.logIn(LogInBody(email, password)).enqueue(object : Callback<Author> {
             override fun onResponse(call: Call<Author>, response: Response<Author>) {
                 if (response.code() == 200) {
-                    Toast.makeText(this@Login, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
-                    DataSharing.saveUserLoginToken(response.body()?.token.toString())
-                    author = response.body()!!
-                    DataSharing.saveUser(author)
+                    Toast.makeText(
+                        this@Login,
+                        getString(R.string.login_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    if (binding.loginRememberMeCheckBox.isChecked) {
+                        try {
+                            DataSharing.saveUserLoginToken(response.body()?.token!!)
+                        } catch (e: Exception) {
+                            e.message
+                        }
+                    }
+                    DataSharing.saveUser(response.body()!!)
                     DataSharing.commit()
                     toMainScreen()
                 } else {
@@ -97,21 +103,4 @@ class Login : AppCompatActivity() {
         startActivity(Intent(this, MainScreen::class.java))
         finish()
     }
-
-//    private fun verifyUserTokenLogin(){
-//        val retrofitInstance = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
-//
-//        retrofitInstance.getUserByEmail(userResponse.email.toString()).enqueue(object : Callback<UserResponse>{
-//            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
-//                if(response.code() == 200 ) {
-//                    if (userResponse.token.equals(response.body()?.token)){
-//                        toMainScreen()
-//                    }
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-//            }
-//        })
-//    }
 }

@@ -24,16 +24,16 @@ class ProfileEditFragment : Fragment() {
         binding = FragmentProfileEditBinding.inflate(inflater, container, false)
 
         binding.apply {
-            tVClientFullNameEdit.setOnClickListener {
-                when(tVClientFullNameEdit.text){
+            tvFullNameEdit.setOnClickListener {
+                when(tvFullNameEdit.text){
                     getString(R.string.edit) -> {
-                        tVClientFullNameEdit.text = getString(R.string.cancel)
+                        tvFullNameEdit.text = getString(R.string.cancel)
                         lClientEditInputs.root.visibility = View.VISIBLE
-                        lClientEditInputs.tILClientFirstInput.editText?.setText(tVClientFullName.text)
-                        lClientEditInputs.tILClientSecondInput.editText?.setText(tVClientFullName.text)
+                        lClientEditInputs.tILClientFirstInput.editText?.setText(tvFullName.text)
+                        lClientEditInputs.tILClientSecondInput.editText?.setText(tvFullName.text)
                     }
                     else -> {
-                        tVClientFullNameEdit.text = getString(R.string.edit)
+                        tvFullNameEdit.text = getString(R.string.edit)
                         lClientEditInputs.root.visibility = View.GONE
                     }
                 }

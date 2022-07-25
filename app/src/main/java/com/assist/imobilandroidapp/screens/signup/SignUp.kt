@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -19,9 +20,11 @@ import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Clas
 import com.assist.imobilandroidapp.screens.forgotPassword.EMPTY_STRING
 import com.assist.imobilandroidapp.screens.login.Login
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.android.synthetic.main.activity_main_screen.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.math.log
 
 class SignUp : AppCompatActivity() {
 
@@ -31,7 +34,6 @@ class SignUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         binding.singupEmailTextInputLayout.editText?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -50,7 +52,7 @@ class SignUp : AppCompatActivity() {
                     binding.singupPasswordTextInputLayout
                 )
             ) {
-                singUpButtonClick(
+                registerUser(
                     binding.singupEmailTextInputLayout.editText?.text.toString(),
                     binding.singupPasswordTextInputLayout.editText?.text.toString()
                 )
@@ -67,50 +69,20 @@ class SignUp : AppCompatActivity() {
         }
     }
 
-    private fun singUpButtonClick(email: String, password: String) {
+    private fun registerUser(email: String,password: String){
+
         val retrofitInstance = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
 
         DataSharing.init(getSharedPreferences(SHARED_KEY, MODE_PRIVATE))
 
-        retrofitInstance.registerUser(email, password).enqueue(object : Callback<Author> {
+        retrofitInstance.registerUser(email,password).enqueue(object : Callback<Author>{
             override fun onResponse(call: Call<Author>, response: Response<Author>) {
-                if (response.code() == 200) {
-                    Toast.makeText(
-                        this@SignUp,
-                        getString(R.string.singUp_success),
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                    DataSharing.apply {
-                        response.body()?.let {
-                            saveUserId(it.id.toString())
-                            saveUserFullName(it.fullName.toString())
-                            saveUserEmail(it.email.toString())
-                            saveUserPassword(it.password.toString())
-                            saveUserGender(it.gender!!)
-                            saveUserPhone(it.phone.toString())
-                            saveUserRole(it.role!!)
-                            saveUserDateOfBirth(it.dateOfBirth.toString())
-                            saveUserAddress(it.address.toString())
-                            saveUserPhoto(it.photo.toString())
-                            it.userActivities?.let { it1 -> saveUserActivities(it1) }
-                            saveUserCreatedAt(it.createdAt.toString())
-                            saveUserUpdatedAt(it.updatedAt.toString())
-                            saveUserIsActive(it.isActive!!)
-                            saveUserListings(it.listings!!)
-                        }
-                        commit()
-                    }
-                    Handler().postDelayed({
-                        startActivity(Intent(this@SignUp, Login::class.java))
-                        finish()
-                    }, 1000)
+                if( response.code() == 200 ) {
+                    Toast.makeText(this@SignUp , getString(R.string.singUp_success), Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@SignUp,Login::class.java))
+                    finish()
                 } else {
-                    Toast.makeText(
-                        this@SignUp,
-                        getString(R.string.singUp_failed),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this@SignUp, getString(R.string.singUp_failed), Toast.LENGTH_SHORT).show()
                 }
             }
 

@@ -18,7 +18,6 @@ class ChildAdapter(private val children: List<Listing>,private val listingInterf
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.child_item_recycler, parent, false)
-        notifyDataSetChanged()
         return ViewHolder(v)
     }
 
@@ -28,7 +27,6 @@ class ChildAdapter(private val children: List<Listing>,private val listingInterf
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val child = children[position]
-        holder.image.setImageResource(child.images?.toInt()!!)
         holder.title.text = child.title
         holder.location.text = child.location
         holder.price.text = child.price.toString()

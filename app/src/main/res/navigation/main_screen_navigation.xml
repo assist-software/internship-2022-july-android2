@@ -72,6 +72,10 @@
             android:id="@+id/action_clientProfileFragment_to_loginAndSecurityFragment"
             app:destination="@id/loginAndSecurityFragment"
             app:popUpTo="@id/clientProfileFragment" />
+        <action
+            android:id="@+id/action_clientProfileFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment"
+            app:popUpTo="@id/clientProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileEditFragment"
@@ -91,6 +95,17 @@
         tools:layout="@layout/fragment_login_and_security" >
         <action
             android:id="@+id/action_loginAndSecurityFragment_to_clientProfileFragment"
+            app:destination="@id/clientProfileFragment"
+            app:popUpTo="@id/clientProfileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.assist.imobilandroidapp.screens.client.screens.profileScreens.notifications.NotificationsFragment"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_notifications" >
+        <action
+            android:id="@+id/action_notificationsFragment_to_clientProfileFragment"
             app:destination="@id/clientProfileFragment"
             app:popUpTo="@id/clientProfileFragment"
             app:popUpToInclusive="true" />

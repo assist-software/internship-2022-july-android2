@@ -19,9 +19,9 @@ class ChildPhotoGalleryAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.firstImage.setImageResource(DataSharing.getItemImage())
-        holder.secondImage.setImageResource(DataSharing.getItemSecondImage())
-        holder.thirdImage.setImageResource(DataSharing.getItemThirdImage())
+//        holder.firstImage.setImageResource(DataSharing.getItemImage())
+//        holder.secondImage.setImageResource(DataSharing.getItemSecondImage())
+//        holder.thirdImage.setImageResource(DataSharing.getItemThirdImage())
     }
 
     override fun getItemCount(): Int {

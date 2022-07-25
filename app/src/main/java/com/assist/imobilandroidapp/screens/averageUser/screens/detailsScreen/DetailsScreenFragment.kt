@@ -59,12 +59,12 @@ class DetailsScreenFragment : Fragment() {
 
     private fun initFragment() {
         binding.apply {
-            selectedItemImageImageView.setImageResource(DataSharing.getItemImage())
+//            selectedItemImageImageView.setImageResource(DataSharing.getItemImage())
             selectedItemTitleTextView.text = DataSharing.getItemTitle()
             selectedItemPriceTextView.text = DataSharing.getItemPrice()
             selectedItemLocationTextView.text = DataSharing.getItemLocation()
             selectedItemDescriptionTextView.text = DataSharing.getItemDescription()
-            sellerProfileImageImageView.setImageResource(DataSharing.getItemSellerImage())
+//            sellerProfileImageImageView.setImageResource(DataSharing.getItemSellerImage())
             sellerNameTextView.text = DataSharing.getItemSellerName()
             sellerJoinedTextView.text = DataSharing.getItemSellerJoined()
             sellerResponseRateTextView.text = DataSharing.getItemSellerResponseRate()

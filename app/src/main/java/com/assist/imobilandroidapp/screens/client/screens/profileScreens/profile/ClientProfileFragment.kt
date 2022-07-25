@@ -1,14 +1,19 @@
 package com.assist.imobilandroidapp.screens.client.screens.profileScreens.profile
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.FragmentClientProfileBinding
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.SHARED_KEY
+import com.assist.imobilandroidapp.screens.login.Login
 
 class ClientProfileFragment : Fragment() {
 
@@ -30,6 +35,17 @@ class ClientProfileFragment : Fragment() {
                 findNavController().navigate(R.id.action_clientProfileFragment_to_loginAndSecurityFragment)
             }
 
+            lLNotificationsOption.setOnClickListener {
+                findNavController().navigate(R.id.action_clientProfileFragment_to_notificationsFragment)
+            }
+
+            mBClientProfileLogout.setOnClickListener {
+                DataSharing.init(context?.getSharedPreferences(SHARED_KEY,AppCompatActivity.MODE_PRIVATE)!!)
+                DataSharing.logoutUser(DataSharing.getUser()!!)
+                Log.e("USERRR",DataSharing.getUser().toString())
+                startActivity(Intent(requireContext(),Login::class.java))
+                requireActivity().finish()
+            }
         }
         return binding.root
     }

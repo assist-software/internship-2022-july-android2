@@ -22,7 +22,7 @@ class CategoryParentAdapter(private val categoryChildrens: List<Listing>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val categoryChild = categoryChildrens[position]
-        holder.image.setImageResource(categoryChild.images?.toInt()!!)
+//        holder.image.setImageResource(categoryChild.images?.toInt()!!)
         holder.title.text = categoryChild.title
         holder.description.text = categoryChild.description
         holder.price.text = categoryChild.price.toString()
