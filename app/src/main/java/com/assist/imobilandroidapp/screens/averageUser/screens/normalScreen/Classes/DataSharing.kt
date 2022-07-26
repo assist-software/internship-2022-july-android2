@@ -35,7 +35,6 @@ const val USER_LISTINGS = "userListings"
 const val USER_LOGIN_TOKEN = "userToken"
 const val REMEMBER_LOGIN_TOKEN = "rememberLoginToken"
 const val USER = "justUser"
-val TOKENS = mutableListOf<String>()
 
 object DataSharing {
 
@@ -119,9 +118,8 @@ object DataSharing {
         editor.clear()
     }
 
-    fun logoutUser(author: Author){
-        editor.remove(author.token)
-        TOKENS.remove(author.token)
+    fun logoutUser(value: String?){
+        editor.remove(value)
     }
 
     fun saveUserId(value: String) {
@@ -171,7 +169,9 @@ object DataSharing {
     }
 
     fun saveUserLoginToken(value: String?) {
-        TOKENS.add(value!!)
+        if(value!=null){
+            editor.putString(USER_LOGIN_TOKEN,value)
+        }
     }
 
     fun saveUserCreatedAt(value: String) {

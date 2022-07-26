@@ -3,32 +3,32 @@ package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Cla
 import com.google.gson.annotations.SerializedName
 
 data class Listing(
-    @SerializedName("approvedBy")
-    val approvedBy: String?,
-    @SerializedName("author")
-    val author: Author?,
-    @SerializedName("category")
-    val category: String?,
-    @SerializedName("createdAt")
-    val createdAt: String?,
-    @SerializedName("description")
-    val description: String?,
     @SerializedName("id")
-    val id: String?,
-    @SerializedName("images")
-    val images: String?,
-    @SerializedName("location")
-    val location: String?,
-    @SerializedName("price")
-    val price: Int?,
-    @SerializedName("shortDescription")
-    val shortDescription: String?,
-    @SerializedName("status")
-    val status: Int?,
+    val id: String = "",
     @SerializedName("title")
-    val title: String?,
-    @SerializedName("updatedAt")
-    val updatedAt: String?,
+    val title: String? = null ,
+    @SerializedName("description")
+    val description: String? = null,
+    @SerializedName("shortDescription")
+    val shortDescription: String? = null,
+    @SerializedName("location")
+    val location: ArrayList<String>? = null,
+    @SerializedName("price")
+    val price: Int? = null,
+    @SerializedName("status")
+    val status: Int? = null,
+    @SerializedName("images")
+    val images: ArrayList<String>? = null,
+    @SerializedName("category")
+    val category: String? = null,
+    @SerializedName("author")
+    val author: Author? = null,
     @SerializedName("viewCounter")
-    val viewCounter: Int?
+    val viewCounter: Int? = null ,
+    @SerializedName("approvedBy")
+    val approvedBy: String? = null ,
+    @SerializedName("createdAt")
+    val createdAt: String? = null ,
+    @SerializedName("updatedAt")
+    val updatedAt: String? = null,
 )

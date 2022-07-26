@@ -9,16 +9,16 @@ import com.assist.imobilandroidapp.databinding.ActivityLoginBinding
 import com.assist.imobilandroidapp.screens.api.`interface`.ApiInterface
 import com.assist.imobilandroidapp.screens.api.calsses.LogInBody
 import com.assist.imobilandroidapp.screens.api.calsses.RetrofitInstance
-import com.assist.imobilandroidapp.screens.averageUser.screens.mainScreen.MainScreen
+import com.assist.imobilandroidapp.screens.averageUser.screens.mainScreen.ClientMainScreen
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Author
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.SHARED_KEY
 import com.assist.imobilandroidapp.screens.forgotPassword.ForgotPassword
+import com.assist.imobilandroidapp.screens.main.TOKEN
 import com.assist.imobilandroidapp.screens.signup.SignUp
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Exception
 
 class Login : AppCompatActivity() {
 
@@ -79,11 +79,7 @@ class Login : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     if (binding.loginRememberMeCheckBox.isChecked) {
-                        try {
-                            DataSharing.saveUserLoginToken(response.body()?.token!!)
-                        } catch (e: Exception) {
-                            e.message
-                        }
+                        TOKEN = response.body()?.token!!
                     }
                     DataSharing.saveUser(response.body()!!)
                     DataSharing.commit()
@@ -100,7 +96,7 @@ class Login : AppCompatActivity() {
     }
 
     private fun toMainScreen() {
-        startActivity(Intent(this, MainScreen::class.java))
+        startActivity(Intent(this, ClientMainScreen::class.java))
         finish()
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.averageUser.screens.mainScreen.MainScreen">
+    tools:context=".screens.averageUser.screens.mainScreen.ClientMainScreen">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -19,7 +19,7 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/main_screen_toolbar"
+                android:id="@+id/client_main_screen_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -29,7 +29,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/user_imageView"
+                android:id="@+id/client_imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_user"
@@ -47,18 +47,18 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_logo_assist"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/main_screen_toolbar"
-                app:layout_constraintStart_toStartOf="@+id/main_screen_toolbar"
+                app:layout_constraintEnd_toEndOf="@+id/client_main_screen_toolbar"
+                app:layout_constraintStart_toStartOf="@+id/client_main_screen_toolbar"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.52" />
 
             <ImageView
-                android:id="@+id/search_imageView"
+                android:id="@+id/client_search_imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_search"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/favorite_imageView"
+                app:layout_constraintEnd_toStartOf="@+id/client_favorite_imageView"
                 app:layout_constraintHorizontal_bias="0.813"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="parent"
@@ -66,7 +66,7 @@
                 tools:viewBindingType="android.widget.ImageView" />
 
             <ImageView
-                android:id="@+id/favorite_imageView"
+                android:id="@+id/client_favorite_imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_outline_hearth"
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/search_searchView">
 
         <TextView
-            android:id="@+id/input_textView"
+            android:id="@+id/client_input_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/d_16dp"
@@ -100,7 +100,7 @@
             android:text="@string/what_are_you_interested_in"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_20sp"
-            app:layout_constraintEnd_toStartOf="@+id/icons_view_linearLayout"
+            app:layout_constraintEnd_toStartOf="@+id/client_icons_view_linearLayout"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -114,13 +114,13 @@
             android:layout_marginEnd="@dimen/d_16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_textView"
+            app:layout_constraintTop_toBottomOf="@+id/client_input_textView"
             app:tabMode="scrollable"
             app:tabSelectedTextColor="@color/primary_500"
             app:tabTextColor="@color/grayscale_300" />
 
         <LinearLayout
-            android:id="@+id/icons_view_linearLayout"
+            android:id="@+id/client_icons_view_linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/d_6dp"
@@ -152,7 +152,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/filters_linearLayout"
+            android:id="@+id/client_filters_linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/d_16dp"
@@ -170,8 +170,7 @@
                 android:text="@string/filter_by"
                 android:textColor="@color/grayscale_400"
                 android:textSize="@dimen/text_size_14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_textView" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Spinner
                 android:id="@+id/first_filter_spinner"
@@ -194,7 +193,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/order_filters_linearLayout"
+            android:id="@+id/client_order_filters_linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/d_16dp"
@@ -202,7 +201,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/filters_linearLayout">
+            app:layout_constraintTop_toBottomOf="@+id/client_filters_linearLayout">
 
             <TextView
                 android:id="@+id/order_filter_textView"
@@ -212,8 +211,7 @@
                 android:text="@string/order_by"
                 android:textColor="@color/grayscale_400"
                 android:textSize="@dimen/text_size_14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_textView" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Spinner
                 android:id="@+id/order_filter_spinner"
@@ -240,7 +238,7 @@
     </androidx.viewpager.widget.ViewPager>
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/mainScreenFragmentContainerView"
+        android:id="@+id/client_mainScreenFragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -253,7 +251,7 @@
         app:navGraph="@navigation/main_screen_navigation" />
 
     <LinearLayout
-        android:id="@+id/lLUsersButtons"
+        android:id="@+id/client_lLUsersButtons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"

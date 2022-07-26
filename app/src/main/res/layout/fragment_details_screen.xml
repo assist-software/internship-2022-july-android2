@@ -81,13 +81,27 @@
             android:id="@+id/selected_item_price_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/d_16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="@dimen/d_12dp"
             android:fontFamily="@font/inter_bold"
             android:text="@string/child_imobilItem_price"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_24sp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selected_item_title_textView" />
+
+        <TextView
+            android:id="@+id/RON2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/ron"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.134"
+            app:layout_constraintStart_toEndOf="@+id/selected_item_price_textView"
             app:layout_constraintTop_toBottomOf="@+id/selected_item_title_textView" />
 
         <com.google.android.material.button.MaterialButton

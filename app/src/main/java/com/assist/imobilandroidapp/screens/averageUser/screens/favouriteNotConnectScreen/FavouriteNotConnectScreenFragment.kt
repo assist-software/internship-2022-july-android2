@@ -39,7 +39,7 @@ class FavouriteNotConnectScreenFragment : Fragment() {
     }
 
     private fun notConnectHomeButtonClick() {
-        findNavController().navigate(R.id.normalScreenFragment)
+        findNavController().navigate(R.id.clientFragment)
     }
 
     private fun notConnectLoginButtonClick() {
@@ -49,17 +49,11 @@ class FavouriteNotConnectScreenFragment : Fragment() {
     private fun initFragment(){
         requireActivity().apply {
             findViewById<ConstraintLayout>(R.id.clMainScreenFiltersTextIcons).visibility = View.VISIBLE
-            findViewById<LinearLayout>(R.id.icons_view_linearLayout).visibility = View.GONE
-            findViewById<LinearLayout>(R.id.filters_linearLayout).visibility = View.GONE
-            findViewById<LinearLayout>(R.id.order_filters_linearLayout).visibility = View.GONE
-            findViewById<TextView>(R.id.input_textView).text = getString(R.string.favourites)
-            findViewById<TextView>(R.id.input_textView).visibility = View.VISIBLE
+            findViewById<LinearLayout>(R.id.client_icons_view_linearLayout).visibility = View.GONE
+            findViewById<LinearLayout>(R.id.client_filters_linearLayout).visibility = View.GONE
+            findViewById<LinearLayout>(R.id.client_order_filters_linearLayout).visibility = View.GONE
+            findViewById<TextView>(R.id.client_input_textView).text = getString(R.string.favourites)
+            findViewById<TextView>(R.id.client_input_textView).visibility = View.VISIBLE
         }
-    }
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        findNavController().popBackStack()
     }
 }

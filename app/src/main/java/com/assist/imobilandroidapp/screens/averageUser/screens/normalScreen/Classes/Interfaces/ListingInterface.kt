@@ -6,7 +6,7 @@ interface ListingInterface {
 
     fun onCategoryClicked(category : String,categoryList:List<Listing>){}
 
-    fun onItemClicked(listing: Listing)
+    fun onAddFavouriteIconClick(listing: Listing)
 
     fun onChildItemCLick(listing: Listing)
 }

@@ -1,5 +1,6 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +11,10 @@ import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Interfaces.FavouriteInterface
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.favourite_item_list_type.view.*
 
-class FavouriteChildAdapter(private val favouriteChildren: List<Listing>, private val listingInterface: FavouriteInterface):
+class FavouriteChildAdapter(private val favouriteChildren: List<Listing>, private val listingInterface: FavouriteInterface,private val context: Context):
     RecyclerView.Adapter<FavouriteChildAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,7 +24,7 @@ class FavouriteChildAdapter(private val favouriteChildren: List<Listing>, privat
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val favouriteChild = favouriteChildren[position]
-        holder.image.setImageResource(favouriteChild.images?.toInt()!!)
+        Glide.with(context).load(favouriteChild.images?.get(0)).into(holder.image)
         holder.title.text = favouriteChild.title
         holder.description.text = favouriteChild.description
         holder.price.text = favouriteChild.price.toString()

@@ -4,6 +4,8 @@ import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Clas
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
 
 object ChildDataFactory {
+    var listing = Listing()
+
     private val favouriteChildrens = mutableListOf<Listing>()
     private var categoryChildrens = mutableListOf<Listing>()
     private var searchChildrens = mutableListOf<Listing>()

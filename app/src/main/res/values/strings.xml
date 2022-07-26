@@ -132,4 +132,5 @@
     <string name="e_mail">E-mail</string>
     <string name="sms">SMS</string>
     <string name="discount_description">Notifications about promotions and discounts offered by us for our services.</string>
+    <string name="ron">RON</string>
 </resources>

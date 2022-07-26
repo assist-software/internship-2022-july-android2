@@ -40,8 +40,9 @@ class ClientProfileFragment : Fragment() {
             }
 
             mBClientProfileLogout.setOnClickListener {
-                DataSharing.init(context?.getSharedPreferences(SHARED_KEY,AppCompatActivity.MODE_PRIVATE)!!)
-                DataSharing.logoutUser(DataSharing.getUser()!!)
+                DataSharing.init(requireContext().getSharedPreferences(SHARED_KEY,AppCompatActivity.MODE_PRIVATE))
+                DataSharing.clear()
+                DataSharing.commit()
                 Log.e("USERRR",DataSharing.getUser().toString())
                 startActivity(Intent(requireContext(),Login::class.java))
                 requireActivity().finish()

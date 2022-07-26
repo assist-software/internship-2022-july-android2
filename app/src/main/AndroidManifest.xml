@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.assist.imobilandroidapp">
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +14,10 @@
         android:theme="@style/Theme.ImobilAndroidApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".screens.averageUser.screens.mainScreen.MainScreen"
+            android:name=".screens.client.screens.mainScreen.GuestMainAcitivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.averageUser.screens.mainScreen.ClientMainScreen"
             android:exported="false">
             <meta-data
                 android:name="com.google.android.geo.API_KEY"
@@ -22,25 +25,22 @@
         </activity>
         <activity
             android:name=".screens.signup.SignUp"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".screens.login.Login"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".screens.resetPassword.ResetPassword"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".screens.forgotPassword.ForgotPassword"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".screens.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

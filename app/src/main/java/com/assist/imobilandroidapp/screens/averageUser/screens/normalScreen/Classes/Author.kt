@@ -10,9 +10,9 @@ data class Author(
     @SerializedName("dateOfBirth")
     val dateOfBirth: String?,
     @SerializedName("email")
-    val email: String?,
+    var email: String?,
     @SerializedName("fullName")
-    val fullName: String?,
+    var fullName: String?,
     @SerializedName("gender")
     val gender: Int?,
     @SerializedName("google")

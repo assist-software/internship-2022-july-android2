@@ -7,12 +7,10 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.FragmentFavouriteScreenBinding
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Adapters.FavouriteChildAdapter
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ChildDataFactory
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Interfaces.FavouriteInterface
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
@@ -46,13 +44,13 @@ class FavouriteScreenFragment : Fragment(), FavouriteInterface {
     private fun initRecycler(){
         binding.favouritesItemsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context,LinearLayout.VERTICAL,false)
-            adapter = FavouriteChildAdapter(ChildDataFactory.getFavouriteChildrens(), this@FavouriteScreenFragment)
+            adapter = FavouriteChildAdapter(ChildDataFactory.getFavouriteChildrens(), this@FavouriteScreenFragment,context)
         }
         setText()
     }
 
     private fun setText(){
-        favourites = requireActivity().findViewById(R.id.input_textView)
+        favourites = requireActivity().findViewById(R.id.client_input_textView)
         favourites.text = getString(R.string.favourites)
         favourites.visibility = View.VISIBLE
     }
@@ -63,10 +61,5 @@ class FavouriteScreenFragment : Fragment(), FavouriteInterface {
 
     override fun removeItemFromFavourite(listing: Listing) {
         ChildDataFactory.removeChildrenFromFavourite(listing)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        findNavController().popBackStack()
     }
 }

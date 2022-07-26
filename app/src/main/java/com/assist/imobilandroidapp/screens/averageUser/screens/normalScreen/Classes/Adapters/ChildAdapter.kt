@@ -1,5 +1,6 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Interfaces.ListingInterface
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.child_item_recycler.view.*
 
-class ChildAdapter(private val children: List<Listing>,private val listingInterface: ListingInterface) :
+class ChildAdapter(private val context: Context,private val children: List<Listing>,private val listingInterface: ListingInterface) :
     RecyclerView.Adapter<ChildAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,8 +29,9 @@ class ChildAdapter(private val children: List<Listing>,private val listingInterf
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val child = children[position]
+        Glide.with(context).load(child.images?.get(0)).into(holder.image)
         holder.title.text = child.title
-        holder.location.text = child.location
+        holder.location.text = child.location.toString()
         holder.price.text = child.price.toString()
     }
 
@@ -55,7 +58,7 @@ class ChildAdapter(private val children: List<Listing>,private val listingInterf
                 Toast.makeText(view.context, view.context.getString(R.string.child_favorit_button_add), Toast.LENGTH_SHORT).show()
                 button.setImageResource(R.drawable.ic_full_hearth)
 //                ChildDataFactory.addFavouriteChildren(children[position])
-                listingInterface.onItemClicked(children[position])
+                listingInterface.onAddFavouriteIconClick(children[position])
             }
             view.resources.getDrawable(R.drawable.ic_full_hearth).constantState -> {
                 Toast.makeText(view.context, view.context.getString(R.string.child_favorit_button_remove), Toast.LENGTH_SHORT).show()

@@ -1,5 +1,6 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.categoryListScreen
 
+import android.content.Context
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,13 +16,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.FragmentCategoryListScreenBinding
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.*
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Adapters.CategoryParentAdapter
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Adapters.ChildAdapter
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ChildDataFactory
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Interfaces.ListingInterface
 import com.google.android.material.tabs.TabLayout
 
-class CategoryListScreenFragment : Fragment(){
+class CategoryListScreenFragment : Fragment() , ListingInterface{
 
     private lateinit var binding: FragmentCategoryListScreenBinding
     private lateinit var searchView: androidx.appcompat.widget.SearchView
@@ -42,14 +44,14 @@ class CategoryListScreenFragment : Fragment(){
 
     private fun setVisibility() {
         requireActivity().apply {
-            findViewById<TextView>(R.id.input_textView).visibility = View.VISIBLE
-            findViewById<TextView>(R.id.input_textView).text = ChildDataFactory.category
-            findViewById<LinearLayout>(R.id.icons_view_linearLayout).visibility = View.VISIBLE
+            findViewById<TextView>(R.id.client_input_textView).visibility = View.VISIBLE
+            findViewById<TextView>(R.id.client_input_textView).text = ChildDataFactory.category
+            findViewById<LinearLayout>(R.id.client_icons_view_linearLayout).visibility = View.VISIBLE
             ImageViewCompat.setImageTintList(this.findViewById(R.id.ic_list_view),ColorStateList.valueOf(requireContext().getColor(R.color.grayscale_700)))
-            findViewById<LinearLayout>(R.id.filters_linearLayout).visibility = View.VISIBLE
-            findViewById<LinearLayout>(R.id.order_filters_linearLayout).visibility = View.VISIBLE
+            findViewById<LinearLayout>(R.id.client_filters_linearLayout).visibility = View.VISIBLE
+            findViewById<LinearLayout>(R.id.client_order_filters_linearLayout).visibility = View.VISIBLE
             findViewById<ViewPager>(R.id.client_viewPager).visibility = View.GONE
-            findViewById<FragmentContainerView>(R.id.mainScreenFragmentContainerView).visibility = View.VISIBLE
+            findViewById<FragmentContainerView>(R.id.client_mainScreenFragmentContainerView).visibility = View.VISIBLE
             findViewById<TabLayout>(R.id.client_tabLatyout).visibility = View.GONE
         }
     }
@@ -57,7 +59,7 @@ class CategoryListScreenFragment : Fragment(){
     private fun initRecycler(){
         binding.parentCategorySelectedRecyclerView.apply {
             layoutManager = LinearLayoutManager(context,LinearLayout.VERTICAL,false)
-            adapter = CategoryParentAdapter(ChildDataFactory.getCategoryChildrens())
+            adapter = CategoryParentAdapter(ChildDataFactory.getCategoryChildrens(),context,this@CategoryListScreenFragment)
         }
         setVisibility()
     }
@@ -78,9 +80,34 @@ class CategoryListScreenFragment : Fragment(){
                         ChildDataFactory.addSearchChild(item)
                     }
                 }
-                binding.parentCategorySelectedRecyclerView.adapter = CategoryParentAdapter(ChildDataFactory.getSearchChildrens())
+                binding.apply {
+                    parentCategorySelectedRecyclerView.adapter = CategoryParentAdapter(ChildDataFactory.getCategoryChildrens(),context!!,this@CategoryListScreenFragment)
+                    parentCategorySelectedRecyclerView.adapter?.notifyDataSetChanged()
+                }
                 return true
             }
         })
+    }
+
+    override fun onAddFavouriteIconClick(listing: Listing) {
+        ChildDataFactory.addFavouriteChildren(listing)
+    }
+
+    override fun onChildItemCLick(listing: Listing) {
+        DataSharing.init(requireContext().getSharedPreferences(SHARED_KEY, Context.MODE_PRIVATE))
+
+        ChildDataFactory.listing = listing
+
+        DataSharing.addItemText(ITEM_TITLE, listing.title.toString())
+        DataSharing.addItemText(ITEM_LOCATION, listing.location.toString())
+        DataSharing.addItemText(ITEM_DESCRIPTION, listing.description.toString())
+        DataSharing.addItemText(ITEM_PRICE, listing.price.toString())
+        listing.author?.let { it1 ->
+            DataSharing.addSellerInfo(ITEM_SELLER_NAME, it1.fullName.toString())
+        }
+
+        DataSharing.commit()
+
+        findNavController().navigate(R.id.detailsScreenFragment)
     }
 }

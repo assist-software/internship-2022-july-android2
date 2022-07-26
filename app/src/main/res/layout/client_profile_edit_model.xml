@@ -8,13 +8,15 @@
         android:id="@+id/lLClientEdit"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/d_16dp"
+        android:layout_marginEnd="@dimen/d_16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="@dimen/d_16dp"
-        android:layout_marginEnd="@dimen/d_16dp">
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/tVFirstInput"
@@ -48,43 +50,6 @@
                 android:textSize="@dimen/text_size_16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/tVSecondtInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/d_16dp"
-            android:fontFamily="@font/inter_medium"
-            android:text="@string/secondinput"
-            android:textColor="@color/grayscale_600"
-            android:textSize="@dimen/text_size_14sp"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tILClientSecondInput"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/d_4dp"
-            app:hintEnabled="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailTextTop">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_medium"
-                android:hint="@string/secondinput"
-                android:inputType="textCapWords"
-                android:paddingStart="@dimen/d_12dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/grayscale_200"
-                android:textSize="@dimen/text_size_16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -93,12 +58,12 @@
             android:id="@+id/mBSaveChanges"
             android:layout_width="match_parent"
             android:layout_height="@dimen/d_44dp"
-            android:fontFamily="@font/inter_semi_bold"
-            android:textSize="@dimen/text_size_12sp"
-            android:text="@string/save"
-            android:backgroundTint="@color/primary_400"
             android:layout_marginTop="@dimen/d_16dp"
-            app:cornerRadius="@dimen/d_8dp"/>
+            android:backgroundTint="@color/primary_400"
+            android:fontFamily="@font/inter_semi_bold"
+            android:text="@string/save"
+            android:textSize="@dimen/text_size_12sp"
+            app:cornerRadius="@dimen/d_8dp" />
 
     </LinearLayout>
 

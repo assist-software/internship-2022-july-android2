@@ -7,38 +7,38 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.navigation.findNavController
 import com.assist.imobilandroidapp.R
-import com.assist.imobilandroidapp.databinding.ActivityMainScreenBinding
+import com.assist.imobilandroidapp.databinding.ActivityClientMainScreenBinding
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.SHARED_KEY
 import com.assist.imobilandroidapp.screens.client.screens.Adapters.ClientFragmentAdapter
 import com.assist.imobilandroidapp.screens.forgotPassword.EMPTY_STRING
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 
-val userResponse = DataSharing.getUser()
+class ClientMainScreen : AppCompatActivity() {
 
-class MainScreen : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainScreenBinding
+    private lateinit var binding: ActivityClientMainScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainScreenBinding.inflate(layoutInflater)
+        binding = ActivityClientMainScreenBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
 
         init()
 
-        binding.mainScreenToolbar.title = EMPTY_STRING
-        setSupportActionBar(binding.mainScreenToolbar)
+        binding.clientMainScreenToolbar.title = EMPTY_STRING
+        setSupportActionBar(binding.clientMainScreenToolbar)
 
-        binding.userImageView.setOnClickListener {
+        binding.clientImageView.setOnClickListener {
             userImageViewClick()
         }
 
-        binding.searchImageView.setOnClickListener {
+        binding.clientSearchImageView.setOnClickListener {
             searchImageViewClick()
         }
 
-        binding.favoriteImageView.setOnClickListener {
+        binding.clientFavoriteImageView.setOnClickListener {
             favoriteImageViewClick()
         }
 
@@ -48,24 +48,24 @@ class MainScreen : AppCompatActivity() {
     }
 
     private fun userImageViewClick() {
-        when (binding.userImageView.drawable.constantState) {
+        when (binding.clientImageView.drawable.constantState) {
             resources.getDrawable(R.drawable.ic_user).constantState -> {
-                findNavController(R.id.mainScreenFragmentContainerView).navigate(R.id.clientProfileFragment)
+                findNavController(R.id.client_mainScreenFragmentContainerView).navigate(R.id.clientProfileFragment)
                 binding.apply {
                     clMainScreenFiltersTextIcons.visibility = View.GONE
                     clientViewPager.visibility = View.GONE
-                    mainScreenFragmentContainerView.visibility = View.VISIBLE
-                    lLUsersButtons.visibility = View.GONE
+                    clientMainScreenFragmentContainerView.visibility = View.VISIBLE
+                    clientLLUsersButtons.visibility = View.GONE
                 }
             }
-            resources.getDrawable(R.drawable.ic_exit).constantState -> findNavController(R.id.mainScreenFragmentContainerView).navigate(
+            resources.getDrawable(R.drawable.ic_exit).constantState -> findNavController(R.id.client_mainScreenFragmentContainerView).navigate(
                 R.id.action_photoGalleryFragment_to_detailsScreenFragment
             )
         }
     }
 
     private fun searchImageViewClick() {
-        when (binding.searchImageView.drawable.constantState) {
+        when (binding.clientSearchImageView.drawable.constantState) {
             resources.getDrawable(R.drawable.ic_search).constantState -> {
                 Toast.makeText(
                     this,
@@ -89,12 +89,10 @@ class MainScreen : AppCompatActivity() {
         binding.apply {
             clientViewPager.visibility = View.GONE
             clientTabLatyout.visibility = View.GONE
-            mainScreenFragmentContainerView.visibility = View.VISIBLE
+            clientMainScreenFragmentContainerView.visibility = View.VISIBLE
         }
         if (DataSharing.getUser()?.isActive == true) {
-            findNavController(R.id.mainScreenFragmentContainerView).navigate(R.id.favouriteScreenFragment)
-        } else {
-            findNavController(R.id.mainScreenFragmentContainerView).navigate(R.id.favouriteNotConnectScreenFragment)
+            findNavController(R.id.client_mainScreenFragmentContainerView).navigate(R.id.favouriteScreenFragment)
         }
     }
 
@@ -104,12 +102,19 @@ class MainScreen : AppCompatActivity() {
 
     private fun init() {
 
+        DataSharing.init(getSharedPreferences(SHARED_KEY, MODE_PRIVATE))
+
+        val author = DataSharing.getUser()
+
         binding.apply {
-            mainScreenFragmentContainerView.visibility = View.GONE
-            inputTextView.text = getString(R.string.login_message) + userResponse?.fullName
+            clientMainScreenFragmentContainerView.visibility = View.GONE
+            clientMainScreenFragmentContainerView.isEnabled = false
+            clientMainScreenFragmentContainerView.isActivated = false
+            clientInputTextView.text = getString(R.string.login_message) + author?.fullName
+//            Glide.with(applicationContext).load(author?.photo).into(clientImageView)
             clientViewPager.visibility = View.VISIBLE
             clientTabLatyout.visibility = View.VISIBLE
-            lLUsersButtons.visibility = View.VISIBLE
+            clientLLUsersButtons.visibility = View.VISIBLE
             clientTabLatyout.addTab(binding.clientTabLatyout.newTab().setText("All listings"))
             clientTabLatyout.addTab(binding.clientTabLatyout.newTab().setText("My listings"))
             clientViewPager.adapter = ClientFragmentAdapter(supportFragmentManager)

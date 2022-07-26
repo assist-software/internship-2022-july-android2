@@ -3,6 +3,7 @@ package com.assist.imobilandroidapp.screens.signup
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -12,19 +13,15 @@ import androidx.appcompat.app.AppCompatActivity
 import com.assist.imobilandroidapp.R
 import com.assist.imobilandroidapp.databinding.ActivitySignUpBinding
 import com.assist.imobilandroidapp.screens.api.`interface`.ApiInterface
-import com.assist.imobilandroidapp.screens.api.calsses.*
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Author
+import com.assist.imobilandroidapp.screens.api.calsses.RetrofitInstance
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.SHARED_KEY
 import com.assist.imobilandroidapp.screens.forgotPassword.EMPTY_STRING
 import com.assist.imobilandroidapp.screens.login.Login
 import com.google.android.material.textfield.TextInputLayout
-import kotlinx.android.synthetic.main.activity_main_screen.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.math.log
 
 class SignUp : AppCompatActivity() {
 
@@ -69,24 +66,45 @@ class SignUp : AppCompatActivity() {
         }
     }
 
-    private fun registerUser(email: String,password: String){
+    private fun registerUser(email: String, password: String) {
 
-        val retrofitInstance = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
+        val retrofitInstance =
+            RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
 
         DataSharing.init(getSharedPreferences(SHARED_KEY, MODE_PRIVATE))
 
-        retrofitInstance.registerUser(email,password).enqueue(object : Callback<Author>{
-            override fun onResponse(call: Call<Author>, response: Response<Author>) {
-                if( response.code() == 200 ) {
-                    Toast.makeText(this@SignUp , getString(R.string.singUp_success), Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@SignUp,Login::class.java))
-                    finish()
+        retrofitInstance.registerUser(email, password).enqueue(object : Callback<String> {
+
+            override fun onResponse(
+                call: Call<String>,
+                response: Response<String>
+            ) {
+                if (response.code() == 200) {
+                    Log.d("RESPONSE REGISTER", response.body()!!)
+                    Handler(Looper.myLooper()!!).postDelayed({
+                        startActivity(Intent(this@SignUp, Login::class.java))
+                        finish()
+                    }, 1000)
+                    Toast.makeText(
+                        this@SignUp,
+                        getString(R.string.singUp_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
-                    Toast.makeText(this@SignUp, getString(R.string.singUp_failed), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@SignUp,
+                        getString(R.string.singUp_failed),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
-            override fun onFailure(call: Call<Author>, t: Throwable) {
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                Toast.makeText(
+                    this@SignUp,
+                    getString(R.string.singUp_failed),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         })
     }

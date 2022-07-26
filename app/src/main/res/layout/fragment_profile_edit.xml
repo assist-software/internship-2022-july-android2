@@ -101,7 +101,7 @@
                         android:textSize="@dimen/text_size_14sp" />
 
                     <include
-                        android:id="@+id/lClientEditInputs"
+                        android:id="@+id/clientFullEditInput"
                         layout="@layout/client_profile_edit_model"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -311,6 +311,14 @@
                         android:text="@string/email_address"
                         android:textColor="@color/grayscale_400"
                         android:textSize="@dimen/text_size_14sp" />
+
+                    <include
+                        android:id="@+id/clientEmailEditInput"
+                        layout="@layout/client_profile_edit_model"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/d_16dp"
+                        android:visibility="gone"/>
 
                     <View
                         android:layout_width="match_parent"

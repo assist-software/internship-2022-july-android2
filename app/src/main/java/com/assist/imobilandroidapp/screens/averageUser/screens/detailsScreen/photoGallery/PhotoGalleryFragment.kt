@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.appcompat.widget.SearchView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
@@ -37,22 +36,22 @@ class PhotoGalleryFragment : Fragment() {
     }
 
     private fun initRecycler() {
-        exitToolbarImage = requireActivity().findViewById(R.id.user_imageView)
-        shareToolbarImage = requireActivity().findViewById(R.id.search_imageView)
+        exitToolbarImage = requireActivity().findViewById(R.id.client_imageView)
+        shareToolbarImage = requireActivity().findViewById(R.id.client_search_imageView)
 
         exitToolbarImage.setImageResource(R.drawable.ic_exit)
         shareToolbarImage.setImageResource(R.drawable.ic_share)
 
         binding.photoGalleryRecyclerView.apply {
             layoutManager = LinearLayoutManager(context,LinearLayout.VERTICAL,false)
-            adapter = ChildPhotoGalleryAdapter()
+            adapter = ChildPhotoGalleryAdapter(context)
         }
     }
 
     private fun initFragment(){
         requireActivity().apply {
             findViewById<ConstraintLayout>(R.id.clMainScreenFiltersTextIcons).visibility = View.GONE
-            findViewById<FragmentContainerView>(R.id.mainScreenFragmentContainerView).visibility = View.VISIBLE
+            findViewById<FragmentContainerView>(R.id.client_mainScreenFragmentContainerView).visibility = View.VISIBLE
             findViewById<ViewPager>(R.id.client_viewPager).visibility = View.GONE
         }
 
