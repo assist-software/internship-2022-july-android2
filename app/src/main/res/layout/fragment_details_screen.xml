@@ -40,11 +40,10 @@
             android:id="@+id/selected_item_share_relativeLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/d_260dp"
-            android:layout_marginTop="@dimen/d_48dp"
+            android:layout_marginTop="@dimen/d_45dp"
             android:layout_marginEnd="@dimen/d_16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.981"
             app:layout_constraintStart_toEndOf="@+id/selected_item_title_textView"
             app:layout_constraintTop_toBottomOf="@+id/selected_item_image_imageView">
 
@@ -66,7 +65,7 @@
 
         <TextView
             android:id="@+id/selected_item_title_textView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/d_16dp"
             android:layout_marginTop="@dimen/d_42dp"
@@ -75,19 +74,35 @@
             android:textColor="@color/grayscale_600"
             android:textSize="@dimen/text_size_20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/selected_item_image_imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/selected_item_image_imageView"
+            app:layout_constraintEnd_toStartOf="@id/selected_item_share_relativeLayout"
+            android:layout_marginEnd="@dimen/d_16dp"/>
 
         <TextView
             android:id="@+id/selected_item_price_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/d_16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="@dimen/d_12dp"
             android:fontFamily="@font/inter_bold"
             android:text="@string/child_imobilItem_price"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_24sp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selected_item_title_textView" />
+
+        <TextView
+            android:id="@+id/RON2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/ron"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.134"
+            app:layout_constraintStart_toEndOf="@+id/selected_item_price_textView"
             app:layout_constraintTop_toBottomOf="@+id/selected_item_title_textView" />
 
         <com.google.android.material.button.MaterialButton

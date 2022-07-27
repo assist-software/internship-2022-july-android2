@@ -1,18 +1,20 @@
 package com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.assist.imobilandroidapp.R
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ChildDataFactory
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.ChildModel
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Interfaces.FavouriteInterface
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.favourite_item_list_type.view.*
 
-class FavouriteChildAdapter(private val favouriteChildren: List<ChildModel>):
+class FavouriteChildAdapter(private val favouriteChildren: List<Listing>, private val listingInterface: FavouriteInterface,private val context: Context):
     RecyclerView.Adapter<FavouriteChildAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,10 +24,10 @@ class FavouriteChildAdapter(private val favouriteChildren: List<ChildModel>):
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val favouriteChild = favouriteChildren[position]
-        holder.image.setImageResource(favouriteChild.image)
+        Glide.with(context).load(favouriteChild.images?.get(0)).into(holder.image)
         holder.title.text = favouriteChild.title
         holder.description.text = favouriteChild.description
-        holder.price.text = favouriteChild.price
+        holder.price.text = favouriteChild.price.toString()
     }
 
     override fun getItemCount(): Int {
@@ -41,13 +43,16 @@ class FavouriteChildAdapter(private val favouriteChildren: List<ChildModel>):
 
         init {
             favorite.setOnClickListener {
-                removedFromFavourites(it,adapterPosition)
+                favouriteIconRemoveClick(adapterPosition)
             }
         }
     }
 
-    private fun removedFromFavourites(view: View,position: Int) {
-        ChildDataFactory.removeChildrenFromFavourite(position)
-        Toast.makeText(view.context, view.context.getString(R.string.child_favorit_button_remove), Toast.LENGTH_SHORT).show()
+    private fun favouriteIconRemoveClick(position: Int) {
+        listingInterface.removeItemFromFavourite(favouriteChildren[position])
+        notifyItemRemoved(position)
+        if (favouriteChildren.isEmpty()) {
+            listingInterface.isListEmpty()
+        }
     }
 }

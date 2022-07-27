@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/d_382dp"
+    android:layout_height="@dimen/d_170dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="@dimen/d_8dp"
     android:layout_marginStart="@dimen/d_16dp"
@@ -9,69 +10,120 @@
     android:layout_marginEnd="@dimen/d_16dp"
     app:cardCornerRadius="@dimen/d_12dp">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="@dimen/d_154dp"
-        android:layout_height="@dimen/d_143dp"
-        app:cardCornerRadius="@dimen/d_6dp"
-        android:layout_marginTop="@dimen/d_12dp"
-        android:layout_marginStart="@dimen/d_12dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/favourite_item_image_imageView"
-            android:layout_width="match_parent"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
+            android:layout_width="@dimen/d_154dp"
+            android:layout_height="@dimen/d_143dp"
+            android:layout_marginStart="@dimen/d_8dp"
+            app:cardCornerRadius="@dimen/d_6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/favourite_item_image_imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_launcher_background" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_launcher_background"/>
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/cardView3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
 
-    </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/favourite_item_title_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/inter_semi_bold"
+                android:text="@string/child_imobilItem_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintStart_toEndOf="@id/favourite_item_fav_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/favourite_item_fav_icon"
+                android:layout_marginEnd="@dimen/d_16dp"/>
 
-    <TextView
-        android:id="@+id/favourite_item_title_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/child_imobilItem_title"
-        android:textSize="@dimen/text_size_14sp"
-        android:fontFamily="@font/inter_semi_bold"
-        android:textColor="@color/black"
-        android:layout_marginStart="@dimen/d_182dp"
-        android:layout_marginTop="@dimen/d_12dp"
-        android:layout_marginEnd="@dimen/d_48dp"
-        android:layout_marginBottom="@dimen/d_114dp"/>
+            <TextView
+                android:id="@+id/favourite_item_description_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d_8dp"
+                android:fontFamily="@font/inter_regular"
+                android:text="@string/child_imobilItem_description"
+                android:textColor="@color/grayscale_400"
+                android:textSize="@dimen/text_size_12sp"
+                android:ellipsize="end"
+                android:lines="5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/favourite_item_title_textView" />
 
-    <TextView
-        android:id="@+id/favourite_item_description_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/inter_regular"
-        android:text="@string/child_imobilItem_description"
-        android:textSize="@dimen/text_size_12sp"
-        android:textColor="@color/grayscale_400"
-        android:layout_marginStart="@dimen/d_182dp"
-        android:layout_marginTop="@dimen/d_64dp"
-        android:layout_marginEnd="@dimen/d_48dp"
-        android:layout_marginBottom="@dimen/d_46dp"/>
+            <TextView
+                android:id="@+id/favourite_item_price_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d_8dp"
+                android:fontFamily="@font/inter_semi_bold"
+                android:text="@string/child_imobilItem_price"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/favourite_item_description_textView"
+                app:layout_constraintVertical_bias="0.238" />
 
-    <TextView
-        android:id="@+id/favourite_item_price_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/inter_semi_bold"
-        android:text="@string/child_imobilItem_price"
-        android:textSize="@dimen/text_size_14sp"
-        android:textColor="@color/black"
-        android:layout_marginStart="@dimen/d_182dp"
-        android:layout_marginTop="@dimen/d_132dp"
-        android:layout_marginEnd="@dimen/d_12dp"
-        android:layout_marginBottom="@dimen/d_12dp"/>
+            <TextView
+                android:id="@+id/RON"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d_8dp"
+                android:fontFamily="@font/inter_semi_bold"
+                android:text="@string/ron"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/favourite_item_price_textView"
+                app:layout_constraintTop_toBottomOf="@+id/favourite_item_description_textView"
+                app:layout_constraintVertical_bias="0.238" />
 
-    <ImageView
-        android:id="@+id/favourite_item_fav_icon"
-        android:layout_width="@dimen/d_17dp"
-        android:layout_height="@dimen/d_15dp"
-        android:src="@drawable/ic_full_hearth"
-        android:layout_marginStart="@dimen/d_330dp"
-        android:layout_marginTop="@dimen/d_12dp"
-        android:layout_marginEnd="@dimen/d_18dp"
-        android:layout_marginBottom="@dimen/d_137dp"/>
+            <ImageButton
+                android:id="@+id/favourite_item_fav_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d_4dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white"
+                android:src="@drawable/ic_full_hearth"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/favourite_item_title_textView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.081" />
 
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

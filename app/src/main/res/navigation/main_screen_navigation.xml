@@ -3,23 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_screen_navigation"
-    app:startDestination="@id/normalScreenFragment">
+    app:startDestination="@id/clientFragment">
 
-    <fragment
-        android:id="@+id/normalScreenFragment"
-        android:name="com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.NormalScreenFragment"
-        android:label="fragment_normal_screen"
-        tools:layout="@layout/fragment_normal_screen" >
-        <action
-            android:id="@+id/action_normalScreenFragment_to_detailsScreenFragment"
-            app:destination="@id/detailsScreenFragment"
-            app:popUpTo="@id/normalScreenFragment"
-            app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/action_normalScreenFragment_to_favouriteScreenFragment"
-            app:destination="@id/favouriteScreenFragment"
-            app:popUpTo="@id/normalScreenFragment" />
-    </fragment>
     <fragment
         android:id="@+id/detailsScreenFragment"
         android:name="com.assist.imobilandroidapp.screens.averageUser.screens.detailsScreen.DetailsScreenFragment"
@@ -47,4 +32,95 @@
         android:name="com.assist.imobilandroidapp.screens.averageUser.screens.favouriteScreen.FavouriteScreenFragment"
         android:label="fragment_favourite_screen"
         tools:layout="@layout/fragment_favourite_screen" />
+    <fragment
+        android:id="@+id/categoryListScreenFragment"
+        android:name="com.assist.imobilandroidapp.screens.averageUser.screens.categoryListScreen.CategoryListScreenFragment"
+        android:label="fragment_category_list_screen"
+        tools:layout="@layout/fragment_category_list_screen" >
+        <action
+            android:id="@+id/action_categoryListScreenFragment_to_clientFragment"
+            app:destination="@id/clientFragment"
+            app:popUpTo="@id/clientFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouriteNotConnectScreenFragment"
+        android:name="com.assist.imobilandroidapp.screens.averageUser.screens.favouriteNotConnectScreen.FavouriteNotConnectScreenFragment"
+        android:label="fragment_favourite_not_connect_screen"
+        tools:layout="@layout/fragment_favourite_not_connect_screen" />
+    <fragment
+        android:id="@+id/clientProfileFragment"
+        android:name="com.assist.imobilandroidapp.screens.client.screens.profileScreens.profile.ClientProfileFragment"
+        android:label="fragment_client_profile"
+        tools:layout="@layout/fragment_client_profile" >
+        <action
+            android:id="@+id/action_clientProfileFragment_to_profileEditFragment"
+            app:destination="@id/profileEditFragment"
+            app:popUpTo="@id/clientProfileFragment" />
+        <action
+            android:id="@+id/action_clientProfileFragment_to_loginAndSecurityFragment"
+            app:destination="@id/loginAndSecurityFragment"
+            app:popUpTo="@id/clientProfileFragment" />
+        <action
+            android:id="@+id/action_clientProfileFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment"
+            app:popUpTo="@id/clientProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileEditFragment"
+        android:name="com.assist.imobilandroidapp.screens.client.screens.profileScreens.profileEdit.ProfileEditFragment"
+        android:label="fragment_profile_edit"
+        tools:layout="@layout/fragment_profile_edit" >
+        <action
+            android:id="@+id/action_profileEditFragment_to_clientProfileFragment"
+            app:destination="@id/clientProfileFragment"
+            app:popUpTo="@id/clientProfileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginAndSecurityFragment"
+        android:name="com.assist.imobilandroidapp.screens.client.screens.profileScreens.loginAndSecurity.LoginAndSecurityFragment"
+        android:label="fragment_login_and_security"
+        tools:layout="@layout/fragment_login_and_security" >
+        <action
+            android:id="@+id/action_loginAndSecurityFragment_to_clientProfileFragment"
+            app:destination="@id/clientProfileFragment"
+            app:popUpTo="@id/clientProfileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.assist.imobilandroidapp.screens.client.screens.profileScreens.notifications.NotificationsFragment"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_notifications" >
+        <action
+            android:id="@+id/action_notificationsFragment_to_clientProfileFragment"
+            app:destination="@id/clientProfileFragment"
+            app:popUpTo="@id/clientProfileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/clientFragment"
+        android:name="com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.ClientFragment"
+        android:label="fragment_client"
+        tools:layout="@layout/fragment_client" >
+        <action
+            android:id="@+id/action_clientFragment_to_detailsScreenFragment"
+            app:destination="@id/detailsScreenFragment"
+            app:popUpTo="@id/clientFragment" />
+        <action
+            android:id="@+id/action_clientFragment_to_categoryListScreenFragment"
+            app:destination="@id/categoryListScreenFragment"
+            app:popUpTo="@id/clientFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewListingFragment"
+        android:name="com.assist.imobilandroidapp.screens.client.screens.addNewListing.AddNewListingFragment"
+        android:label="fragment_add_new_listing"
+        tools:layout="@layout/fragment_add_new_listing" />
+    <fragment
+        android:id="@+id/previewNewListingFragment"
+        android:name="com.assist.imobilandroidapp.screens.client.screens.previewScreen.PreviewNewListingFragment"
+        android:label="fragment_preview_new_listing"
+        tools:layout="@layout/fragment_preview_new_listing" />
 </navigation>

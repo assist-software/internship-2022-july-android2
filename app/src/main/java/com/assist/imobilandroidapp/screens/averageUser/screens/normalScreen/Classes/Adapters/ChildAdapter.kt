@@ -8,19 +8,18 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.assist.imobilandroidapp.R
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.*
-import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Data.ChildDataFactory
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Interfaces.ListingInterface
+import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.Listing
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.child_item_recycler.view.*
 
-class ChildAdapter(private val children: List<ChildModel>) :
+class ChildAdapter(private val context: Context,private val children: List<Listing>,private val listingInterface: ListingInterface) :
     RecyclerView.Adapter<ChildAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v =
-            LayoutInflater.from(parent.context).inflate(R.layout.child_item_recycler, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.child_item_recycler, parent, false)
         return ViewHolder(v)
     }
 
@@ -30,14 +29,10 @@ class ChildAdapter(private val children: List<ChildModel>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val child = children[position]
-        holder.image.setImageResource(child.image)
+        Glide.with(context).load(child.images?.get(0)).into(holder.image)
         holder.title.text = child.title
-        holder.location.text = child.location
-        holder.price.text = child.price
-
-        holder.itemView.setOnClickListener {
-            childItemClick(it,child)
-        }
+        holder.location.text = child.location?.get(2) + "," + child.location?.get(3)
+        holder.price.text = child.price.toString()
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -51,33 +46,10 @@ class ChildAdapter(private val children: List<ChildModel>) :
             favorite.setOnClickListener {
                 itemFavouriteIconClick(favorite,it,adapterPosition)
             }
+            itemView.setOnClickListener {
+                listingInterface.onChildItemCLick(children[adapterPosition])
+            }
         }
-    }
-
-    private fun childItemClick(view: View, childModel: ChildModel) {
-//            Toast.makeText(it.context, it.context.getString(R.string.imobil_item_click), Toast.LENGTH_SHORT).show(
-
-        DataSharing.init(view.context.getSharedPreferences(SHARED_KEY,Context.MODE_PRIVATE))
-
-        DataSharing.addItemImage(ITEM_IMAGE,childModel.image)
-        DataSharing.addItemText(ITEM_TITLE,childModel.title)
-        DataSharing.addItemText(ITEM_LOCATION,childModel.location)
-        DataSharing.addItemText(ITEM_DESCRIPTION,childModel.description)
-        DataSharing.addItemText(ITEM_PRICE,childModel.price)
-        childModel.seller?.let { it1 ->
-            DataSharing.addSellerImage(ITEM_SELLER_IMAGE,it1.image)
-            DataSharing.addSellerInfo(ITEM_SELLER_NAME,it1.name)
-            DataSharing.addSellerInfo(ITEM_SELLER_JOINED,it1.joined)
-            DataSharing.addSellerInfo(ITEM_SELLER_RESPONSE_RATE,it1.responseRate)
-            DataSharing.addSellerInfo(ITEM_SELLER_RESPONSE_TIME,it1.responseTime)
-        }
-        DataSharing.addItemImage(ITEM_SECOND_IMAGE,childModel.secondImage)
-        DataSharing.addItemImage(ITEM_THIRD_IMAGE,childModel.thirdImage)
-
-        DataSharing.commit()
-
-        ChildDataFactory.childModel = childModel
-        view.findNavController().navigate(R.id.action_normalScreenFragment_to_detailsScreenFragment)
     }
 
     private fun itemFavouriteIconClick(button: ImageButton,view: View,position: Int) {
@@ -85,8 +57,8 @@ class ChildAdapter(private val children: List<ChildModel>) :
             view.resources.getDrawable(R.drawable.ic_outline_hearth).constantState -> {
                 Toast.makeText(view.context, view.context.getString(R.string.child_favorit_button_add), Toast.LENGTH_SHORT).show()
                 button.setImageResource(R.drawable.ic_full_hearth)
-                ChildDataFactory.addFavouriteChildren(children[position])
-//                Log.d("CHILD",children[position].toString())
+//                ChildDataFactory.addFavouriteChildren(children[position])
+                listingInterface.onAddFavouriteIconClick(children[position])
             }
             view.resources.getDrawable(R.drawable.ic_full_hearth).constantState -> {
                 Toast.makeText(view.context, view.context.getString(R.string.child_favorit_button_remove), Toast.LENGTH_SHORT).show()
