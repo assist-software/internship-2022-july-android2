@@ -10,8 +10,6 @@ import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Clas
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.SHARED_KEY
 import com.assist.imobilandroidapp.screens.login.Login
 
-var TOKEN = ""
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +22,9 @@ class MainActivity : AppCompatActivity() {
 
         DataSharing.init(getSharedPreferences(SHARED_KEY, MODE_PRIVATE))
 
-        TOKEN = DataSharing.getUserLoginToken()
+        val author = DataSharing.getSavedAuthor()
 
-        if (TOKEN.isNotEmpty()) {
+        if (author!= null) {
             startActivity(Intent(this, ClientMainScreen::class.java))
             finish()
         } else {

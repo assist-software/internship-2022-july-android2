@@ -15,9 +15,6 @@ interface ApiInterface {
     @POST("api/User/Register")
     fun registerUser(@Query("Email") email: String, @Query("Password") password: String): Call<String>
 
-    @GET("api/User/search")
-    fun getUserByEmail(@Query("Email") email: String): Call<Author>
-
     @POST("api/User/Reset/Password")
     fun forgotPassword(@Query("Email") email: String) : Call<Author>
 

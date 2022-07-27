@@ -45,6 +45,10 @@ class ClientMainScreen : AppCompatActivity() {
         binding.mainScreenMessageButton.setOnClickListener {
             chatMessageButtonClick()
         }
+
+        binding.mainScreenAddButton.setOnClickListener {
+            addNewListingButtonClick()
+        }
     }
 
     private fun userImageViewClick() {
@@ -100,6 +104,15 @@ class ClientMainScreen : AppCompatActivity() {
         Toast.makeText(this, getString(R.string.chat_button), Toast.LENGTH_SHORT).show()
     }
 
+    private fun addNewListingButtonClick(){
+        binding.apply {
+            clientViewPager.visibility = View.GONE
+            clientMainScreenFragmentContainerView.visibility = View.VISIBLE
+            mainScreenAddButton.visibility = View.GONE
+        }
+        findNavController(R.id.client_mainScreenFragmentContainerView).navigate(R.id.addNewListingFragment)
+    }
+
     private fun init() {
 
         DataSharing.init(getSharedPreferences(SHARED_KEY, MODE_PRIVATE))
@@ -115,6 +128,7 @@ class ClientMainScreen : AppCompatActivity() {
             clientViewPager.visibility = View.VISIBLE
             clientTabLatyout.visibility = View.VISIBLE
             clientLLUsersButtons.visibility = View.VISIBLE
+            mainScreenAddButton.visibility = View.VISIBLE
             clientTabLatyout.addTab(binding.clientTabLatyout.newTab().setText("All listings"))
             clientTabLatyout.addTab(binding.clientTabLatyout.newTab().setText("My listings"))
             clientViewPager.adapter = ClientFragmentAdapter(supportFragmentManager)

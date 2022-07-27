@@ -113,4 +113,14 @@
             app:destination="@id/categoryListScreenFragment"
             app:popUpTo="@id/clientFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/addNewListingFragment"
+        android:name="com.assist.imobilandroidapp.screens.client.screens.addNewListing.AddNewListingFragment"
+        android:label="fragment_add_new_listing"
+        tools:layout="@layout/fragment_add_new_listing" />
+    <fragment
+        android:id="@+id/previewNewListingFragment"
+        android:name="com.assist.imobilandroidapp.screens.client.screens.previewScreen.PreviewNewListingFragment"
+        android:label="fragment_preview_new_listing"
+        tools:layout="@layout/fragment_preview_new_listing" />
 </navigation>

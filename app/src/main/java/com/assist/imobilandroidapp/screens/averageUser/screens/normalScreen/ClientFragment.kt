@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -119,6 +120,8 @@ class ClientFragment : Fragment() , ListingInterface {
             findViewById<ConstraintLayout>(R.id.clMainScreenFiltersTextIcons).visibility =
                 View.VISIBLE
             findViewById<TextView>(R.id.client_input_textView).text = getString(R.string.login_message) + DataSharing.getUser()?.fullName
+            findViewById<LinearLayout>(R.id.client_lLUsersButtons).visibility = View.VISIBLE
+            findViewById<ImageButton>(R.id.main_screen_add_button).visibility = View.VISIBLE
         }
     }
 }

@@ -14,7 +14,6 @@ import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Clas
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.DataSharing
 import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Classes.SHARED_KEY
 import com.assist.imobilandroidapp.screens.forgotPassword.ForgotPassword
-import com.assist.imobilandroidapp.screens.main.TOKEN
 import com.assist.imobilandroidapp.screens.signup.SignUp
 import retrofit2.Call
 import retrofit2.Callback
@@ -79,7 +78,7 @@ class Login : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     if (binding.loginRememberMeCheckBox.isChecked) {
-                        TOKEN = response.body()?.token!!
+                        DataSharing.saveRememberUser(response.body()!!)
                     }
                     DataSharing.saveUser(response.body()!!)
                     DataSharing.commit()

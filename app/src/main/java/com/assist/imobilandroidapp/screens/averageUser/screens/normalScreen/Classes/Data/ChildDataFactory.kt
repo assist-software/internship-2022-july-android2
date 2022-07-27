@@ -5,10 +5,12 @@ import com.assist.imobilandroidapp.screens.averageUser.screens.normalScreen.Clas
 
 object ChildDataFactory {
     var listing = Listing()
+    var newListing = Listing()
 
     private val favouriteChildrens = mutableListOf<Listing>()
     private var categoryChildrens = mutableListOf<Listing>()
     private var searchChildrens = mutableListOf<Listing>()
+    private var newListings = mutableListOf<Listing>()
     var category : String = ""
 
     fun getChildren(): List<Listing> {
@@ -37,6 +39,14 @@ object ChildDataFactory {
 
     fun addSearchChild(children : Listing){
         searchChildrens.add(children)
+    }
+
+    fun addNewListing(listing: Listing){
+        newListings.add(newListing)
+    }
+
+    fun getNewListings() : List<Listing> {
+        return newListings
     }
 
     fun getSearchChildrens() : List<Listing>{

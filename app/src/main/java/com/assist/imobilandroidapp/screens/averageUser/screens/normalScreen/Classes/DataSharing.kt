@@ -198,6 +198,12 @@ object DataSharing {
         editor.putString(USER,authorResponseObj)
     }
 
+    fun saveRememberUser(author: Author){
+        val gson = Gson()
+        val savedAuthorObj = gson.toJson(author)
+        editor.putString(REMEMBER_LOGIN_TOKEN,savedAuthorObj)
+    }
+
     fun rememberUserLogin(value : String){
         editor.putString(REMEMBER_LOGIN_TOKEN,value)
     }
@@ -281,6 +287,15 @@ object DataSharing {
         var author: Author? = null
         if ( authorObj != null ) {
             author = Gson().fromJson(authorObj)
+        }
+        return author
+    }
+
+    fun getSavedAuthor() : Author? {
+        val savedAuthObj = sharedPreferences.getString(REMEMBER_LOGIN_TOKEN,null)
+        var author: Author? = null
+        if ( savedAuthObj != null ) {
+            author = Gson().fromJson(savedAuthObj)
         }
         return author
     }

@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/d_382dp"
-    android:layout_height="@dimen/d_170dp"
+    android:layout_height="@dimen/d_238dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="@dimen/d_8dp"
     android:layout_marginStart="@dimen/d_16dp"
@@ -19,8 +19,8 @@
             android:layout_width="@dimen/d_154dp"
             android:layout_height="@dimen/d_143dp"
             android:layout_marginStart="@dimen/d_8dp"
+            android:layout_marginTop="@dimen/d_16dp"
             app:cardCornerRadius="@dimen/d_6dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -35,95 +35,106 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="44dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/cardView3"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/favourite_item_title_textView"
+                android:id="@+id/new_item_title_textView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:fontFamily="@font/inter_semi_bold"
                 android:text="@string/child_imobilItem_title"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_14sp"
-                app:layout_constraintStart_toEndOf="@id/favourite_item_fav_icon"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/favourite_item_fav_icon"
-                android:layout_marginEnd="@dimen/d_16dp"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/favourite_item_description_textView"
+                android:id="@+id/new_item_description_textView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/d_8dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/inter_regular"
                 android:text="@string/child_imobilItem_description"
                 android:textColor="@color/grayscale_400"
                 android:textSize="@dimen/text_size_12sp"
-                android:ellipsize="end"
-                android:lines="5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/favourite_item_title_textView" />
-
-            <TextView
-                android:id="@+id/favourite_item_price_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/d_8dp"
-                android:fontFamily="@font/inter_semi_bold"
-                android:text="@string/child_imobilItem_price"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/favourite_item_description_textView"
-                app:layout_constraintVertical_bias="0.238" />
+                app:layout_constraintTop_toBottomOf="@+id/new_item_title_textView" />
 
             <TextView
                 android:id="@+id/RON"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/d_8dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/inter_semi_bold"
                 android:text="@string/ron"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/favourite_item_price_textView"
-                app:layout_constraintTop_toBottomOf="@+id/favourite_item_description_textView"
-                app:layout_constraintVertical_bias="0.238" />
+                app:layout_constraintStart_toEndOf="@+id/new_item_price_textView"
+                app:layout_constraintTop_toBottomOf="@+id/new_item_description_textView" />
 
-            <ImageButton
-                android:id="@+id/favourite_item_fav_icon"
+            <TextView
+                android:id="@+id/new_item_price_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/d_4dp"
-                android:layout_marginEnd="16dp"
-                android:background="@color/white"
-                android:src="@drawable/ic_full_hearth"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/inter_semi_bold"
+                android:text="@string/child_imobilItem_price"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/favourite_item_title_textView"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.081" />
-
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/new_item_description_textView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d_1dp"
+            android:layout_marginStart="@dimen/d_12dp"
+            android:layout_marginTop="@dimen/d_12dp"
+            android:layout_marginEnd="@dimen/d_12dp"
+            android:background="@color/grayscale_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+
+        <TextView
+            android:id="@+id/newItemEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/d_25dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/edit"
+            android:textColor="@color/primary_500"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            android:layout_marginTop="@dimen/d_24dp"/>
+
+        <TextView
+            android:id="@+id/newItemDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/d_60dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/delete"
+            android:textColor="@color/alert_500"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintEnd_toStartOf="@+id/newItemEdit"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            android:layout_marginTop="@dimen/d_24dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

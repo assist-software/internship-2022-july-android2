@@ -14,7 +14,7 @@ data class Listing(
     @SerializedName("location")
     val location: ArrayList<String>? = null,
     @SerializedName("price")
-    val price: Int? = null,
+    val price: Double? = null,
     @SerializedName("status")
     val status: Int? = null,
     @SerializedName("images")

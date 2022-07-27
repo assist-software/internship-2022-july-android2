@@ -31,7 +31,7 @@ class ChildAdapter(private val context: Context,private val children: List<Listi
         val child = children[position]
         Glide.with(context).load(child.images?.get(0)).into(holder.image)
         holder.title.text = child.title
-        holder.location.text = child.location.toString()
+        holder.location.text = child.location?.get(2) + "," + child.location?.get(3)
         holder.price.text = child.price.toString()
     }
 

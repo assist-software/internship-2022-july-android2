@@ -16,6 +16,12 @@
     <string name="wrong_email">Wrong email</string>
     <string name="please_enter_your_email">Please enter your email</string>
 
+    <string-array name="categoryes">
+        <item>Big House</item>
+        <item>Apartment</item>
+        <item>Small house</item>
+    </string-array>
+
 
     <string name="log_in">Log in</string>
     <string name="enter_your_account_details_below">Enter your account details below</string>
@@ -133,4 +139,18 @@
     <string name="sms">SMS</string>
     <string name="discount_description">Notifications about promotions and discounts offered by us for our services.</string>
     <string name="ron">RON</string>
+    <string name="details">Details</string>
+    <string name="be_as_thorough_as_you_can">Be as thorough as you can.</string>
+    <string name="title">Title</string>
+    <string name="category">Category</string>
+    <string name="price">Price</string>
+    <string name="photo_videos"><![CDATA[Photos & videos]]></string>
+    <string name="l_rem_ipsum_trede_relig_oktig_tism_rallylydnad">Lörem ipsum trede relig, oktig. Tism rallylydnad.</string>
+    <string name="description_details">Description details</string>
+    <string name="description">Description</string>
+    <string name="contact_info">Contact info</string>
+    <string name="preview">Preview</string>
+    <string name="publish">Publish</string>
+    <string name="this_is_a_preview_of_your_listing">This is a preview of your listing</string>
+    <string name="delete">Delete</string>
 </resources>

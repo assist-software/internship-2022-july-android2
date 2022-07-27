@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.assist.imobilandroidapp.R
@@ -46,7 +47,7 @@ class ParentAdapter(private val parents: List<ParentModel>,private val listingIn
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val recyclerView: RecyclerView = itemView.rv_child
         val textView: TextView = itemView.parent_category
-        private val seeEverything : RelativeLayout = itemView.see_everything_relativeLayout
+        private val seeEverything : ConstraintLayout = itemView.see_everything_relativeLayout
 
         init {
            seeEverything.setOnClickListener {
